@@ -1,0 +1,43 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WP8Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:SuperMap.WindowsPhone.Samples.ViewModel"
+    xmlns:my_Interactivity="clr-namespace:SuperMap.WindowsPhone.Samples.Command" 
+    xmlns:ic="clr-namespace:SuperMap.WindowsPhone.Mapping;assembly=SuperMap.WindowsPhone"
+    xmlns:icc="clr-namespace:SuperMap.WindowsPhone.Core;assembly=SuperMap.WindowsPhone"
+    xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:ico="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="DrawPoint" Click="DrawPoint_Click_1" IsEnabled="True" Text="标注" IconUri="/Assets/DPoint.png"></shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="Measure" Click="Measure_Click_1" IsEnabled="True" Text="量算" IconUri="/Assets/Distance.png"></shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="Clear" Click="Clear_Click_1" IsEnabled="True" Text="清除" IconUri="/Assets/Clear.png"></shell:ApplicationBarIconButton>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap">
+        	<ic:CloudLayer ID="CLayer"/>
+            <ic:ElementsLayer ID="PushpinLayer" />
+        	<ic:FeaturesLayer ID="FLayer"/>
+            <ic:ElementsLayer ID="ELayer"></ic:ElementsLayer>
+        </ic:Map>
+
+        <Button x:Name="CompassButton" BorderBrush="Black" Background="Black" Height="50" Width="50" VerticalAlignment="Bottom"
+			HorizontalAlignment="Left" Margin="50,0,0,50" Click="CompassButton_Click_1" Style="{StaticResource CompassButtonStyle}" >
+        </Button>
+    </Grid>
+
+</phone:PhoneApplicationPage>

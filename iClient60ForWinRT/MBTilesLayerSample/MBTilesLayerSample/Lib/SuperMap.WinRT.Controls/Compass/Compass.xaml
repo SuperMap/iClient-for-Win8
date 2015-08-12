@@ -1,0 +1,290 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsm="using:System.Windows;assembly=System.Windows"
+    xmlns:local="using:SuperMap.WinRT.Controls"
+
+    >
+    <Style TargetType="local:Compass">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Compass">
+                    <Grid x:Name="Root" >
+                        <Grid RenderTransformOrigin="0.5,0.5"  Width="110" Height="110">
+                            <Grid.Resources>
+                                <!--EmptyButtonStyle-->
+                                <Style x:Key="EmptyButtonStyle" TargetType="ButtonBase" >
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ButtonBase">
+                                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform x:Name="TransformRotateElement" Angle="0"/>
+                                    <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+
+                            <Grid  RenderTransformOrigin="0.5,0.5">
+                                <Grid x:Name="RotateRingElement" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Path Stroke="#33000000" StrokeThickness="2" Fill="#FF3D3D3D" Margin="53.5,53.5,56.5,25.5" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" >
+                                        <Path.Data>
+                                            <GeometryGroup>
+                                                <EllipseGeometry RadiusX="30" RadiusY="30"/>
+                                                <EllipseGeometry RadiusX="24" RadiusY="24"/>
+                                            </GeometryGroup>
+                                        </Path.Data>
+                                    </Path>
+                                    <Path Stroke="#33000000" StrokeThickness="2" Margin="53.915,54.081,-46.915,-47.081" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+                                        <Path.Fill>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF979797" Offset="0"/>
+                                                <GradientStop Color="#FFE4E4E4" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Path.Fill>
+                                        <Path.Data>
+                                            <GeometryGroup>
+                                                <EllipseGeometry RadiusX="30" RadiusY="30"/>
+                                                <EllipseGeometry RadiusX="24" RadiusY="24"/>
+                                            </GeometryGroup>
+                                        </Path.Data>
+                                    </Path>
+                                    <!--<Path Stroke="#33000000" StrokeThickness="2" Margin="53.915,0,-46.915,-48.081" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Height="103" VerticalAlignment="Bottom">
+                                        <Path.Fill>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF636463" Offset="0.444"/>
+                                                <GradientStop Color="White" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Path.Fill>
+                                        <Path.Data>
+                                            <GeometryGroup>
+                                                <EllipseGeometry RadiusX="30" RadiusY="30"/>
+                                                <EllipseGeometry RadiusX="24" RadiusY="24"/>
+                                            </GeometryGroup>
+                                        </Path.Data>
+                                    </Path>-->
+                                    <Path UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Margin="53.5,53,6.5,-45" >
+                                        <Path.Fill>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFA0A0A0" Offset="1"/>
+                                                <GradientStop Color="#FFE0E0E0" Offset="0"/>
+                                            </LinearGradientBrush>
+                                        </Path.Fill>
+                                        <Path.Data>
+                                            <GeometryGroup>
+                                                <EllipseGeometry RadiusX="50" RadiusY="50"/>
+                                                <EllipseGeometry RadiusX="40" RadiusY="40"/>
+                                            </GeometryGroup>
+                                        </Path.Data>
+                                    </Path>
+                                    <Ellipse Width="100" Height="100" StrokeThickness="2" Margin="18,13,28,0" Visibility="Collapsed" VerticalAlignment="Top" >
+                                        <Ellipse.Stroke>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFB4B4B4"/>
+                                                <GradientStop Color="#FF7F7F7F" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Stroke>
+                                    </Ellipse>
+                                    <Ellipse Width="82" Height="82" StrokeThickness="2" Margin="27,22,37,0" Visibility="Collapsed" VerticalAlignment="Top" >
+                                        <Ellipse.Stroke>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FF747474"/>
+                                                <GradientStop Color="#FFB6B6B6" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Ellipse.Stroke>
+                                    </Ellipse>
+                                </Grid>
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width ="0.3*"/>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.3*"/>
+                                        <RowDefinition Height="0.4*"/>
+                                        <RowDefinition Height="0.3*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--右-->
+                                    <RepeatButton Margin="0" x:Name="PanRightElement"  Style="{StaticResource EmptyButtonStyle}" Grid.Row="1" Grid.Column="2" RenderTransformOrigin="-1.72,1.15" HorizontalAlignment="Center" VerticalAlignment="Center"  >
+                                        <Canvas>
+                                            <Ellipse Height="24" Width="24" Canvas.Left="-8" Canvas.Top="-9" >
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="20" Width="20" Canvas.Top="-7" StrokeThickness="2" Canvas.Left="-6">
+                                                <Ellipse.Stroke>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFD6D6D6"/>
+                                                        <GradientStop Color="#FF999999" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Stroke>
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA5A5A5"/>
+                                                        <GradientStop Color="#FFB1B1B1" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="14" Width="14" Canvas.Top="-4" Stroke="{x:Null}" Canvas.Left="-3">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Path Height="7.874" Width="5.989" Stretch="Fill" Canvas.Left="0.8" Canvas.Top="-1.237" Data="M6.800293,3.2626429 L12.638672,3.2626429 L12.638672,4.5946741 L8.3901367,4.5946741 L8.3901367,6.3402796 L12.343262,6.3402796 L12.343262,7.6669397 L8.3901367,7.6669397 L8.3901367,9.8100061 L12.789063,9.8100061 L12.789063,11.136666 L6.800293,11.136666 z" UseLayoutRounding="False">
+                                                <Path.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FF6A6A6A"/>
+                                                        <GradientStop Color="#FFA1A1A1" Offset="0.786"/>
+                                                    </LinearGradientBrush>
+                                                </Path.Fill>
+                                            </Path>
+                                        </Canvas>
+                                    </RepeatButton>
+                                    <!--下-->
+                                    <RepeatButton Margin="0" x:Name="PanDownElement"  Style="{StaticResource EmptyButtonStyle}"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Canvas>
+                                            <Ellipse Height="24" Width="24" Canvas.Left="-13" Canvas.Top="-8" >
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="20" Width="20" Canvas.Left="-11" StrokeThickness="2" Canvas.Top="-6">
+                                                <Ellipse.Stroke>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFD6D6D6"/>
+                                                        <GradientStop Color="#FF999999" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Stroke>
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA5A5A5"/>
+                                                        <GradientStop Color="#FFB1B1B1" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="14" Width="14" Canvas.Left="-8" Stroke="{x:Null}" Canvas.Top="-3">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Path Height="8.148" Width="6.402" Stretch="Fill" Canvas.Left="-3.496" Canvas.Top="0.075"
+                                      Data="M9.5556641,3.1283655 C10.049805,3.1283655 10.482849,3.1825242 10.854797,3.2908411 C11.226746,3.3991582 11.537598,3.5616338 11.787354,3.7782679 C12.037109,3.9949019 12.22756,4.2477908 12.358704,4.5369349 C12.489848,4.8260789 12.561687,5.1514778 12.574219,5.5131311 L10.984375,5.5829554 C10.950358,5.3806438 10.896872,5.2067547 10.823914,5.0612879 C10.750956,4.9158206 10.658528,4.7987757 10.546631,4.7101526 C10.434733,4.6215296 10.294861,4.5550623 10.127014,4.5107508 C9.9591675,4.4664392 9.7633457,4.4442835 9.5395508,4.4442835 C9.3085938,4.4442835 9.1027021,4.4680057 8.921875,4.5154505 C8.7410488,4.5628948 8.5852871,4.6340618 8.4545898,4.7289515 C8.3704433,4.7898235 8.307333,4.8609905 8.2652588,4.9424524 C8.2231855,5.0239139 8.2021484,5.1156702 8.2021484,5.217721 C8.2021484,5.4039187 8.2809248,5.5632615 8.4384766,5.6957483 C8.5387363,5.7798958 8.7106113,5.8658333 8.9541016,5.9535608 C9.1975908,6.0412889 9.5126953,6.1308069 9.8994141,6.2221155 C10.286133,6.3134241 10.622498,6.4062991 10.908508,6.500741 C11.194519,6.5951824 11.430176,6.6911907 11.615479,6.7887659 C11.986084,6.9839158 12.276123,7.25068 12.485596,7.5890589 C12.590332,7.7582483 12.668884,7.9473553 12.721252,8.1563807 C12.773621,8.365406 12.799805,8.5943489 12.799805,8.8432093 C12.799805,9.0687952 12.768473,9.28722 12.705811,9.4984827 C12.643147,9.7097454 12.549153,9.913847 12.423828,10.110787 C12.298503,10.307728 12.147217,10.479379 11.969972,10.625741 C11.792725,10.772103 11.589519,10.893177 11.360352,10.988961 C11.131185,11.084745 10.873819,11.156584 10.588257,11.204476 C10.302694,11.252369 9.9889326,11.276315 9.6469727,11.276315 C9.1492519,11.276315 8.7092695,11.2188 8.3270264,11.103768 C7.9447837,10.988737 7.6202803,10.816191 7.3535156,10.586129 C7.086751,10.356068 6.8736978,10.073414 6.7143555,9.7381678 C6.5550132,9.4029217 6.4493818,9.0150843 6.3974609,8.5746546 L7.9443359,8.424264 C7.9908853,8.6838665 8.0613804,8.9090052 8.1558228,9.099679 C8.2502642,9.2903528 8.3686523,9.4465618 8.5109863,9.5683069 C8.6533203,9.690052 8.8204956,9.7813606 9.0125122,9.8422327 C9.2045288,9.9031048 9.4213867,9.9335413 9.6630859,9.9335413 C9.9191084,9.9335413 10.143576,9.9064617 10.336487,9.8523035 C10.529398,9.7981453 10.690755,9.7169075 10.820557,9.6085901 C10.950358,9.5002728 11.047709,9.3827801 11.11261,9.2561121 C11.177511,9.1294441 11.209961,8.9935999 11.209961,8.8485804 C11.209961,8.6623821 11.155355,8.5039349 11.046143,8.3732386 C10.93693,8.2425423 10.746256,8.1288538 10.474121,8.0321741 C10.381022,7.9999475 10.228394,7.9551888 10.016235,7.8978968 C9.8040771,7.8406053 9.5323887,7.770781 9.2011719,7.6884241 C8.7750645,7.5827928 8.4125156,7.4650764 8.1135254,7.3352747 C7.8145342,7.2054729 7.5791016,7.0635867 7.4072266,6.9096155 C7.1655273,6.6929817 6.9842529,6.4526253 6.8634033,6.1885462 C6.7425537,5.9244676 6.6821289,5.6366663 6.6821289,5.3251429 C6.6821289,5.1246223 6.7105508,4.9305916 6.767395,4.7430506 C6.8242388,4.55551 6.9095049,4.3744593 7.0231934,4.1998987 C7.1368818,4.0253382 7.2756348,3.8715906 7.4394531,3.738656 C7.6032715,3.6057215 7.7921553,3.4935999 8.0061035,3.4022913 C8.2200527,3.3109827 8.4561567,3.2425013 8.7144165,3.196847 C8.9726763,3.1511927 9.2530918,3.1283655 9.5556641,3.1283655 z" UseLayoutRounding="False">
+                                                <Path.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FF6A6A6A"/>
+                                                        <GradientStop Color="#FFA1A1A1" Offset="0.786"/>
+                                                    </LinearGradientBrush>
+                                                </Path.Fill>
+                                            </Path>
+                                        </Canvas>
+                                    </RepeatButton>
+                                    <!--左-->
+                                    <RepeatButton Margin="0"   x:Name="PanLeftElement"  Style="{StaticResource EmptyButtonStyle}"  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Canvas>
+                                            <Ellipse Height="24" Width="24" Canvas.Left="-19" Canvas.Top="-10" >
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="20" Width="20" Canvas.Left="-17" Canvas.Top="-8" StrokeThickness="2">
+                                                <Ellipse.Stroke>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFD6D6D6"/>
+                                                        <GradientStop Color="#FF999999" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Stroke>
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA5A5A5"/>
+                                                        <GradientStop Color="#FFB1B1B1" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="14" Width="14" Canvas.Left="-14" Canvas.Top="-5" Stroke="{x:Null}">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Path Height="7.874" Width="10.334" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Canvas.Left="-11.622" Canvas.Top="-1.737" Data="M6.0375977,3.2626429 L7.6650391,3.2626429 L8.8520508,8.6713343 L10.291504,3.2626429 L12.182129,3.2626429 L13.5625,8.7626429 L14.770996,3.2626429 L16.371582,3.2626429 L14.459473,11.136666 L12.772949,11.136666 L11.20459,5.2499475 L9.6416016,11.136666 L7.9174805,11.136666 z" UseLayoutRounding="False">
+                                                <Path.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FF6A6A6A"/>
+                                                        <GradientStop Color="#FFA1A1A1" Offset="0.786"/>
+                                                    </LinearGradientBrush>
+                                                </Path.Fill>
+                                            </Path>
+                                        </Canvas>
+                                    </RepeatButton>
+                                    <!--上-->
+                                    <RepeatButton Margin="0"  x:Name="PanUpElement" Style="{StaticResource EmptyButtonStyle}" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Canvas>
+                                            <Ellipse Height="24" Width="24" Canvas.Left="-12" Canvas.Top="-19" >
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="20" Width="20" Canvas.Left="-10" Canvas.Top="-17" StrokeThickness="2">
+                                                <Ellipse.Stroke>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFD6D6D6"/>
+                                                        <GradientStop Color="#FF999999" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Stroke>
+                                                <Ellipse.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FFA5A5A5"/>
+                                                        <GradientStop Color="#FFB1B1B1" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Ellipse Height="14" Width="14" Canvas.Left="-7" Canvas.Top="-14" Stroke="{x:Null}">
+                                                <Ellipse.Fill>
+                                                    <SolidColorBrush Color="MintCream">
+                                                    </SolidColorBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Path Height="8.59" Width="6.814" Stretch="Fill" Canvas.Left="-2.814"
+                                      Canvas.Top="-12.09" Data="M6.890625,3.4701567 L8.578125,3.4701567 L12.09375,9.2064848 L12.09375,3.4701567 L13.705078,3.4701567 L13.705078,12.06 L11.964844,12.06 L8.5019531,6.4584379 L8.5019531,12.06 L6.890625,12.06 z" UseLayoutRounding="False">
+                                                <Path.Fill>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FF6A6A6A"/>
+                                                        <GradientStop Color="#FFA1A1A1" Offset="0.786"/>
+                                                    </LinearGradientBrush>
+                                                </Path.Fill>
+                                            </Path>
+                                        </Canvas>
+                                    </RepeatButton>
+                                    <!--全副-->
+                                    <Button x:Name="ViewEntireElement"   Style="{StaticResource EmptyButtonStyle}" 
+                                        RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1"  >
+                                        <Image IsHitTestVisible="True" Canvas.ZIndex="-10"
+                               Source="/SuperMap.WinRT.Controls;component/Images/globe.png"
+                               Stretch="None" Opacity="0.9" Margin="-33,-14,-30,-11"/>
+                                    </Button>
+
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+
+

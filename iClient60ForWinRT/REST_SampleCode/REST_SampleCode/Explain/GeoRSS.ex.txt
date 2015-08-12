@@ -1,0 +1,3 @@
+﻿当页面运行时，程序自动请求网络资源，进行解析，将解析后的坐标值赋给Pushpin加载在地图上；
+点击Pushpin弹出自定义InfoWindow窗口，显示详细信息。
+<local:progress/>为自定义控件，存放在/Controls 目录下

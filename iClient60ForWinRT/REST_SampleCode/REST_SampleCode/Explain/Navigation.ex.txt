@@ -1,0 +1,1 @@
+﻿导航控件由指北针控件（Compass）和缩放条（ZoomSlider）组合而成。

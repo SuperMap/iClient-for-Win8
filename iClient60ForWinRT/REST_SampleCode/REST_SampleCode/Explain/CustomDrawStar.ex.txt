@@ -1,0 +1,5 @@
+﻿SuperMap.WinRT 程序集提供了 MapAction 类，其子类有 DrawStar、DrawCircle、DrawLine、DrawPolygon、
+Pan、ZoomIn、ZoomOut、Edit 等。如果这些 Action 不能满足用户需求，则可以从 MapAction 
+继承进行扩展，也可以从其子类继承进行扩展。在扩展的类中重写父类的方法就可以了。
+
+自定义风格的核心思想就是重写 ControlTemplate 。

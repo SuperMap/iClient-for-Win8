@@ -1,0 +1,1 @@
+﻿加载 TiledWMSLayer 有三个必设属性:Url、Layers、Version。

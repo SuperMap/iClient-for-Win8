@@ -1,0 +1,123 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+    xmlns:local="using:SuperMap.WinRT.Controls"
+    >
+    <ControlTemplate  x:Key="ArrowButtonStyle" TargetType="Button">
+        <Grid  Background="Transparent" >
+            <Path x:Name="miniMapMinimizeArrow"   Stretch="Fill" StrokeThickness="0.5" Margin="1.843,2.457,0,0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" Data="M11.45798,4.4583335 C11.45798,4.4583335 13.885186,12.211126 20.205347,15.256407 L17.500059,18.547623 L26.940378,16.807964 L25.414963,8.5477657 L22.48958,12.211164 C22.48958,12.211164 15.416139,9.5002127 12.374606,5.6253052 z" Stroke="#FF113D56" Height="14.545" HorizontalAlignment="Left" VerticalAlignment="Top" Width="15.9" >
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-171.456"/>
+                        <TranslateTransform X="-0.0029617188092121438" Y="0.015689307916443518"/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="0.321000009775162,0.954999983310699" StartPoint="0.317999988794327,0.0610000006854534">
+                        <GradientStop Color="#FFACE1FB" Offset="0"/>
+                        <GradientStop Color="#FF032F70" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate  x:Key="ArrowButtonCopyStyle" TargetType="Button">
+        <Grid  Background="Transparent" >
+            <Path x:Name="miniMapMinimizeArrow_Copy"    Stretch="Fill" StrokeThickness="0.5" Margin="1.843,3.4,0,0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" Data="M11.45798,4.4583335 C11.45798,4.4583335 13.885186,12.211126 20.205347,15.256407 L17.500059,18.547623 L26.940378,16.807964 L25.414963,8.5477657 L22.48958,12.211164 C22.48958,12.211164 15.416139,9.5002127 12.374606,5.6253052 z" Stroke="#FF113D56" Height="14.545" HorizontalAlignment="Left" VerticalAlignment="Top" Width="15.9">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="18.1"/>
+                        <TranslateTransform X="-0.0029617188092121438" Y="0.015689307916443518"/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+                <Path.Fill>
+                    <LinearGradientBrush EndPoint="0.321000009775162,0.954999983310699" StartPoint="0.317999988794327,0.0610000006854534">
+                        <GradientStop Color="#FFACE1FB" Offset="0"/>
+                        <GradientStop Color="#FF032F70" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Fill>
+            </Path>
+        </Grid>
+    </ControlTemplate>
+
+
+    <Style TargetType="local:OverviewMap">
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="200" />
+        <Setter Property="Background" Value="Azure"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:OverviewMap">
+                    <Grid x:Name="Root"  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"  VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisibilityStates">
+                                <VisualState x:Name="Expanded">
+                                    <Storyboard>
+                                        <DoubleAnimation From="0" To="1" Duration="00:00:0.5" Storyboard.TargetName="OuterRect" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" />
+                                        <DoubleAnimation From="0" To="1" Duration="00:00:0.5" Storyboard.TargetName="OuterRect" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" />
+                                        <DoubleAnimation From="0" To="1" Duration="00:00:0.5" Storyboard.TargetName="OuterRect" Storyboard.TargetProperty="Opacity" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Collapsed">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="OuterRect" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="OuterRect" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="OuterRect" Storyboard.TargetProperty="Opacity">
+                                            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+                                            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="OuterRect"  RenderTransformOrigin="1,1"  Visibility="Collapsed">
+                            <Grid.RenderTransform >
+                                <TransformGroup >
+                                    <ScaleTransform x:Name="ScaleTran" ScaleX="1" ScaleY="1" />
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Border Background="{TemplateBinding Background}"  BorderBrush="#88060606" BorderThickness="1">
+
+                                <Grid x:Name="InnerRect"  >
+                                    <Border Background="{TemplateBinding Background}"  BorderBrush="#880A0A0A" BorderThickness="1" Margin="5">
+
+                                        <Grid >
+                                            <ic:Map x:Name="OvMap"  Margin="1"  Background="{TemplateBinding Background}" Height="Auto" Width="Auto" />
+                                            <Grid x:Name="OvRect" Width="9" Height="9" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                                                <Border Background="#330000FF" BorderBrush="#990000FF"  BorderThickness="2" Margin="0" >
+                                                    <Canvas Width="9" Height="9" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                                                        <Line X1="0" X2="9" Y1="4" Y2="4" Stroke="Red" StrokeThickness="1" />
+                                                        <Line X1="4" X2="4" Y1="0" Y2="9" Stroke="Red" StrokeThickness="1" />
+                                                    </Canvas>
+                                                </Border>
+                                            </Grid>
+                                        </Grid>
+
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Button x:Name="ArrowButton" Template="{StaticResource ArrowButtonStyle}"  Height="20" Width="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                        <Button x:Name="ArrowButtonCopy" Template="{StaticResource ArrowButtonCopyStyle}" Height="20" Width="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
+

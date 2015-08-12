@@ -1,0 +1,35 @@
+﻿<Page  x:Class="REST_SampleCode.RESTMeasureTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="tiledDynamicRESTLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+            <ic:FeaturesLayer ID="MyFeaturesLayer"  />
+            <ic:ElementsLayer ID="MyElementsLayer"/>
+        </ic:Map>
+
+        <!--布局控件-->
+        <Border HorizontalAlignment="Right" VerticalAlignment="Top" Height="234" Width="74" Margin="0,62,20,0" Style="{StaticResource PanelBorderStyle}">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="MDistance" ToolTipService.ToolTip="距离量算" Height="50" Width="50"  Style="{StaticResource ButtonBlueStyle}"
+                        Click="mybtn_Click">
+                    <Image Source="../Images/Distance.png" />
+                </Button>
+                <Button x:Name="MArea" ToolTipService.ToolTip="面积量算"  Margin="1" Height="50" Width="50"  Style="{StaticResource ButtonBlueStyle}"
+                        Click="mybtn2_Click" >
+                    <Image Source="../Images/Area.png" />
+                </Button>
+                <Button x:Name="Pan" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="平移" Style="{StaticResource ButtonPurpleStyle}"
+                           Click="pan_Click" >
+                    <Image Source="../Images/Pan1.png"/>
+                </Button>
+                <Button x:Name="Clear" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="清除全部要素" Style="{StaticResource ButtonPurpleStyle}"
+                       Click="Clear_Click" >
+                    <Image Source="../Images/Clear1.png" />
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

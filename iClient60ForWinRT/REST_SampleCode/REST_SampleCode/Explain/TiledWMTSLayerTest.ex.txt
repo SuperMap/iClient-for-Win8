@@ -1,0 +1,2 @@
+﻿该示范演示了如何从 SuperMap iServer Java 服务端获取 SuperMap iServer Java 提供的 WMTS 图层地图服务。
+示范数据使用服务端提供的 “World”地图 。

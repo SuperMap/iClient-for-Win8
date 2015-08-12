@@ -1,0 +1,27 @@
+﻿<navigation:Page  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" 
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                  xmlns:ic="http://schemas.supermap.com/iclient/2010" 
+                  xmlns:System="clr-namespace:System;assembly=mscorlib"
+                  x:Class="iServerJava6R_SampleCode.DynamicWMS" Title="动态WMS图层"
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--地图控件-->
+        <ic:Map x:Name="MyMap" ViewBounds="100,5,120,60">
+            <!--WMS 栅格图层-->
+            <ic:DynamicWMSLayer ID="MyWMS" 
+                                Url="http://localhost:8090/iserver/services/maps/wms130/World+Map"
+                                Layers="0.12,0.10"   
+                                Version="1.3.0" 
+                                CRS="4326" 
+                                Bounds="-180,-90,180,90"/>
+        </ic:Map>
+        <!--复选框-->
+        <StackPanel x:Name="MyStackPanel" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" >
+            <CheckBox x:Name="MyCheckBox1" Tag="0.12" IsChecked="True"  ClickMode="Press"  
+        		Content="国家"  Click="MyCheckBox1_Click" FontSize="15" Style="{StaticResource CheckBoxStyle1}"/>
+            <CheckBox x:Name="MyCheckBox3" Tag="0.10" IsChecked="True" Style="{StaticResource CheckBoxStyle1}"  ClickMode="Press"  
+                      Content="国家名" FontSize="15" Click="MyCheckBox1_Click"/>
+        </StackPanel>
+    </Grid>
+</navigation:Page>

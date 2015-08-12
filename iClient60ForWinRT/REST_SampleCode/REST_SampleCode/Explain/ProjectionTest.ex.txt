@@ -1,0 +1,3 @@
+﻿使用MapControl的Projection属性，设置了RadiusX、RadiusY、RadiusZ属性和Map的Angle属性。
+RadiusZ是旋转MapControl，而Angle是调整Map在MapControl中的角度。
+请参考silverlight3帮助文档/图形/三维效果

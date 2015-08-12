@@ -1,0 +1,4 @@
+﻿加载 DynamicWMSLayer 有四个必设属性：Url、Layers、Version、CRS。
+如果只加载一个该图层就必须设置 Bounds 属性；
+如果该类图层和别的图层叠加就不用设置 Bounds 属性。
+对于 JPEG 图片不支持透明。

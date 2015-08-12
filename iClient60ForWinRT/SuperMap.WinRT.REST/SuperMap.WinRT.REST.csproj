@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15DF8060-C5AF-482A-923A-090CA923157B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SuperMap.WinRT.REST</RootNamespace>
+    <AssemblyName>SuperMap.WinRT.REST</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.REST.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Bridge.cs" />
+    <Compile Include="Data\Edit\EditFeaturesParameters.cs" />
+    <Compile Include="Data\Edit\EditFeaturesResult.cs" />
+    <Compile Include="Data\Edit\EditFeaturesService.cs" />
+    <Compile Include="Data\Edit\EditType.cs" />
+    <Compile Include="Data\Query\GetFeaturesByBufferParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesByBufferService.cs" />
+    <Compile Include="Data\Query\GetFeaturesByGeometryParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesByGeometryService.cs" />
+    <Compile Include="Data\Query\GetFeaturesByIDsParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesByIDsService.cs" />
+    <Compile Include="Data\Query\GetFeaturesBySQLParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesBySQLService.cs" />
+    <Compile Include="Data\Query\GetFeaturesParametersBase.cs" />
+    <Compile Include="Data\Query\GetFeaturesResult.cs" />
+    <Compile Include="JsonHelper.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\ColorSpaceType.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\DatasetInfo.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\DatasetType.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GetLayersInfoResult.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GetLayersInfoService.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GetMapStatusResult.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GetMapStatusService.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GridType.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\ServerLayer.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\SuperMapLayerType.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\ThemeType.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\UGCGridLayer.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\UGCImageLayer.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\UGCLayer.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\UGCThemeLayer.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\UGCVectorLayer.cs" />
+    <Compile Include="Map\Layers\DynamicRESTLayer.cs" />
+    <Compile Include="Map\Layers\HighlightLayer.cs" />
+    <Compile Include="Map\Layers\IClearTheme.cs" />
+    <Compile Include="Map\Layers\SmMapService.cs" />
+    <Compile Include="Map\Layers\SmMapServiceInfo.cs" />
+    <Compile Include="Map\Layers\TiledDynamicRESTLayer.cs" />
+    <Compile Include="Map\MapInfo\CoordSys.cs" />
+    <Compile Include="Map\MapInfo\CoordSysType.cs" />
+    <Compile Include="Map\MapInfo\Datum.cs" />
+    <Compile Include="Map\MapInfo\DatumType.cs" />
+    <Compile Include="Map\MapInfo\PrimeMeridian.cs" />
+    <Compile Include="Map\MapInfo\PrimeMeridianType.cs" />
+    <Compile Include="Map\MapInfo\PrjCoordSys.cs" />
+    <Compile Include="Map\MapInfo\PrjCoordSysType.cs" />
+    <Compile Include="Map\MapInfo\PrjParameter.cs" />
+    <Compile Include="Map\MapInfo\Projection.cs" />
+    <Compile Include="Map\MapInfo\ProjectionType.cs" />
+    <Compile Include="Map\MapInfo\SpatialRefType.cs" />
+    <Compile Include="Map\MapInfo\Spheroid.cs" />
+    <Compile Include="Map\MapInfo\SpheroidType.cs" />
+    <Compile Include="Map\MapInfo\UserInfo.cs" />
+    <Compile Include="Map\Measure\MeasureParameters.cs" />
+    <Compile Include="Map\Measure\MeasureResult.cs" />
+    <Compile Include="Map\Measure\MeasureService.cs" />
+    <Compile Include="Map\Query\DatasourceConnectionInfo.cs" />
+    <Compile Include="Map\Query\EngineType.cs" />
+    <Compile Include="Map\Query\FieldType.cs" />
+    <Compile Include="Map\Query\FilterParameter.cs" />
+    <Compile Include="Map\Query\JoinItem.cs" />
+    <Compile Include="Map\Query\JoinType.cs" />
+    <Compile Include="Map\Query\LinkItem.cs" />
+    <Compile Include="Map\Query\QueryByBoundsParameters.cs" />
+    <Compile Include="Map\Query\QueryByBoundsService.cs" />
+    <Compile Include="Map\Query\QueryByDistanceParameters.cs" />
+    <Compile Include="Map\Query\QueryByDistanceService.cs" />
+    <Compile Include="Map\Query\QueryByGeometryParameters.cs" />
+    <Compile Include="Map\Query\QueryByGeometryService.cs" />
+    <Compile Include="Map\Query\QueryBySQLParameters.cs" />
+    <Compile Include="Map\Query\QueryBySQLService.cs" />
+    <Compile Include="Map\Query\QueryOption.cs" />
+    <Compile Include="Map\Query\QueryParameters.cs" />
+    <Compile Include="Map\Query\QueryResult.cs" />
+    <Compile Include="Map\Query\QueryService.cs" />
+    <Compile Include="Map\Query\Recordset.cs" />
+    <Compile Include="Map\Query\ResourceInfo.cs" />
+    <Compile Include="Map\Query\SpatialQueryMode.cs" />
+    <Compile Include="Map\SetLayerStatus\LayerStatus.cs" />
+    <Compile Include="Map\SetLayerStatus\SetLayerResult.cs" />
+    <Compile Include="Map\SetLayerStatus\SetLayerStatusParameters.cs" />
+    <Compile Include="Map\SetLayerStatus\SetLayerStatusService.cs" />
+    <Compile Include="Map\SetLayerStatus\SetLayerStyleParameters.cs" />
+    <Compile Include="Map\SetLayerStatus\SetLayerStyleService.cs" />
+    <Compile Include="Networkanalyst\ClosestFacilityPath.cs" />
+    <Compile Include="Networkanalyst\ComputeWeightMatrixParameters.cs" />
+    <Compile Include="Networkanalyst\ComputeWeightMatrixResult.cs" />
+    <Compile Include="Networkanalyst\ComputeWeightMatrixService.cs" />
+    <Compile Include="Networkanalyst\DemandResult.cs" />
+    <Compile Include="Networkanalyst\DirectionType.cs" />
+    <Compile Include="Networkanalyst\EdgeWeightParameters.cs" />
+    <Compile Include="Networkanalyst\FindClosestFacilitiesParameters.cs" />
+    <Compile Include="Networkanalyst\FindClosestFacilitiesResult.cs" />
+    <Compile Include="Networkanalyst\FindClosestFacilitiesService.cs" />
+    <Compile Include="Networkanalyst\FindLocationAnalystParameters.cs" />
+    <Compile Include="Networkanalyst\FindLocationAnalystResult.cs" />
+    <Compile Include="Networkanalyst\FindLocationAnalystService.cs" />
+    <Compile Include="Networkanalyst\FindMTSPPathsParameters.cs" />
+    <Compile Include="Networkanalyst\FindMTSPPathsResult.cs" />
+    <Compile Include="Networkanalyst\FindMTSPPathsService.cs" />
+    <Compile Include="Networkanalyst\FindPathParameters.cs" />
+    <Compile Include="Networkanalyst\FindPathResult.cs" />
+    <Compile Include="Networkanalyst\FindPathService.cs" />
+    <Compile Include="Networkanalyst\FindServiceAreasParameters.cs" />
+    <Compile Include="Networkanalyst\FindServiceAreasResult.cs" />
+    <Compile Include="Networkanalyst\FindServiceAreasService.cs" />
+    <Compile Include="Networkanalyst\FindTSPPathsParameters.cs" />
+    <Compile Include="Networkanalyst\FindTSPPathsResult.cs" />
+    <Compile Include="Networkanalyst\FindTSPPathsService.cs" />
+    <Compile Include="Networkanalyst\MTSPPath.cs" />
+    <Compile Include="Networkanalyst\OutputFormat.cs" />
+    <Compile Include="Networkanalyst\PathGuideItem.cs" />
+    <Compile Include="Networkanalyst\PointWithMeasure.cs" />
+    <Compile Include="Networkanalyst\Route.cs" />
+    <Compile Include="Networkanalyst\ServerPath.cs" />
+    <Compile Include="Networkanalyst\ServiceArea.cs" />
+    <Compile Include="Networkanalyst\SideType.cs" />
+    <Compile Include="Networkanalyst\SupplyCenter.cs" />
+    <Compile Include="Networkanalyst\SupplyCenterType.cs" />
+    <Compile Include="Networkanalyst\SupplyResult.cs" />
+    <Compile Include="Networkanalyst\TransportationAnalystParameter.cs" />
+    <Compile Include="Networkanalyst\TransportationAnalystResultSetting.cs" />
+    <Compile Include="Networkanalyst\TSPPath.cs" />
+    <Compile Include="Networkanalyst\TurnNodeWeightFieldType.cs" />
+    <Compile Include="Networkanalyst\TurnNodeWeightParameters.cs" />
+    <Compile Include="Networkanalyst\TurnType.cs" />
+    <Compile Include="Networkanalyst\UpdateEdgeWeightService.cs" />
+    <Compile Include="Networkanalyst\UpdateTurnNodeWeightService.cs" />
+    <Compile Include="Networkanalyst\WeightFieldType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ExceptionStrings.cs" />
+    <Compile Include="ServerType\FillGradientMode.cs" />
+    <Compile Include="ServerType\MapColorMode.cs" />
+    <Compile Include="ServerType\ServerColor.cs" />
+    <Compile Include="ServerType\ServerFeature.cs" />
+    <Compile Include="ServerType\ServerGeometry.cs" />
+    <Compile Include="ServerType\ServerGeometryType.cs" />
+    <Compile Include="ServerType\ServerStyle.cs" />
+    <Compile Include="SpatialAnalyst\BufferAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\BufferDistance.cs" />
+    <Compile Include="SpatialAnalyst\BufferEndType.cs" />
+    <Compile Include="SpatialAnalyst\BufferSetting.cs" />
+    <Compile Include="SpatialAnalyst\DatasetBufferAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\DatasetBufferAnalystResult.cs" />
+    <Compile Include="SpatialAnalyst\DatasetBufferAnalystService.cs" />
+    <Compile Include="SpatialAnalyst\DatasetOverlayAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\DatasetOverlayAnalystResult.cs" />
+    <Compile Include="SpatialAnalyst\DatasetOverlayAnalystService.cs" />
+    <Compile Include="SpatialAnalyst\DatasetSurfaceAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\GeometryBufferAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\GeometryBufferAnalystResult.cs" />
+    <Compile Include="SpatialAnalyst\GeometryBufferAnalystService.cs" />
+    <Compile Include="SpatialAnalyst\GeometryOverlayAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\GeometryOverlayAnalystResult.cs" />
+    <Compile Include="SpatialAnalyst\GeometryOverlayAnalystService.cs" />
+    <Compile Include="SpatialAnalyst\GeometrySurfaceAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\OverlayAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\OverlayOperationType.cs" />
+    <Compile Include="SpatialAnalyst\SmoothMethod.cs" />
+    <Compile Include="SpatialAnalyst\SpatialAnalystResult.cs" />
+    <Compile Include="SpatialAnalyst\SurfaceAnalystMethod.cs" />
+    <Compile Include="SpatialAnalyst\SurfaceAnalystParameters.cs" />
+    <Compile Include="SpatialAnalyst\SurfaceAnalystParametersSetting.cs" />
+    <Compile Include="SpatialAnalyst\SurfaceAnalystResult.cs" />
+    <Compile Include="SpatialAnalyst\SurfaceAnalystService.cs" />
+    <Compile Include="Theme\AlongLineDirection.cs" />
+    <Compile Include="Theme\ColorGradientType.cs" />
+    <Compile Include="Theme\GraduatedMode.cs" />
+    <Compile Include="Theme\GraphTextFormat.cs" />
+    <Compile Include="Theme\LabelBackShape.cs" />
+    <Compile Include="Theme\LabelImageCell.cs" />
+    <Compile Include="Theme\LabelMatrixCell.cs" />
+    <Compile Include="Theme\LabelMatrixCellType.cs" />
+    <Compile Include="Theme\LabelMixedTextStyle.cs" />
+    <Compile Include="Theme\LabelOverLengthMode.cs" />
+    <Compile Include="Theme\LabelSymbolCell.cs" />
+    <Compile Include="Theme\LabelThemeCell.cs" />
+    <Compile Include="Theme\RangeMode.cs" />
+    <Compile Include="Theme\ServerTextStyle.cs" />
+    <Compile Include="Theme\TextAlignment.cs" />
+    <Compile Include="Theme\Theme.cs" />
+    <Compile Include="Theme\ThemeDotDensity.cs" />
+    <Compile Include="Theme\ThemeFlow.cs" />
+    <Compile Include="Theme\ThemeGraduatedSymbol.cs" />
+    <Compile Include="Theme\ThemeGraduatedSymbolStyle.cs" />
+    <Compile Include="Theme\ThemeGraph.cs" />
+    <Compile Include="Theme\ThemeGraphAxes.cs" />
+    <Compile Include="Theme\ThemeGraphItem.cs" />
+    <Compile Include="Theme\ThemeGraphSize.cs" />
+    <Compile Include="Theme\ThemeGraphText.cs" />
+    <Compile Include="Theme\ThemeGraphTextFormat.cs" />
+    <Compile Include="Theme\ThemeGraphType.cs" />
+    <Compile Include="Theme\ThemeLabel.cs" />
+    <Compile Include="Theme\ThemeLabelAlongLine.cs" />
+    <Compile Include="Theme\ThemeLabelBackSetting.cs" />
+    <Compile Include="Theme\ThemeLabelItem.cs" />
+    <Compile Include="Theme\ThemeLabelText.cs" />
+    <Compile Include="Theme\ThemeOffset.cs" />
+    <Compile Include="Theme\ThemeParameters.cs" />
+    <Compile Include="Theme\ThemeRange.cs" />
+    <Compile Include="Theme\ThemeRangeItem.cs" />
+    <Compile Include="Theme\ThemeResult.cs" />
+    <Compile Include="Theme\ThemeService.cs" />
+    <Compile Include="Theme\ThemeUnique.cs" />
+    <Compile Include="Theme\ThemeUniqueItem.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindStopParameter.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindStopResult.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindStopService.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindTransferPathParameter.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindTransferPathService.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindTransferSolutionResult.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindTransferSolutionService.cs" />
+    <Compile Include="TrafficTransferAnalyst\FindTransferSolutionsParameter.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferGuide.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferGuideItem.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferLine.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferLines.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferPreference.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferSolution.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferStopInfo.cs" />
+    <Compile Include="TrafficTransferAnalyst\TransferTactic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperMap.WinRT\SuperMap.WinRT.csproj">
+      <Project>{cddc60e2-bafa-4d70-b510-4894d4d6d67b}</Project>
+      <Name>SuperMap.WinRT</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iClient60ForWinRT.pfx" />
+    <PRIResource Include="Resources\ExceptionStrings.resw" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>iClient60ForWinRT.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

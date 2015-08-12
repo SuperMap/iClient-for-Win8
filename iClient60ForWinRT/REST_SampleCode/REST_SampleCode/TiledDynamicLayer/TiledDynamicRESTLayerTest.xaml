@@ -1,0 +1,20 @@
+﻿<Page  x:Class="REST_SampleCode.TiledDynamicRESTLayerTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--地图控件-->
+        <ic:Map x:Name="MyMap">
+
+            <!--SuperMap iServer Java 6R 动态 REST 图层，url服务器地址为必设属性，根据实际服务器地址进行修改-->
+            <ic:TiledDynamicRESTLayer ID="tiledLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+        </ic:Map>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
+            <TextBlock x:Name="center" Foreground="Black"/>
+            <TextBlock x:Name="scale" Foreground="Black"/>
+            <TextBlock x:Name="viewbounds" Foreground="Black" />
+        </StackPanel>
+    </Grid>
+</Page>

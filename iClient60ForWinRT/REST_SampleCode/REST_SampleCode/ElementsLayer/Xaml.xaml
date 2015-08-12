@@ -1,0 +1,79 @@
+﻿<Page  x:Class="iServerJava6R_SampleCode.Xaml"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+    xmlns:p ="using:SuperMap.WinRT.Core"
+     
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer Url="http://localhost:8090/iserver/services/map-world/rest/maps/世界地图" />
+            <!--添加按钮-->
+            <ic:ElementsLayer ID="MyElementsLayer" >
+                <Button x:Name="btn"
+                            Content="点击"
+                            FontSize="10"
+                            Click="btn_Click"     
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center"/>
+                <!--添加透明度渐变的椭圆-->
+                <Ellipse x:Name="MyEllipse"
+                             Fill="Red">
+                    <Ellipse.Triggers>
+                        <EventTrigger RoutedEvent="Ellipse.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="MyEllipseStory">
+                                    <DoubleAnimation From="1" To="0.1"
+                                                         Duration="0:0:5" 
+                                                         AutoReverse="True"
+                                                         RepeatBehavior="Forever"
+                                                         SpeedRatio="8"
+                                                         Storyboard.TargetName="MyEllipse"
+                                                         Storyboard.TargetProperty="Opacity"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Ellipse.Triggers>
+                </Ellipse>
+
+                <!--添加一个定位图钉 Pushpin-->
+                <p:Pushpin x:Name="Beijing"
+                                    />
+                <p:Pushpin x:Name="UlanBator"
+                         
+                                       Background="Blue"/>
+                <p:Pushpin x:Name="Moscow"
+                                     
+                                       Background="Yellow"/>
+                <p:Pushpin x:Name="Prague"
+                                   
+                                       Background="SpringGreen"/>
+                <p:Pushpin x:Name="Berlin"
+                            
+                                       Background="Orchid"/>
+                <!--添加线 PolyLineBase-->
+                <p:PolygonElement x:Name="MyPolylineBase"
+                                            Stroke="Yellow"
+                                            StrokeThickness="3"
+                                            Opacity="1"
+                                            StrokeDashArray="3"
+                                            StrokeEndLineCap="Triangle"
+                                            />
+                <!--添加多边形 PolygonElement-->
+                <p:PolygonElement x:Name="MyPolygonBase"
+                                           Opacity="0.5"
+                                        >
+                    <p:PolygonElement.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="Yellow" Offset="0.0" />
+                            <GradientStop Color="Red" Offset="0.25" />
+                            <GradientStop Color="Blue" Offset="0.75" />
+                            <GradientStop Color="LimeGreen" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </p:PolygonElement.Fill>
+                </p:PolygonElement>
+            </ic:ElementsLayer>
+        </ic:Map>
+    </Grid>
+</Page>
+

@@ -1,0 +1,132 @@
+﻿GetLayersVisibleService.cs类范例代码：
+
+using System;
+using System.Collections.Generic;
+using System.Json;
+using System.Windows;
+using System.Windows.Browser;
+using SuperMap.WinRT.REST.Resources;
+using SuperMap.WinRT.Service;
+
+namespace REST_SampleCode
+{
+    public class GetLayersVisibleService : ServiceBase
+    {
+        public GetLayersVisibleService()
+        {
+        }
+
+        public GetLayersVisibleService(string url)
+            : base(url)
+        { }
+
+        public void ProcessAsync()
+        {
+            ProcessAsync(null);
+        }
+
+        public void ProcessAsync(object state)
+        {
+            CheckUrl();
+            GetUrl();
+            base.SubmitRequest(base.Url, null, OnCompleted, state, false);
+        }
+
+        private void CheckUrl()
+        {
+            if (string.IsNullOrEmpty(base.Url) || string.IsNullOrWhiteSpace(base.Url))
+            {
+                throw new InvalidOperationException(ExceptionStrings.InvalidUrl);
+            }
+        }
+
+        private void GetUrl()
+        {
+            if (!base.Url.EndsWith("/"))
+            {
+                base.Url += "/";
+            }
+
+            base.Url += "layers.json";
+        }
+
+        [ScriptableMember]
+        private void OnCompleted(object sender, RequestEventArgs e)
+        {
+            var list = new List<GetLayersVisibleResult>();
+            if (e.Result != null && e.Result.Contains("subLayers"))
+            {
+                var json = (JsonArray)JsonObject.Parse(e.Result);
+                if (json != null && json.Count > 0 && json[0].ContainsKey("subLayers") && json[0].ContainsKey("subLayers"))
+                {
+                    foreach (JsonObject item in json[0]["subLayers"]["layers"])
+                    {
+                        list.Add(new GetLayersVisibleResult(item["name"], (bool)item["visible"]));
+                    }                    
+                }
+            }
+            if (ProcessCompleted != null)
+            {
+                var args = new GetLayersVisibleEventArgs(e.Result, list, e.UserState);
+                ProcessCompleted(this, args);
+            }
+        }
+
+        public event EventHandler<GetLayersVisibleEventArgs> ProcessCompleted;
+    }
+}
+
+
+GetLayersVisibleEventArgs.cs范例代码：
+
+using System.Collections.Generic;
+using SuperMap.WinRT.Service;
+
+namespace REST_SampleCode
+{
+    public class GetLayersVisibleEventArgs : ServiceEventArgs
+    {
+        public GetLayersVisibleEventArgs(string originResult, IList<GetLayersVisibleResult> result, object token)
+            : base(token)
+        {
+            OriginResult = originResult;
+            Result = result;
+        }
+
+        public string OriginResult
+        {
+            get;
+            internal set;
+        }
+
+        public IList<GetLayersVisibleResult> Result
+        {
+            get;
+            internal set;
+        }
+    }
+}
+
+
+GetLayersInfoResult.cs范例代码：
+
+namespace REST_SampleCode
+{
+    public class GetLayersVisibleResult
+    {
+        public GetLayersVisibleResult()
+        {
+        }
+
+        public GetLayersVisibleResult(string layerName, bool isVisble)
+            : this()
+        {
+            this.LayerName = layerName;
+            this.IsVisible = isVisble;
+        }
+
+        public string LayerName { get; set; }
+        public bool IsVisible { get; set; }
+    }
+}
+

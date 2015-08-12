@@ -1,0 +1,3 @@
+﻿该范例实现将矢量要素 Feature 的属性 Attribute 与 地图上的椭圆元素（UIElement）绑定。
+当鼠标移入某椭圆元素时弹出 ToolTip，显示该椭圆的ID号和大小。
+数据绑定必须使用 DictionaryConverter 类，它负责目标属性和数据源进行连接。

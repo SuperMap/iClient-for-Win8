@@ -1,0 +1,4 @@
+﻿在 SuperMap.WinRT 程序集中提供了 GeoPoint、GeoLine、GeoRegion 三种基础 Geometry 类型，
+对 Geometry 的扩展可以直接从 Geometry 继承，也可以从 GeoPoint、GeoLine、GeoRegion 这
+三个 Geometry 的子类继承，GeoCircle 主要是对 GeoRegion 的扩展，所以从 GeoRegion 继承。
+

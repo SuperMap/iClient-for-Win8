@@ -1,0 +1,76 @@
+﻿<Page  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" x:Class="REST_SampleCode.RendererTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+    xmlns:is="using:SuperMap.WinRT.Core"
+    xmlns:u="using:SuperMap.WinRT.Rendering"   
+
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.Resources>
+            <!--UniqueRendererStyle-->
+            <is:PredefinedFillStyle x:Name="MyYellowFill" 
+                                        Fill="#FF99CC66"  
+                                        Stroke="#ff456624"  />
+            <is:PredefinedFillStyle x:Name="MyRedFill"
+                                        Fill="#ffd98257" 
+                                        Stroke="#ff73391d" />
+            <is:PredefinedFillStyle x:Name="MyBlueFill" 
+                                        Fill="#ff95d1e5" 
+                                        Stroke="#ff406e80" />
+            <u:UniqueRenderer x:Name="MyUniqueRenderer" 
+                                      Attribute="SMID" >
+                <u:UniqueRenderer.Items>
+                    <u:UniqueItem Value="39" 
+                                          Style="{StaticResource MyRedFill}" />
+                    <u:UniqueItem Value="45" 
+                                          Style="{StaticResource MyYellowFill}" />
+                    <u:UniqueItem Value="54" 
+                                          Style="{StaticResource MyBlueFill}" />
+                </u:UniqueRenderer.Items>
+            </u:UniqueRenderer>
+
+            <!--RangeRendererStyle-->
+            <is:PredefinedMarkerStyle x:Name="MySmallMarkerSymbol"
+                                          Color="#FF007700"
+                                          Size="6" 
+                                          Symbol="Circle" />
+            <is:PredefinedMarkerStyle x:Name="MyMediumMarkerSymbol" 
+                                          Color="#FF00BB00"
+                                          Size="10" 
+                                          Symbol="Circle" />
+            <is:PredefinedMarkerStyle x:Name="MyLargeMarkerSymbol" 
+                                          Color="#FF00FF00" 
+                                          Size="16" 
+                                          Symbol="Circle"/>
+            <u:RangeRenderer x:Name="MyRangeRenderer"
+                                     Attribute="Ranking" >
+                <u:RangeRenderer.DefaultStyle>
+                    <is:PredefinedMarkerStyle  Color="#FFFF0000"
+                                                   Size="16"
+                                                   Symbol="Circle"/>
+                </u:RangeRenderer.DefaultStyle>
+                <u:RangeRenderer.Items>
+                    <u:RangeItem MinimumValue="0" 
+                                         MaximumValue="0.33"
+                                         Style="{StaticResource MySmallMarkerSymbol}" />
+                    <u:RangeItem MinimumValue="0.33"
+                                         MaximumValue="0.67"
+                                         Style="{StaticResource MyMediumMarkerSymbol}" />
+                    <u:RangeItem MinimumValue="0.67"
+                                         MaximumValue="0.8" 
+                                         Style="{StaticResource MyLargeMarkerSymbol}" />
+                </u:RangeRenderer.Items>
+            </u:RangeRenderer>
+        </Grid.Resources>
+
+        <ic:Map x:Name="MyMap">
+            <ic:DynamicRESTLayer Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" ID="DynamicRESTLayer"/>
+            <ic:FeaturesLayer ID="uniqueRenderLayer"
+                                     Renderer="{StaticResource MyUniqueRenderer}" />
+            <ic:FeaturesLayer ID="rangeRendererLayer"
+                                     Renderer="{StaticResource MyRangeRenderer}" />
+            <ic:FeaturesLayer ID="uniformRendererLayer"/>
+        </ic:Map>
+    </Grid>
+</Page>

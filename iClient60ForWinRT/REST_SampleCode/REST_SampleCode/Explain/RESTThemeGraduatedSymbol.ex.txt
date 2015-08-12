@@ -1,0 +1,9 @@
+﻿等级符号专题图是采用不同的形状、颜色和大小的符号，表示各自独立的、以整体概念显示的各个物体的数量与质量特征。通常，以符号的形状、颜色和大小反映物体的特定属性；
+符号的形状与颜色表示质量特征，符号的大小表示数量特征。用于制作等级符号专题图的专题变量类型为数值型。
+
+等级符号专题图的基准值 baseValue，单位同专题变量的单位。依据此值系统会自动根据分级方式计算其余值对应的符号大小，每个符号的显示大小等于 ThemeValueSection.positiveStyle
+（或 zeroStyle，negativeStyle）.markerSize * value / basevalue，其中 value 是 expression 所指定字段对应的值经过分级计算之后的值。默认值为0，建议通过多次尝试设置该值才
+能达到较好的显示效果。
+
+制作一个专题图，即在服务端增加一个资源，每个资源拥有一个 ID 号和一个 url 地址。显示专题图的过程就是从服务器返回结果 ThemeResult.resourceInfo 中获取到这个资源的 ID 号，
+然后将该值赋值给已实例化的动态图层（TiledDynamicRESTLayer 或 DynamicRESTLayer）的属性 layersID，即完成专题图的显示。

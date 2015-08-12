@@ -1,0 +1,13 @@
+﻿距离查询可以使用点、线或面对象进行查询。
+点距离查询就是查询以点为圆心,距离为半径的圆内所有满足查询条件的地物.
+线或面距离查询则是查询距离线或面边界一定距离内的满足查询条件的地物.
+距离查询时可以设置是否只查询最近地物即 QueryByDistanceParameters 的 IsNearest=true，通过  QueryByDistanceParameters 中的 ExpectCount 属性
+可以控制期望返回几条最近地物结果，按距离从近到远排列。
+
+查询结果的显示有两种方式:
+1. 当设置 returnContent=true 时,返回的是查询结果记录。客户端通过获取查询结果 QueryResult 的记录集 Recordsets,
+   然后将记录集转换为矢量要素并显示在矢量要素图层上;
+2. 当设置 returnContent=false 时,即返回新创建的资源信息。客户端通过获取查询结果 QueryResult 的 ResourceInfo，然后
+   将 ResourceInfo.NewResourceID 赋值给高亮图层的 QueryResultID 属性。需要说明的是高亮图也是服务图层，因此创建高
+   亮图层为 HighlightLayer highlayer = new HighlightLayer(url)，其中url为服务器地址。
+ 

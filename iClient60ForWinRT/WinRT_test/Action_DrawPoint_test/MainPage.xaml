@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Action_DrawPoint_test.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Action_DrawPoint_test"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+    xmlns:ia="using:SuperMap.WinRT.Actions"
+    mc:Ignorable="d">
+
+    <Grid>
+        <ic:Map x:Name="MyMap" Margin="-27,0,27,0" >
+            <ic:TiledDynamicRESTLayer ID="TDLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World"/>
+            <ic:ElementsLayer ID="Elayer"/>
+            <ic:FeaturesLayer ID="FLayer"/>
+        </ic:Map>
+        <Button Content="点" HorizontalAlignment="Left" Margin="1224,127,0,0" VerticalAlignment="Top" Background="#FF66CD20" RenderTransformOrigin="4.532,0.205" Width="92" Click="Button_Click_1"/>
+    </Grid>
+</Page>

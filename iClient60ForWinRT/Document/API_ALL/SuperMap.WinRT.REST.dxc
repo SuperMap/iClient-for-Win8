@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentFile Version="2010" Moniker="..\Libraries\SuperMap.WinRT.REST.dll" DocType="DX.NET" IsLocalizationDisabled="false">
+  <RelatedProject>Reference.dxp</RelatedProject>
+  <ExcludedProjectLocale>zh-CHS</ExcludedProjectLocale>
+  <State>
+    <Attributes>
+      <Attribute key="dtscrollpos" valuetype="integer">0</Attribute>
+      <Attribute key="inheritedMembers" valuetype="string">on</Attribute>
+      <Attribute key="protectedMembers" valuetype="string">on</Attribute>
+    </Attributes>
+  </State>
+  <LastSelectedItem>SuperMap.WinRT.REST~SuperMap.WinRT.REST.SpatialAnalyst_namespace</LastSelectedItem>
+  <item qn="SuperMap.WinRT.REST">
+    <summary ChangeDateTime="2013-08-02T08:57:16.9192704Z">${namespace_REST_Title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.Mapping_namespace">
+    <summary ChangeDateTime="2013-08-05T05:37:28.701958Z">${namespace_REST_mapping_title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.REST_namespace">
+    <summary ChangeDateTime="2013-08-05T05:37:55.7749458Z">${namespace_REST_Title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.REST.Data_namespace">
+    <summary ChangeDateTime="2013-08-05T05:38:12.8409434Z">${REST_Data_NameSpace}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.REST.NetworkAnalyst_namespace">
+    <summary ChangeDateTime="2013-08-05T05:38:30.4839449Z">${namespace_NetworkAnalyst_title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.REST.Resources_namespace">
+    <summary ChangeDateTime="2013-08-05T05:39:07.6279454Z">${namespace_REST_resources_title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.REST.SpatialAnalyst_namespace">
+    <summary ChangeDateTime="2013-08-05T06:01:37.1983731Z">${spatialnAnalyst_namespace_D}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.REST~SuperMap.WinRT.REST.TrafficTransferAnalyst_namespace">
+    <summary ChangeDateTime="2013-08-05T05:40:42.7539427Z">${namescpace_TrafficTransferAnalyst_title}</summary>
+  </item>
+  <Filters>
+    <CONTENTSTORECOMMON>
+      <IsIncludedItemsOnly>true</IsIncludedItemsOnly>
+    </CONTENTSTORECOMMON>
+    <CONTENTSTORELOCALIZATION>
+      <IsPrimaryLocaleContentPreviewEnabled>true</IsPrimaryLocaleContentPreviewEnabled>
+    </CONTENTSTORELOCALIZATION>
+    <DX.NETCONTENTSTOREFILTER>
+      <ShowProtectedMembers>true</ShowProtectedMembers>
+      <ShowProtectedFriendMembers>true</ShowProtectedFriendMembers>
+      <ShowFriendMembers>false</ShowFriendMembers>
+      <ShowPrivateMembers>false</ShowPrivateMembers>
+      <ShowInheritedMembers>false</ShowInheritedMembers>
+      <IsSourceCodeContentVisible>true</IsSourceCodeContentVisible>
+    </DX.NETCONTENTSTOREFILTER>
+  </Filters>
+</ContentFile>

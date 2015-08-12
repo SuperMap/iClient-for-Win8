@@ -1,0 +1,4 @@
+﻿在 FeaturesLayer 上可以添加 GeoPoint、GeoLine、GeoRegion、文本等。
+其中文本的 Geometry 是一个 GeoPoint, Style 为 TextStyle。
+设置要素风格可以用 SuperMap iClient for Windows 8 提供的预定义风格类；也可以使用 Windows 8 提供的控件类自定义，
+以此实现对要素添加可视化状态和动画效果。

@@ -1,0 +1,14 @@
+﻿<Page  x:Class="REST_SampleCode.ScaleBar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+    xmlns:is="using:SuperMap.WinRT.Controls"    
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="restLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+        </ic:Map>
+        <is:ScaleBar x:Name="MapScaleBar" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                             Map="{Binding ElementName=MyMap}"  Color="Black" TargetWidth="100" TargetHeight="10"/>
+    </Grid>
+</Page>

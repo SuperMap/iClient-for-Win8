@@ -1,0 +1,129 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:converters="using:SuperMap.WinRT.Utilities">
+    <converters:MultiplicationConverter x:Key="multiplicationConverter"/>
+    <!--复杂的样式是影响标绘、平移、删除性能的主要原因-->
+    <!--FillStyle-->
+    <ControlTemplate x:Key="FillStyle">
+        <Path x:Name="Element" 
+			  Stroke="{Binding Style.Stroke}" 
+			  StrokeThickness="{Binding Style.StrokeThickness}" 
+			  StrokeDashCap="{Binding Style.StrokeDashCap}" 
+			  StrokeDashOffset="{Binding Style.StrokeDashOffset}" 
+			  StrokeDashArray="{Binding Path=Style.StrokeDashArray}" 
+			  StrokeStartLineCap="{Binding Style.StrokeStartLineCap}" 
+			  StrokeLineJoin="{Binding Style.StrokeLineJoin}" 
+			  StrokeEndLineCap="{Binding Style.StrokeEndLineCap}" 
+			  Fill="{Binding Style.Fill}"  />
+    </ControlTemplate>
+
+    <!--PredefinedFillStyle-->
+    <ControlTemplate x:Key="PredefinedFillStyle">
+        <Path x:Name="Element" 
+			  Stroke="{Binding Style.Stroke}" 
+			  StrokeThickness="{Binding Style.StrokeThickness}" 
+			  Fill="{Binding Style.Fill}"
+			  StrokeStartLineCap="Round"
+			  StrokeLineJoin="Round"
+			  StrokeEndLineCap="Round"
+			  />
+    </ControlTemplate>
+
+    <!--LineStyle-->
+    <ControlTemplate x:Key="LineStyle">
+        <Path x:Name="Element" 
+			  Stroke="{Binding Style.Stroke}" 
+			  StrokeThickness="{Binding Style.StrokeThickness}" 
+			  StrokeDashCap="{Binding Style.StrokeDashCap}" 
+			  StrokeDashOffset="{Binding Style.StrokeDashOffset}" 
+			  StrokeDashArray="{Binding Path=Style.StrokeDashArray}"
+			  StrokeStartLineCap="{Binding Style.StrokeStartLineCap}" 
+			  StrokeLineJoin="{Binding Style.StrokeLineJoin}" 
+			  StrokeEndLineCap="{Binding Style.StrokeEndLineCap}"/>
+    </ControlTemplate>
+
+    <!--PredefinedLineStyle_Dash-->
+    <ControlTemplate x:Key="PredefinedLineStyle_Dash">
+        <Path x:Name="Element" Stroke="{Binding Style.Stroke}" StrokeThickness="{Binding Style.StrokeThickness}" StrokeDashCap="Flat" StrokeDashOffset="{Binding Style.StrokeDashOffset}" StrokeDashArray="5,1" StrokeStartLineCap="Flat" StrokeLineJoin="Round" StrokeEndLineCap="Flat"/>
+    </ControlTemplate>
+    <!--PredefinedLineStyle_DashDot-->
+    <ControlTemplate x:Key="PredefinedLineStyle_DashDot">
+        <Path x:Name="Element" Stroke="{Binding Style.Stroke}" StrokeThickness="{Binding Style.StrokeThickness}" StrokeDashCap="Flat" StrokeDashOffset="{Binding Style.StrokeDashOffset}" StrokeDashArray="2,1,1,1" StrokeStartLineCap="Flat" StrokeLineJoin="Round" StrokeEndLineCap="Flat"/>
+    </ControlTemplate>
+    <!--PredefinedLineStyle_DashDotDot-->
+    <ControlTemplate x:Key="PredefinedLineStyle_DashDotDot">
+        <Path x:Name="Element" Stroke="{Binding Style.Stroke}" StrokeThickness="{Binding Style.StrokeThickness}" StrokeDashCap="Flat" StrokeDashArray="2,1,1,1,1,1" StrokeStartLineCap="Flat" StrokeLineJoin="Round" StrokeEndLineCap="Flat"/>
+    </ControlTemplate>
+    <!--PredefinedLineStyle_Dot-->
+    <ControlTemplate x:Key="PredefinedLineStyle_Dot">
+        <Path x:Name="Element" Stroke="{Binding Style.Stroke}" StrokeThickness="{Binding Style.StrokeThickness}" StrokeDashCap="Flat" StrokeDashOffset="{Binding Style.StrokeDashOffset}" StrokeDashArray="1,1" StrokeStartLineCap="Flat" StrokeLineJoin="Round" StrokeEndLineCap="Flat"/>
+    </ControlTemplate>
+    <!--PredefinedLineStyle_Solid-->
+    <ControlTemplate x:Key="PredefinedLineStyle_Solid">
+        <Path x:Name="Element" 
+			  Stroke="{Binding Style.Stroke}" 
+			  StrokeThickness="{Binding Style.StrokeThickness}" 
+			  StrokeStartLineCap="Flat"
+			  StrokeEndLineCap="Flat"
+			  StrokeLineJoin="Round"/>
+    </ControlTemplate>
+
+    <!--PictureMarkerStyle-->
+    <ControlTemplate x:Key="PictureMarkerStyle">
+        <Image Source="{Binding Style.Source}" Height="{Binding Style.Height}" Width="{Binding Style.Width}" Stretch="Fill"/>
+    </ControlTemplate>
+
+    <!--PredefinedMarkerStyle_Circle-->
+    <ControlTemplate x:Key="PredefinedMarkerStyle_Circle">
+        <Grid RenderTransformOrigin="0.5,0.5" >
+            <Ellipse x:Name="ellipse" Opacity="1" Fill="{Binding Style.Color}" Width="{Binding Style.Size}" Height="{Binding Style.Size}" />
+        </Grid>
+    </ControlTemplate>
+    <!--PredefinedMarkerStyle_Cross-->
+    <ControlTemplate x:Key="PredefinedMarkerStyle_Cross">
+        <Grid Width="{Binding Style.Size}" Height="{Binding Style.Size}" RenderTransformOrigin="0.5,0.5">
+            <Rectangle Height="1" Fill="{Binding Style.Color}" VerticalAlignment="Center" />
+            <Rectangle Width="1" Fill="{Binding Style.Color}" HorizontalAlignment="Center" />
+        </Grid>
+    </ControlTemplate>
+    <!--PredefinedMarkerStyle_Diamond-->
+    <ControlTemplate x:Key="PredefinedMarkerStyle_Diamond">
+        <Rectangle  RenderTransformOrigin="0.5,0.5" Fill="{Binding Style.Color}" Width="{Binding Style.Size}" Height="{Binding Style.Size}" >
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="45" />
+            </Rectangle.RenderTransform>
+        </Rectangle>
+    </ControlTemplate>
+    <!--PredefinedMarkerStyle_Square-->
+    <ControlTemplate x:Key="PredefinedMarkerStyle_Square">
+        <Rectangle RenderTransformOrigin="0.5,0.5" Fill="{Binding Style.Color}" Width="{Binding Style.Size}" Height="{Binding Style.Size}" />
+    </ControlTemplate>
+    <!--PredefinedMarkerStyle_Triangle-->
+    <ControlTemplate x:Key="PredefinedMarkerStyle_Triangle">
+        <TextBlock Text="▲" RenderTransformOrigin="0.5,0.5" FontFamily="Arial" FontSize="{Binding Path=Style.Size, Converter={StaticResource multiplicationConverter}, ConverterParameter=1.5, Mode=OneWay}" Foreground="{Binding Style.Color}" />
+    </ControlTemplate>
+    <!--PredefinedMarkerStyle_Star-->
+    <ControlTemplate x:Key="PredefinedMarkerStyle_Star">
+        <TextBlock Text="★" RenderTransformOrigin="0.5,0.5" FontFamily="Arial" FontSize="{Binding Path=Style.Size, Converter={StaticResource multiplicationConverter}, ConverterParameter=1.5, Mode=OneWay}" Foreground="{Binding Style.Color}" />
+    </ControlTemplate>
+
+    <!--TextStyle-->
+    <ControlTemplate x:Key="TextStyle">
+        <TextBlock Text="{Binding Style.Text}" FontFamily="{Binding Style.FontFamily}" FontSize="{Binding Style.FontSize}" Foreground="{Binding Style.Foreground}" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ClusterStyle">
+        <Grid>
+            <Ellipse Fill="{Binding Attributes[Color], Mode=OneWay}" 
+					 Width="{Binding Style.Size}" Height="{Binding Style.Size}" />
+            <TextBlock Text="{Binding Attributes[Count], Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"
+					FontSize="9" Margin="1,1,0,0" FontWeight="Bold" Foreground="#99000000" />
+            <TextBlock Text="{Binding Attributes[Count], Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"
+					FontSize="9" Margin="0,0,1,1" FontWeight="Bold" Foreground="White" />
+
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>
+

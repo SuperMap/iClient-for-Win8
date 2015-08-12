@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CDDC60E2-BAFA-4D70-B510-4894D4D6D67B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SuperMap.WinRT</RootNamespace>
+    <AssemblyName>SuperMap.WinRT</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\Libraries\SuperMap.WinRT.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Page Include="Core\Element\Pushpin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Core\Styles\Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Mapping\Map.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\DrawCircle.cs" />
+    <Compile Include="Actions\DrawEventArgs.cs" />
+    <Compile Include="Actions\DrawFreeLine.cs" />
+    <Compile Include="Actions\DrawFreePolygon.cs" />
+    <Compile Include="Actions\DrawLine.cs" />
+    <Compile Include="Actions\DrawPoint.cs" />
+    <Compile Include="Actions\DrawPolygon.cs" />
+    <Compile Include="Actions\DrawRectangle.cs" />
+    <Compile Include="Actions\IDrawStyle.cs" />
+    <Compile Include="Actions\MapAction.cs" />
+    <Compile Include="Actions\MapActionArgs.cs" />
+    <Compile Include="Actions\Pan.cs" />
+    <Compile Include="Actions\ZoomIn.cs" />
+    <Compile Include="Actions\ZoomOut.cs" />
+    <Compile Include="Core\CoordinateReferenceSystem.cs" />
+    <Compile Include="Core\Element\PolygonElement.cs" />
+    <Compile Include="Core\Element\PolygonElementClip.cs" />
+    <Compile Include="Core\Element\PolylineElement.cs" />
+    <Compile Include="Core\Element\PolylineElementClip.cs" />
+    <Compile Include="Core\Element\Pushpin.cs" />
+    <Compile Include="Core\Element\ShapeElement.cs" />
+    <Compile Include="Core\Feature\BindingInfo.cs" />
+    <Compile Include="Core\Feature\DictionaryChangedEventArgs.cs" />
+    <Compile Include="Core\Feature\Feature.cs" />
+    <Compile Include="Core\Feature\FeatureCollection.cs" />
+    <Compile Include="Core\Feature\FeatureElement.cs" />
+    <Compile Include="Core\Feature\FeaturePointerRoutedEventArgs.cs" />
+    <Compile Include="Core\Feature\ObservableDictionary.cs" />
+    <Compile Include="Core\Geometry\GeoCircle.cs" />
+    <Compile Include="Core\Geometry\GeoLine.cs" />
+    <Compile Include="Core\Geometry\GeoLineClip.cs" />
+    <Compile Include="Core\Geometry\Geometry.cs" />
+    <Compile Include="Core\Geometry\GeoPoint.cs" />
+    <Compile Include="Core\Geometry\GeoRegion.cs" />
+    <Compile Include="Core\Geometry\GeoRegionClip.cs" />
+    <Compile Include="Core\Point2D.cs" />
+    <Compile Include="Core\Point2DCollection.cs" />
+    <Compile Include="Core\Rectangle2D.cs" />
+    <Compile Include="Core\Styles\FillStyle.cs" />
+    <Compile Include="Core\Styles\LineStyle.cs" />
+    <Compile Include="Core\Styles\MarkerStylel.cs" />
+    <Compile Include="Core\Styles\PictureFillStyle.cs" />
+    <Compile Include="Core\Styles\PictureMarkerStyle.cs" />
+    <Compile Include="Core\Styles\PredefinedFillStyle.cs" />
+    <Compile Include="Core\Styles\PredefinedLineStyle.cs" />
+    <Compile Include="Core\Styles\PredefinedMarkerStyle.cs" />
+    <Compile Include="Core\Styles\ResourceData.cs" />
+    <Compile Include="Core\Styles\Style.cs" />
+    <Compile Include="Core\Styles\TextStyle.cs" />
+    <Compile Include="Core\Unit.cs" />
+    <Compile Include="Mapping\CloudLayer.cs" />
+    <Compile Include="Mapping\DrawParameter.cs" />
+    <Compile Include="Mapping\DynamicLayer\DynamicLayer.cs" />
+    <Compile Include="Mapping\DynamicLayer\DynamicLayerContainer.cs" />
+    <Compile Include="Mapping\ElementsLayer\ElementsLayer.cs" />
+    <Compile Include="Mapping\ElementsLayer\ElementsLayerContainer.cs" />
+    <Compile Include="Mapping\EventArgs\LayerFailedEventArgs.cs" />
+    <Compile Include="Mapping\EventArgs\ProgressEventArgs.cs" />
+    <Compile Include="Mapping\EventArgs\ResolutionsEventArgs.cs" />
+    <Compile Include="Mapping\EventArgs\ScalesEventArgs.cs" />
+    <Compile Include="Mapping\EventArgs\ViewBoundsEventArgs.cs" />
+    <Compile Include="Mapping\FeaturesLayer\FeaturesLayer.cs" />
+    <Compile Include="Mapping\FeaturesLayer\FeaturesLayerContainer.cs" />
+    <Compile Include="Mapping\ImageLayer.cs" />
+    <Compile Include="Mapping\Layer.cs" />
+    <Compile Include="Mapping\LayerCollection.cs" />
+    <Compile Include="Mapping\LayerContainer.cs" />
+    <Compile Include="Mapping\Map.cs" />
+    <Compile Include="Mapping\MapActionPart.cs" />
+    <Compile Include="Mapping\MapImage.cs" />
+    <Compile Include="Mapping\MapManipulator.cs" />
+    <Compile Include="Mapping\MapStatus.cs" />
+    <Compile Include="Mapping\PanAnimation.cs" />
+    <Compile Include="Mapping\ThrottleTimer.cs" />
+    <Compile Include="Mapping\TiledLayer\DistanceTile.cs" />
+    <Compile Include="Mapping\TiledLayer\ExecutantPool.cs" />
+    <Compile Include="Mapping\TiledLayer\IOfflineStorage.cs" />
+    <Compile Include="Mapping\TiledLayer\LruCache.cs" />
+    <Compile Include="Mapping\TiledLayer\OfflineStorage.cs" />
+    <Compile Include="Mapping\TiledLayer\QueueBuffer.cs" />
+    <Compile Include="Mapping\TiledLayer\QueueSystem.cs" />
+    <Compile Include="Mapping\TiledLayer\Tile.cs" />
+    <Compile Include="Mapping\TiledLayer\TiledCachedLayer.cs" />
+    <Compile Include="Mapping\TiledLayer\TiledDynamicLayer.cs" />
+    <Compile Include="Mapping\TiledLayer\TiledLayer.cs" />
+    <Compile Include="Mapping\TiledLayer\TiledLayerContainer.cs" />
+    <Compile Include="Mapping\ZoomAnimation.cs" />
+    <Compile Include="OGC\WFS\Arithmetic.cs" />
+    <Compile Include="OGC\WFS\Comparison.cs" />
+    <Compile Include="OGC\WFS\Filter.cs" />
+    <Compile Include="OGC\WFS\GetFeatureResult.cs" />
+    <Compile Include="OGC\WFS\GetWFSCapabilities.cs" />
+    <Compile Include="OGC\WFS\GetWFSDescribeFeatureType.cs" />
+    <Compile Include="OGC\WFS\GetWFSFeature.cs" />
+    <Compile Include="OGC\WFS\Logical.cs" />
+    <Compile Include="OGC\WFS\RequestException.cs" />
+    <Compile Include="OGC\WFS\Spatial.cs" />
+    <Compile Include="OGC\WFS\SpatialGeometry.cs" />
+    <Compile Include="OGC\WFS\SpatialRect.cs" />
+    <Compile Include="OGC\WFS\WFSFeatureDescription.cs" />
+    <Compile Include="OGC\WFS\WFSFeatureType.cs" />
+    <Compile Include="OGC\WFS\WFSServiceBase.cs" />
+    <Compile Include="OGC\WFS\WFSTransaction.cs" />
+    <Compile Include="OGC\WMS\DynamicWMSLayer.cs" />
+    <Compile Include="OGC\WMS\TiledWMSLayer.cs" />
+    <Compile Include="OGC\WMS\WMSLayerInfo.cs" />
+    <Compile Include="OGC\WMS\WMSManager.cs" />
+    <Compile Include="OGC\WMTS\GetWMTSCapabilities.cs" />
+    <Compile Include="OGC\WMTS\GetWMTSCapabilitiesResult.cs" />
+    <Compile Include="OGC\WMTS\RequestEncoding.cs" />
+    <Compile Include="OGC\WMTS\TiledWMTSLayer.cs" />
+    <Compile Include="OGC\WMTS\WMTSLayerInfo.cs" />
+    <Compile Include="OGC\WMTS\WMTSManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\IRenderer.cs" />
+    <Compile Include="Rendering\RangeItem.cs" />
+    <Compile Include="Rendering\RangeRenderer.cs" />
+    <Compile Include="Rendering\UniformRenderer.cs" />
+    <Compile Include="Rendering\UniqueItem.cs" />
+    <Compile Include="Rendering\UniqueRenderer.cs" />
+    <Compile Include="Resources\ExceptionStrings.cs" />
+    <Compile Include="Service\ServiceBase.cs" />
+    <Compile Include="Service\ServiceRequest.cs" />
+    <Compile Include="ThemeLibrary\RawTheme.cs" />
+    <Compile Include="ThemeLibrary\Theme.cs" />
+    <Compile Include="Utilities\CoordinateTransformationHelper.cs" />
+    <Compile Include="Utilities\DoubleUtil.cs" />
+    <Compile Include="Utilities\Extensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\KeyboardHelper.cs" />
+    <Compile Include="Utilities\MagicNumber.cs" />
+    <Compile Include="Utilities\MathUtil.cs" />
+    <Compile Include="Utilities\MultiplicationConverter.cs" />
+    <Compile Include="Utilities\ScaleHelper.cs" />
+    <Compile Include="Utilities\StorageHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\XMLHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="iClient60ForWinRT.pfx" />
+    <PRIResource Include="Resources\ExceptionStrings.resw" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>iClient60ForWinRT.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

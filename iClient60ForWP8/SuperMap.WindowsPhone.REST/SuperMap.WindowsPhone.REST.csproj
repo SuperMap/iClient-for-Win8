@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92FB14FC-5B6B-40E4-8A87-E40297AF1734}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SuperMap.WindowsPhone.REST</RootNamespace>
+    <AssemblyName>SuperMap.WindowsPhone.REST</AssemblyName>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Libraries\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Libraries\SuperMap.WindowsPhone.REST.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Release\SuperMap.WindowsPhone.REST.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE</DefineConstants>
+    <DocumentationFile>Bin\Debug\SuperMap.WindowsPhone.REST.XML</DocumentationFile>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DocumentationFile>Bin\Release\SuperMap.WindowsPhone.REST.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE</DefineConstants>
+    <DocumentationFile>Bin\Debug\SuperMap.Web.iServerJava6R.XML</DocumentationFile>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DocumentationFile>Bin\Release\SuperMap.Web.iServerJava6R.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>
+    </PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperMap.WindowsPhone\SuperMap.WindowsPhone.csproj">
+      <Project>{6E2A2E48-F83D-4897-A37A-159D42CC488F}</Project>
+      <Name>SuperMap.WindowsPhone</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Query\GetFeatureMode.cs" />
+    <Compile Include="Help\Bridge.cs" />
+    <Compile Include="Data\Query\GetFeaturesByBufferParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesByBufferService.cs" />
+    <Compile Include="Data\Query\GetFeaturesByGeometryParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesByGeometryService.cs" />
+    <Compile Include="Data\Query\GetFeaturesByIDsParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesByIDsService.cs" />
+    <Compile Include="Data\Query\GetFeaturesBySQLParameters.cs" />
+    <Compile Include="Data\Query\GetFeaturesBySQLService.cs" />
+    <Compile Include="Data\Query\GetFeaturesParametersBase.cs" />
+    <Compile Include="Data\Query\GetFeaturesResult.cs" />
+    <Compile Include="Help\FeatureCollectionConverter.cs" />
+    <Compile Include="Help\Point2DCollectionConverter.cs" />
+    <Compile Include="Help\Point2DConverter.cs" />
+    <Compile Include="Help\PointConverter.cs" />
+    <Compile Include="Help\Rectangle2DConverter.cs" />
+    <Compile Include="Help\RectConverter.cs" />
+    <Compile Include="Help\GeometryConverter.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GetMapStatusResult.cs" />
+    <Compile Include="Map\GetMapStatusAndLayerInfo\GetMapStatusService.cs" />
+    <Compile Include="Map\Layers\TiledDynamicRESTLayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Map\MapInfo\CoordSys.cs" />
+    <Compile Include="Map\MapInfo\CoordSysType.cs" />
+    <Compile Include="Map\MapInfo\Datum.cs" />
+    <Compile Include="Map\MapInfo\DatumType.cs" />
+    <Compile Include="Map\MapInfo\PrimeMeridian.cs" />
+    <Compile Include="Map\MapInfo\PrimeMeridianType.cs" />
+    <Compile Include="Map\MapInfo\PrjCoordSys.cs" />
+    <Compile Include="Map\MapInfo\PrjCoordSysType.cs" />
+    <Compile Include="Map\MapInfo\PrjParameter.cs" />
+    <Compile Include="Map\MapInfo\Projection.cs" />
+    <Compile Include="Map\MapInfo\ProjectionType.cs" />
+    <Compile Include="Map\MapInfo\SpatialRefType.cs" />
+    <Compile Include="Map\MapInfo\Spheroid.cs" />
+    <Compile Include="Map\MapInfo\SpheroidType.cs" />
+    <Compile Include="Map\MapInfo\UserInfo.cs" />
+    <Compile Include="Utilities\FieldType.cs" />
+    <Compile Include="Map\Query\QueryByBoundsParameters.cs" />
+    <Compile Include="Map\Query\QueryByBoundsService.cs" />
+    <Compile Include="Map\Query\QueryByDistanceParameters.cs" />
+    <Compile Include="Map\Query\QueryByDistanceService.cs" />
+    <Compile Include="Map\Query\QueryByGeometryParameters.cs" />
+    <Compile Include="Map\Query\QueryByGeometryService.cs" />
+    <Compile Include="Map\Query\QueryBySQLParameters.cs" />
+    <Compile Include="Map\Query\QueryBySQLService.cs" />
+    <Compile Include="Utilities\QueryMode.cs" />
+    <Compile Include="Utilities\QueryOption.cs" />
+    <Compile Include="Map\Query\QueryParameterBase.cs" />
+    <Compile Include="Utilities\QueryParameterSet.cs" />
+    <Compile Include="Map\Query\QueryResult.cs" />
+    <Compile Include="Utilities\Recordset.cs" />
+    <Compile Include="Utilities\ResourceInfo.cs" />
+    <Compile Include="Utilities\DatasourceConnectionInfo.cs" />
+    <Compile Include="Utilities\EngineType.cs" />
+    <Compile Include="Utilities\JoinItem.cs" />
+    <Compile Include="Utilities\JoinType.cs" />
+    <Compile Include="Utilities\LinkItem.cs" />
+    <Compile Include="Utilities\QueryParameter.cs" />
+    <Compile Include="Utilities\SpatialQueryMode.cs" />
+    <Compile Include="Utilities\FillGradientMode.cs" />
+    <Compile Include="Utilities\MapColorMode.cs" />
+    <Compile Include="Utilities\ServerColor.cs" />
+    <Compile Include="Utilities\ServerFeature.cs" />
+    <Compile Include="Utilities\ServerGeometry.cs" />
+    <Compile Include="Utilities\ServerGeometryType.cs" />
+    <Compile Include="Utilities\ServerStyle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ExceptionStrings.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionStrings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

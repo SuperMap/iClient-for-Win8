@@ -1,0 +1,2 @@
+﻿加载 TiledCachedIServerLayer 有六个必设参数：CachedUrl、Url、MapName、Scales、MapServiceAddress、MapServicePort。
+默认加载的图层的可视范围与地图控件的可视范围相等，可以通过 Map 的 ViewBounds 属性重设图层的可视范围。

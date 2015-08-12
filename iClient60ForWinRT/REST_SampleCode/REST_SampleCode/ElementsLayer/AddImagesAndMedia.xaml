@@ -1,0 +1,22 @@
+﻿<Page   x:Class="iServerJava6R_SampleCode.AddImagesAndMedia"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"       
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer Url="http://localhost:8090/iserver/services/map-world/rest/maps/世界地图" />
+            <ic:ElementsLayer ID="MyElementsLayer">
+                <!--视频文件必须放在 ClientBin 文件夹下-->
+                <MediaElement Source="../Images/SuperMap.wmv"                              
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center" 
+                                      IsMuted="True"         
+                                      MediaEnded="MediaElement_MediaEnded"/>
+                <Image Source="../Images/tiananmen.jpg" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Center"/>
+            </ic:ElementsLayer>
+        </ic:Map>
+    </Grid>
+</Page>

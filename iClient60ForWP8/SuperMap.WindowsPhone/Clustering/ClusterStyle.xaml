@@ -1,0 +1,20 @@
+﻿<ControlTemplate 
+    xmlns="http://schemas.microsoft.com/client/2007" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:icUtility="clr-namespace:SuperMap.WindowsPhone.Utilities;assembly=SuperMap.WindowsPhone">
+    <Grid>
+        <Grid.Resources>
+            <icUtility:DictionaryConverter x:Name="DictConvert" />
+        </Grid.Resources>
+        <Ellipse Fill="{Binding Path=Attributes, Converter={StaticResource DictConvert}, ConverterParameter=Color, Mode=OneWay}" 
+                 Width="{Binding Path=Attributes, Converter={StaticResource DictConvert}, ConverterParameter=Size, Mode=OneWay}" 
+                 Height="{Binding Path=Attributes, Converter={StaticResource DictConvert}, ConverterParameter=Size, Mode=OneWay}" />
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Path=Attributes, Converter={StaticResource DictConvert}, ConverterParameter=Count, Mode=OneWay}" 
+                       FontSize="9" Margin="1,1,0,0" FontWeight="Bold" Foreground="#99000000" />
+            <TextBlock Text="{Binding Path=Attributes, Converter={StaticResource DictConvert}, ConverterParameter=Count, Mode=OneWay}" 
+                       FontSize="9" Margin="0,0,1,1" FontWeight="Bold" Foreground="White" />
+        </Grid>
+    </Grid>
+</ControlTemplate> 
+     

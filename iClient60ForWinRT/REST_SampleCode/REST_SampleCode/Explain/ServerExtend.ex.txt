@@ -1,0 +1,16 @@
+﻿可以对服务内容进行扩展。
+1. 功能描述：
+	1）SuperMap iServer 将空间服务分为两类，一类是通用空间服务（Generic Spatial Service，GSS），如地图服务、空间数据服务、空间分析服务、网络分析服务等，SuperMap iServer 默认提供了这类服务；另外一类服务是领域空间服务（Domain Spatial Service，DSS），用户根据行业特定的业务逻辑，自行构建出的与空间信息相关的服务。
+	2）SuperMap iServer 对于服务的构建和发布提供了一套灵活的机制，无论是通用空间服务还是领域空间服务都可以通过 SuperMap iServer 进行灵活的配置和发布。
+	3）本示例通过一个获取指定城市的天气预报（非实时）示例来说明在客户端如何扩展 ServiceBase 基类从而自定义服务类，以实现与服务器端扩展的领域空间服务相对接。
+	4）在使用本范例代码时，请确认在服务器端已经扩展了领域空间服务。关于如何扩展领域空间服务请参见SuperMap iServer帮助文档。
+	5）本示例所使用的领域扩展服务为“SuperMap iServer帮助文档-->开发指南-->扩展领域服务-->创建服务提供者”中提供的扩展服务示例，
+2. 地图数据：
+	SuperMap iServer Java 服务器产品提供的地图——世界地图。
+3. 操作指南：
+	1）选择城市；
+	2）点击“天气预报按钮”。
+4. 扩展服务的基本步骤：
+	1）自定义服务所需参数类，如：ExtendServiceParameters；
+	2）自定义服务结果类，如：ExtendServiceResult；
+	3）自定义服务类，如：ExtendService。

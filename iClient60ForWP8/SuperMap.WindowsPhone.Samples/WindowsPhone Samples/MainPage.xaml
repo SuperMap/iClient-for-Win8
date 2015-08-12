@@ -1,0 +1,56 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SuperMap.WindowsPhone.Samples.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:SuperMap.WindowsPhone.Samples.ViewModel"
+    xmlns:my_Interactivity="clr-namespace:SuperMap.WindowsPhone.Samples.Command" 
+    xmlns:ic="clr-namespace:SuperMap.WindowsPhone.Mapping;assembly=SuperMap.WindowsPhone"
+    xmlns:icc="clr-namespace:SuperMap.WindowsPhone.Core;assembly=SuperMap.WindowsPhone"
+    xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:ico="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True">
+            <shell:ApplicationBarIconButton x:Name="CompassButton" Click="CompassButton_Click_1" IsEnabled="True" Text="定位" IconUri="/Assets/Compass.png"></shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="DrawPoint" Click="DrawPoint_Click_1" IsEnabled="True" Text="标注" IconUri="/Assets/DPoint.png"></shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="Measure" Click="Measure_Click_1" IsEnabled="True" Text="量算" IconUri="/Assets/Distance.png"></shell:ApplicationBarIconButton>
+            <shell:ApplicationBarIconButton x:Name="Clear" Click="Clear_Click_1" IsEnabled="True" Text="清除" IconUri="/Assets/Clear.png"></shell:ApplicationBarIconButton>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="625*"/>
+    		<RowDefinition Height="71*"/>
+    	</Grid.RowDefinitions>
+        <ic:Map x:Name="MyMap" Grid.RowSpan="2">
+        	<ic:CloudLayer ID="CLayer"/>
+        	<ic:FeaturesLayer ID="FLayer"/>
+            <ic:ElementsLayer ID="ELayer"></ic:ElementsLayer>
+        </ic:Map>
+        <Button x:Name="ZoomInButton" BorderThickness="0" Padding="0" Click="ZoomIn_Click_1" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="396,510,10,41"  >
+			<Button.Clip>
+				<EllipseGeometry Center="37,37" RadiusX="25" RadiusY="25"></EllipseGeometry>
+			</Button.Clip>
+			<Image Source="/Assets/ZoomIn.png"  Stretch="Fill" Height="50" Width="50"/>
+	    </Button>
+	    <Button x:Name="ZoomOutButton" BorderThickness="0" Padding="0" Click="ZoomOut_Click_1" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="396,578,10,44" Grid.RowSpan="2" Style="{StaticResource ZoomButtonStyle}"  >
+			<Button.Clip>
+				<EllipseGeometry Center="37,37" RadiusX="25" RadiusY="25"></EllipseGeometry>
+			</Button.Clip>
+			<Image Source="/Assets/ZoomOut.png"  Stretch="Fill" Height="50" Width="50"/>
+	    </Button>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

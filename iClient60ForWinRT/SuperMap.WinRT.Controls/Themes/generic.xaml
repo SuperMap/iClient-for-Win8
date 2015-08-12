@@ -1,0 +1,16 @@
+﻿<ResourceDictionary 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/OverviewMap/OverviewMap.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/ScaleBar/ScaleBar.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/Navigation/Navigation.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/InfoWindow/InfoWindow.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/MapHistoryManager/MapHistoryManager.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/Compass/Compass.xaml" />
+		<ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/ZoomSlider/TrackMark.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/ZoomSlider/SliderElement.xaml" />
+        <ResourceDictionary Source="ms-appx:///SuperMap.WinRT.Controls/ZoomSlider/ZoomSlider.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

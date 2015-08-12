@@ -1,0 +1,24 @@
+﻿<navigation:Page  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" x:Class="iServerJava6R_SampleCode.HeatMapTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="http://schemas.supermap.com/iclient/2010"
+     xmlns:is="http://schemas.supermap.com/iserverjava/2010"   Title="热点图层"       
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--地图控件-->
+        <ic:Map x:Name="MyMap">
+            <is:TiledDynamicRESTLayer Url="http://localhost:8090/iserver/services/map-world/rest/maps/世界地图" />
+            <ic:HeatMapLayer ID="heatMap"/>
+        </ic:Map>
+       
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" >
+          <!--半径选择滑动条-->
+            <TextBlock Text="半径: " FontSize="15"  FontWeight="Bold" />
+            <Slider x:Name="sliderRadius" Width="150" Height="18" Minimum="10" Maximum="30" Value="20" SmallChange="1" ValueChanged="sliderRadius_ValueChanged"/>
+          <!--强度选择滑动条--> 
+            <TextBlock Text="强度: " FontSize="15" FontWeight="Bold" />
+            <Slider x:Name="sliderIntensity" Width="150" Height="18" ValueChanged="sliderIntensity_ValueChanged" Minimum=".1"  SmallChange=".1" Maximum="1" Value="1" />
+            <CheckBox x:Name="checkGeoRadius" Margin="5 5 0 0" FontSize="15" FontWeight="Bold" Content="地理半径" Click="checkGeoRadius_Click" IsChecked="False"></CheckBox>
+        </StackPanel>
+    </Grid>
+</navigation:Page>

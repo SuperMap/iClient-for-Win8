@@ -1,0 +1,5 @@
+﻿该范例实现在任意元素图层中绘制各种元素：
+绘制的点转化为 Pushpin;
+线段或自由线转化为 PolyLineBase;
+多边形或自由面转化为 PolygonElement。
+圆转化为Ellipse。

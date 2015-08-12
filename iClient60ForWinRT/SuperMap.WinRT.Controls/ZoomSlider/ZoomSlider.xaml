@@ -1,0 +1,115 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsm="using:System.Windows;assembly=System.Windows"
+    xmlns:icControls="using:SuperMap.WinRT.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    >
+
+	<Style TargetType="icControls:ZoomSlider">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="icControls:ZoomSlider">
+					<Grid x:Name="Root" Width="28" >
+						<!--<Border   Canvas.ZIndex="10" Background="#FF2B2B2B" 
+                                 BorderBrush="#FF000000" BorderThickness="1,0,1,0" Opacity="0.85" RenderTransformOrigin="0.5,0.5"  >-->
+						<StackPanel Orientation="Vertical" Margin="1,2,1,0"  >
+
+                            <!--ZoomInElement-->
+							<RepeatButton x:Name="ZoomInElement" Canvas.ZIndex="10" Delay="200" Interval="600" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                <RepeatButton.Template>
+                                    <ControlTemplate>
+                                        <Grid Width="26" Height="26">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="PointerOver">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0.8" 
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Normal">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0"
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Pressed">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="1" 
+                    									Duration="0:0:0" 
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+											<Rectangle Fill="#FFB2B2B2" RadiusX="1" RadiusY="1" StrokeThickness="0" Stretch="Uniform"/>
+                                            <Rectangle x:Name="Hover" Fill="#FFE0E0E0" RadiusX="1" RadiusY="1" Margin="1" Stroke="#FF4A4A4A" StrokeThickness="0" Stretch="Uniform"/>
+											<Grid Margin="5">
+												<Rectangle Height="2" Fill="#99FFFFFF"/>
+												<Rectangle Width="2" Fill="#99FFFFFF"/>
+											</Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </RepeatButton.Template>
+                            </RepeatButton>
+
+							<icControls:SliderElement x:Name="SliderElement"/>
+
+                            <!--ZoomOutElement-->
+							<RepeatButton x:Name="ZoomOutElement" Canvas.ZIndex="10" Delay="200" Interval="600" Height="30">
+								<RepeatButton.Template>
+                                    <ControlTemplate>
+                                        <Grid Width="26" Height="26">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="PointerOver">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0.8" 
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Normal">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0"
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Pressed">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="1" 
+                    									Duration="0:0:0" 
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+											<Rectangle Fill="#FFB2B2B2" RadiusX="1" RadiusY="1" StrokeThickness="0" Stretch="Uniform"/>
+                                            <Rectangle x:Name="Hover" Fill="#FFE0E0E0" RadiusX="1" RadiusY="1" Margin="1" Stroke="#FF4A4A4A" StrokeThickness="0" Stretch="Uniform"/>
+											<Grid Margin="5">
+												<Rectangle Height="2" Fill="#99FFFFFF"/>
+											</Grid>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </RepeatButton.Template>
+							</RepeatButton>
+
+						</StackPanel>
+						<!--</Border>-->
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

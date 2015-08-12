@@ -1,0 +1,4 @@
+﻿该示范演示了如何使用 SuperMap iServer Java 分块动态 REST 图层从 SuperMap iServer Java 服务端获取地图服务。
+示范数据使用服务端提供的 “World”地图。
+该图层的必设属性为提供地图服务的服务器地址 URL。在范例中使用SuperMap 资源中心提供的 SuperMap iServer Java 服务。
+如果您要访问其他服务器，则将 URL 地址更改为相应服务器地址即可。

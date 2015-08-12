@@ -1,0 +1,26 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="PhoneApp1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="clr-namespace:SuperMap.WindowsPhone.Mapping;assembly=SuperMap.WindowsPhone"
+    xmlns:icc="clr-namespace:SuperMap.WindowsPhone.Core;assembly=SuperMap.WindowsPhone"
+    xmlns:im="clr-namespace:SuperMap.WindowsPhone.Mapping;assembly=SuperMap.WindowsPhone.iServerJava6R"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap" >
+            <im:TiledDynamicRESTLayer ID="TDRESTLater" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World"/>
+        </ic:Map>
+    </Grid>
+
+</phone:PhoneApplicationPage>

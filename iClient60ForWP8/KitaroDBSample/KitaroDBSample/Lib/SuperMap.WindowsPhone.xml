@@ -1,0 +1,3126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SuperMap.WindowsPhone</name>
+    </assembly>
+    <members>
+        <member name="T:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem">
+            <summary>
+            	<para>坐标参考系类</para>
+            	<para>坐标参考系可以是用经纬度表示的地理坐标系统，也可以是投影坐标系统。<br />投影坐标系统由地图投影方式、投影参数、坐标单位和地理坐标系组成，它定义在二维平面上。不同于用经纬度定位地面点的地理坐标系，投影坐标系是用 X、Y 坐标来定位，每一个投影坐标系都基于一个地理坐标系。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.#ctor">
+            <overloads>初始化 CoordinateReferenceSystem 类的新实例。</overloads>
+            <summary>CoordinateReferenceSystem 无参构造函数。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.#ctor(System.Int32)">
+            <summary>使用指定的 Well Kown ID 实例化 CoordinateReferenceSystem。</summary>
+            <param name="wkid">Well Know ID，即 EPSG 发布的代表特定椭球体、单位、地理坐标系或投影坐标系的 ID。例如 “EPSG：4326” 代表 WGS 84 地理坐标系，其中 WKID=4326，即实例化该坐标系统时参数就为4326。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.#ctor(System.Int32,System.Double)">
+            <summary>使用指定的 Well Kown ID 和 椭球体长半径实例化CoordinateReferenceSystem类的新实例。</summary>
+            <param name="wkid">Well Know ID，即 EPSG 发布的代表特定椭球体、单位、地理坐标系或投影坐标系的 ID。例如 “EPSG：4326” 代表 WGS 84 地理坐标系，其中 WKID=4326，即实例化该坐标系统时参数就为4326。</param>
+             <param name="datumAxis">椭球体长半径。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.#ctor(System.Int32,SuperMap.WindowsPhone.Core.Unit,System.Double)">
+            <summary>使用指定的 Well Kown ID 和坐标参考系单位、椭球体长半径实例化 CoordinateReferenceSystem。</summary>
+            <param name="wkid">Well Know ID，即 EPSG 发布的代表特定椭球体、单位、地理坐标系或投影坐标系的 ID。例如 “EPSG：4326” 代表 WGS 84 地理坐标系，其中 WKID=4326，即实例化该坐标系统时参数就为4326。</param>
+            <param name="unit">坐标参考系的单位。</param>
+            <param name="datumAxis">椭球体长半径。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.Clone">
+            <summary>克隆一个坐标参考系。</summary>
+            <returns>返回新的空间坐标参考系。</returns>
+            <remarks>clone（克隆）与 copy（复制）的区别：clone 要创建一个新的与原对象一样的对象；而 copy 是将原对象中的值复制到现在的对象中，不需要重新创建一个对象。</remarks>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.Equals(SuperMap.WindowsPhone.Core.CoordinateReferenceSystem,SuperMap.WindowsPhone.Core.CoordinateReferenceSystem,System.Boolean)">
+            <summary>判断两个指定坐标系是否相等，依据两者的 wkid 是否相同。</summary>
+            <overloads>判断两个坐标参考系是否相等。</overloads>
+            <returns>如果两个坐标参考系相等或者当参数 ignoreNull 为 true 时，如果存在空坐标系，返回 true；如果两个坐标参考系不相等或者当参数 ignoreNull 为 false 时，如果存在空坐标系，返回 false。</returns>
+            <param name="crs1">进行比较的指定空间参考坐标系。</param>
+            <param name="crs2">进行比较的指定空间参考坐标系。</param>
+            <param name="ignoreNull">通过该值控制是否允许坐标系为空。当该值为 true 时，如果存在空坐标系，视为两个坐标系相等；当该值为 false 时，如果存在空坐标系，视为两个坐标系不相等。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.Equals(SuperMap.WindowsPhone.Core.CoordinateReferenceSystem)">
+            <summary>判断指定坐标系是否与当前坐标系相等，依据两者的 wkid 是否相同。</summary>
+            <returns>如果两个坐标参考系相等，则返回 true；否则返回 false。<br />两个空间参考坐标系值 wkid 必须为正常值，否则将返回 false。例如，坐标参考系值为空，或为极大极小值，都返回 false。</returns>
+            <param name="other">与当前坐标参考系进行比较的空间参考坐标系。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.WKID">
+            <summary>Well Know ID。EPSG 发布的代表特定椭球体、单位、地理坐标系或投影坐标系的 ID，例如 "EPSG：4326" 指的就是 WGS 84地理坐标系，其中 WKID=4326。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.Unit">
+            <summary>坐标参考系的单位。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem.DatumAxis">
+            <summary>获取或设置地球椭球体半径。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.CoordinateReferenceSystemConverter">
+            <summary>坐标参考系类型转换类</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystemConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>返回一个值，该值指示类型转换器能否将指定类型的对象转换为此转换器的类型。</summary>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="sourceType">转换源对象类型。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.CoordinateReferenceSystemConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将指定对象转换为此转换器的类型。</summary>
+            <returns>转换后的值。</returns>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <param name="value">要转换为此转换器类型的对象。</param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PolygonElement">
+            <summary><para>多边形元素类</para>在 ElementsLayer 上绘制一个多边形，它是形成闭合形状的一系列相互连接的直线。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.ShapeElement">
+            <summary>
+            <para>元素基类</para>
+            <para>为PolygonBase 和 PolylineBase 类的基类。	</para>
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.ShapeElement.Point2DsProperty">
+            <summary>标识 Point2Ds 依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.ShapeElement.#ctor(System.Windows.Shapes.Shape)">
+            <summary>初始化 ShapeElement 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.ShapeElement.MeasureOverride(System.Windows.Size)">
+            <summary>测量子元素在布局中所需的大小，然后确定派生类的大小。</summary>
+            <param name="availableSize">此元素可以赋给子元素的可用大小。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.Point2Ds">
+            <summary>获取或设置指定元素的 Point2D 集合。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.Bounds">
+            <summary>获取或设置指定元素地理范围。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.ScreenPoints">
+            <summary>获取或设置组成多边形元素的点所在的屏幕位置，以此对应到地图的相应位置。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.EncapsulatedShape">
+            <summary>获取封装形状。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.Fill">
+            <summary>获取或设置指定元素内部绘制方式的 Brush。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.Opacity">
+            <summary>获取或设置指定元素的不透明度。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.OpacityMask">
+            <summary>获取或设置用于改变指定元素的不透明度的画笔。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.Stroke">
+            <summary>获取或设置指定元素轮廓绘制方式的 Brush。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeDashArray">
+            <summary>获取或设置 Double 值的集合，这些值指示用于勾勒元素轮廓的虚线和间隙样式。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeDashCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值指定如何绘制虚线的两端。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeDashOffset">
+            <summary>获取或设置一个 Double 值，它指定虚线样式内虚线开始处的距离。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeEndLineCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值描述位于直线末端的元素。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeLineJoin">
+            <summary>获取或设置一个 PenLineJoin 枚举值，该值指定在元素的顶点处使用的联接类型。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeMiterLimit">
+            <summary>获取或设置对斜接长度与元素的 StrokeThickness 的一半之比的限制。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeStartLineCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值描述位于  Stroke  起始处的元素。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.ShapeElement.StrokeThickness">
+            <summary>获取或设置 Shape 笔画轮廓的宽度。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PolygonElement.#ctor">
+            <summary>
+                #初始化 <see cref="T:SuperMap.WindowsPhone.Core.PolygonElement">PolygonBase</see>
+                类的新实例。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PolygonElement.FillRule">
+            <summary>获取或设置一个枚举值，该值指定如何确定形状的内部填充。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PolygonElement.ScreenPoints">
+            <summary>获取或设置组成多边形元素的点所在的屏幕位置，以此对应到地图的相应位置。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PolylineElement">
+            <summary>
+            线元素类<br/>
+            在 ElementsLayer 上绘制一系列相互连接的直线。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PolylineElement.#ctor">
+            <summary>
+                #初始化 <see cref="T:SuperMap.WindowsPhone.Core.PolylineElement">PolylineBase</see>
+                类的新实例。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PolylineElement.FillRule">
+            <summary>获取或设置一个枚举值，该值指定如何确定形状的内部填充。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PolylineElement.ScreenPoints">
+            <summary>获取或设置组成多边形元素的点所在的屏幕位置，以此对应到地图的相应位置。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Pushpin">
+            <summary>
+            定位图钉<br/>
+            定位图钉主要是为了方便标识元素或地物，它在 ElementsLayer 上使用。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Pushpin.#ctor">
+            <summary>
+                初始化 <see cref="T:SuperMap.WindowsPhone.Core.Pushpin">Pushpin</see>
+                类的新实例。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Pushpin.LocationDependencyProperty">
+            <summary>标识 Location 依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Pushpin.Location">
+            <summary>获取或设置定位图钉的位置。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Pushpin.DisableAnimation">
+            <summary>获取或设置是否为定位图钉增加动画效果。默认为 false，即没有动画。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.BindingInfo">
+            <summary>
+            	<para>数据绑定信息类。</para>
+            	<para></para>
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.BindingInfo.Attributes">
+            <summary>获取数据绑定信息类的属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.BindingInfo.Style">
+            <summary>获取或设置数据绑定信息类的样式。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.DictionaryChangedEventArgs">
+            <summary>
+            	<para>字典改变事件数据类</para>
+            	<para>该类存储了字典中的数据操作、键以及键所对应的新值和旧值。</para>
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.DictionaryChangedEventArgs.Action">
+            <summary>获取当前字典项的数据操作。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.DictionaryChangedEventArgs.Key">
+            <summary>获取当前字典项的键。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.DictionaryChangedEventArgs.NewValue">
+            <summary>获取当前字典项的键对应的新值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.DictionaryChangedEventArgs.OldValue">
+            <summary>获取当前字典项的键修改前的旧值。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Feature">
+            <summary>
+            	<para>地理要素类</para>
+            	<para>用来定义一个描述空间实体对象的地理要素。它包括地理要素的描述信息、空间几何对象(点、线、面、文本等)、属性信息和要素风格。</para>
+            </summary>
+            <remarks>Feature 与 Geometry 的主要区别 ：Geometry 是 Feature 的属性之一，仅表示几何对象空间形状信息。而 Feature 不仅包括实体的空间信息，还包含实体的属性信息等。<br />如果希望获取地图图层中某个几何实体，可以通过 FeaturesLayer 的 Features 属性，首先获取几何对象对应的实体 Feature，然后通过 Feature 的 Geometry 属性从而获取对应的几何对象。</remarks>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Feature.SelectedProperty">
+            <summary>标识 selected 依赖项属性。</summary>
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Feature.Select">
+            <summary>选中地理要素。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Feature.UnSelect">
+            <summary>取消选中地理要素。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Feature.#ctor">
+            <summary>初始化 Feature 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Feature.GetZIndex">
+            <summary>获取当前地理要素在图层中的层叠显示顺序。</summary>
+            <returns>返回当前地理要素在图层中的层叠顺序。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Feature.SetZIndex(System.Int32)">
+            <summary>设置地理要素在图层中的层叠显示顺序。</summary>
+            <param name="value">地理要素在图层中的层叠顺序。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Feature.Clone">
+            <summary>创建与此实例相同的 Feature 对象。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Feature.Selected">
+            <summary>获取或设置地理要素的选中状态。true 表示该地理要素被选中，false 表示未被选中。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.MouseEnter">
+            <summary>当手指进入 Feature 的边界区域时，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.MouseLeave">
+            <summary>当手指离开 Feature 的边界区域时，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.MouseMove">
+            <summary>在以下情况下发生：当触摸 Feature 时（或当 Feature 具有触摸输入捕获时），手指的坐标位置发生改变。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.MouseLeftButtonDown">
+            <summary>在点按 Feature 时发生。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.MouseLeftButtonUp">
+            <summary>当手指抬离 Feature 时发生。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.PropertyChanged">
+            <summary>当 Feature 的属性值发生变化时，触发该事件。继承自 INotifyPropertyChanged。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.AttributeValueChanged">
+            <summary>当 Feature 的属性表中的字段值发生变化时，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.Tap">
+            <summary>
+            当手指单次触碰 Feature 的情况下发生。
+            </summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.DoubleTap">
+            <summary>
+            当连续两次触碰 Feature 的情况下发生。
+            </summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Feature.Hold">
+            <summary>
+            当长时间按住 Feature 的情况下发生。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Feature.ToolTip">
+            <summary>获取或设置地理要素的信息提示框。当鼠标悬停在该要素上时自动弹出信息提示框。</summary>
+            <remarks>ToolTip 为 FrameworkElement 类型。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Feature.Attributes">
+            <summary>表示地理要素的属性信息,以键/值对集合形式存在。</summary>
+            <remarks>Attributes 为 Dictionary 类型，有关 Dictionary 类的详细信息请参见 Visual Studio 帮助文档中 .Net Framework SDK。</remarks>
+            <example>
+            	<code lang="CS">
+            		<![CDATA[
+            //为矢量要素添加属性
+            feature.Attributes.Add("Name", Tom);
+             
+            //获取矢量要素的属性值
+            String name;
+            name = feature.Attributes["Name"].ToString();]]>
+            	</code>
+            </example>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Feature.Geometry">
+            <summary>获取或设置地理要素的几何类型，包括点、线、面、文本等。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Feature.Style">
+            <summary>获取或设置地理要素的风格，包括点状符号风格（MarkerStyle）、线状符号风格（LineStyle）、填充符号风格（FillStyle）、文本风格（TextStyle）和一些预定义的风格类。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.FeatureCollection">
+            <summary>
+            	<para>地理要素集合类</para>
+            	<para>地理要素类的动态数据集合。在添加项、移除项或刷新整个列表时，此集合将提供通知。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.FeatureCollection.ClearItems">
+            <summary>移除所有要素。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.FeatureCollection.#ctor">
+            <summary>无参构造函数。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.FeatureCollection.#ctor(System.Collections.Generic.IEnumerable{SuperMap.WindowsPhone.Core.Feature})">
+            <summary>使用 collection 参数实例化 FeatureCollection 对象。</summary>
+            <param name="collection">要加载的矢量要素集合对象 FeatureCollection。</param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.FeatureGestureEventArgs">
+            <summary>
+            	<para>矢量要素手势事件数据类</para>
+            	<para>该类存储了手势对于矢量要素操作的相关数据，例如DoubleTap选中的要素、鼠标位置等信息。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.FeatureGestureEventArgs.GetPosition(System.Windows.UIElement)">
+            <summary>获取触发手势事件的位置相对于指定的 UIElement 的像素坐标 x 和 y。</summary>
+            <returns>返回触发手势事件的位置相对于指定的 UIElement 的像素坐标 x 和 y。</returns>
+            <param name="relativeTo">指定的 UIElement。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureGestureEventArgs.Feature">
+            <summary>获取手势操作的矢量要素。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureGestureEventArgs.OriginalSource">
+            <summary>获取对引发事件的对象的引用。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureGestureEventArgs.Handled">
+            <summary>获取或设置将路由事件标记为已处理的值。 如果 Handled 的值为 true，则可以防止事件路由路径上的大多数处理程序再次处理同一事件。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.FeatureMouseButtonEventArgs">
+            <summary>
+            	<para>为 MouseLeftButtonDown 和 MouseLeftButtonUp 事件提供事件数据。</para>
+            	<para>该类继承 FeatureMouseEventArgs，在其中定义 Handled，它将 MouseLeftButtonDown 或 MouseLeftButtonUp 事件标记为已处理。处理该事件可防止路由路径上更远处的典型处理程序对发生的同一事件进行处理。</para>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.FeatureMouseEventArgs">
+            <summary>
+            	<para>矢量要素鼠标事件数据类</para>
+            	<para>该类存储了鼠标对于矢量要素操作的相关数据，例如鼠标选中的要素、鼠标位置等信息。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.FeatureMouseEventArgs.GetPosition(System.Windows.UIElement)">
+            <summary>获取鼠标指针相对于指定的 UIElement 的像素坐标 x 和 y。</summary>
+            <returns>返回鼠标指针相对于指定的 UIElement 的像素坐标 x 和 y。</returns>
+            <param name="relativeTo">指定的 UIElement。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureMouseEventArgs.Feature">
+            <summary>获取鼠标操作的矢量要素。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureMouseEventArgs.OriginalSource">
+            <summary>获取对引发事件的对象的引用。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureMouseEventArgs.StylusDevice">
+            <summary>获取报告手写笔设备信息（如与输入关联的手写笔接触点的集合）的对象。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FeatureMouseButtonEventArgs.Handled">
+            <summary>获取或设置一个值，该值将路由事件标记为已处理，并防止事件路由路径上的大多数处理程序再次处理同一事件。如果为 true，则将路由事件标记为已处理。如果为 false，则将路由事件保留为未处理，这可以允许该事件进一步路由并由其他处理程序进行处理。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.IObservableDictionary`2">
+            <summary>
+            表示键/值对的泛型集合，能够将集合的动态更改或者某一个属性值的更改通知给侦听器。
+            </summary>
+            <typeparam name="TKey">字典中键的类型。</typeparam>
+            <typeparam name="TValue">字典中值的类型。</typeparam>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.GeoCircle">
+            <summary>
+            	<para>几何圆面对象</para>
+            	<para>几何圆面对象由点对象集合组成。目前提供了半径和圆心。</para>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Geometry">
+            <summary>
+            几何对象基类<br/>
+            几何对象基类用于描述几何对象的空间信息（如坐标点对、几何线对象等）以及相关的处理方法。几何对象通常可用于空间分析、空间关系运算、缓冲区分析等。<br/>其子类包括： GeoPoint, GeoLine, GeoRegion。
+            </summary>
+            <remarks>Feature 与 Geometry 的主要区别 ：Geometry 是 Feature 的属性之一，仅表示几何对象空间形状信息。而 Feature 不仅包括实体的空间信息，还包含实体的属性信息等。<p>如果希望获取地图图层中某个几何实体，可以通过 FeaturesLayer 的 Features 属性，首先获取几何对象对应的实体 Feature，然后通过 Feature 的 Geometry 属性从而获取对应的几何对象。</p></remarks>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Geometry.RaiseGeometryChanged">
+            <summary>引发几何对象改变事件。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Geometry.Clone">
+            <summary>创建当前对象的副本。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Geometry.Offset(System.Double,System.Double)">
+            <summary>几何对象的偏移方法。</summary>
+            <param name="deltaX">相对于起始状态，X 坐标值的偏移量。</param>
+            <param name="deltaY">相对于起始状态，X 坐标值的偏移量。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Geometry.Bounds">
+            <summary>获取地理坐标系下几何对象的范围，也就是几何对象的最小外接矩形。点的最小外接矩形就是点本身。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoCircle.#ctor">
+            <summary>初始化 GeoCircle 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoCircle.#ctor(SuperMap.WindowsPhone.Core.Point2D,System.Double)">
+            <summary>初始化 GeoCircle 类的新实例。</summary>
+            <param>使用圆心初始化 GeoCircle 类的新实例。</param>
+            <param>半径参数初始化 GeoCircle 类的新实例。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoCircle.Clone">
+            <summary>克隆一个圆面几何对象。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoCircle.Offset(System.Double,System.Double)">
+            <summary>面对象的偏移方法。</summary>
+            <param name="deltaX">相对于起始状态，X 坐标值的偏移量。</param>
+            <param name="deltaY">相对于起始状态，Y 坐标值的偏移量。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoCircle.Bounds">
+            <summary>获取几何面对象的范围</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoCircle.Center">
+            <summary>获取圆面中心点。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoCircle.Radius">
+            <summary>获取圆面半径。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoCircle.Parts">
+            <summary>一个圆面对象可以看成由72个点模拟组成，即在在圆周上每相隔5°取一个点，连接这些点即组成一个圆面。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.GeoLine">
+            <summary>
+            	<para>几何线对象</para>
+            	<para>几何线对象由点对象集合组成，集合中存储了一个或多个组成线对象的子对象，各个子对象又由线节点 GeoPoint 组成。该对象可用来表示河流、道路、国家边界线等线状地物。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoLine.#ctor">
+            <summary>初始化 GeoLine 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoLine.Clone">
+            <summary>克隆一个线几何对象。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoLine.Offset(System.Double,System.Double)">
+            <summary>线对象的偏移方法。</summary>
+            <param name="deltaX">相对于起始状态，X 坐标值的偏移量。</param>
+            /// <param name="deltaY">相对于起始状态，Y 坐标值的偏移量。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoLine.Bounds">
+            <summary>获取线对象的外接矩形。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoLine.Parts">
+            <summary>获取或设置组成几何线对象的子对象集合。一个线对象可以由多个子线对象组成，例如一条公路边界由多条线组成，这条公路边界就是一个线对象，组成这条公路边界的多条线就是子对象。该属性为动态数据集合，集合中 Count 属性的值就是子对象个数，Item 属性对应每个子线对象。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoLine.Center">
+            <summary>获取对象的几何中心点坐标。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.GeoPoint">
+            <summary>
+            	<para>几何点对象</para>
+            	<para>该对象用 X、Y 坐标对确定一个位置。可用来表示国家的首都、饭店、公交站点等点状地物。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPoint.#ctor">
+            <summary>GeoPoint 类无参构造函数。</summary>
+            <overloads>初始化 GeoPoint 类的新实例。</overloads>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPoint.#ctor(SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>使用地理坐标点来初始化 GeoPoint 类的新实例。</summary>
+            <param name="location">Point2D 点对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPoint.Clone">
+            <summary>创建当前点对象的副本。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPoint.Offset(System.Double,System.Double)">
+            <summary>点对象的偏移方法。</summary>
+            <param name="dx">相对于起始状态，X 坐标值的偏移量。</param>
+            /// <param name="dy">相对于起始状态，Y 坐标值的偏移量。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPoint.#ctor(System.Double,System.Double)">
+            <summary>使用地理坐标系下 X，Y 坐标对值初始化 GeoPoint 类的新实例。</summary>
+            <overloads>初始化 GeoPoint 类的新实例。</overloads>
+            <param name="x">地理坐标系下 x 坐标值。</param>
+            <param name="y">地理坐标系下 y 坐标值。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPoint.ToString">
+            <summary>将 GeoPoint 对象转化成规定字符串表示形式。</summary>
+            <returns>返回字符串表达式,格式为 "x的值,y的值"。</returns>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoPoint.Bounds">
+            <summary>获取地理坐标系下点几何对象的范围（最小外接矩形）。点的最小外接矩形就是点本身。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoPoint.Location">
+            <summary>获取或设置点几何对象的坐标。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoPoint.X">
+            <summary>获取或设置点几何对象的 x 坐标。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoPoint.Y">
+            <summary>获取或设置点几何对象的 y 坐标。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.GeoPointConverter">
+            <summary>GeoPoint 类型转换器类</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPointConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>返回一个值，该值指示类型转换器能否将指定类型的对象转换为此转换器的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="sourceType">转换源对象类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPointConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>确定是否可从 GeoPoint 转换到指定的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="destinationType">要转换到的类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPointConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将指定对象转换为此转换器的类型。</summary>
+            <param name="value">要转换为此转换器类型的对象。</param>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <returns>转换后的值。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoPointConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>从 GeoPointConverter 转换到指定的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <param name="value">要转换为此转换器类型的对象。</param>
+            <param name="destinationType">要转换到的类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.GeoRegion">
+            <summary>
+            	<para>几何面对象</para>
+            	<para>几何面对象由点对象集合组成，集合中存储了一个或多个组成面对象的子对象，各个子对象又由首尾相连的面节点 GeoPoint 组成。该对象可用来表示国家区域、地块、房屋等面状地物。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoRegion.#ctor">
+            <summary>初始化 GeoRegion 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoRegion.Clone">
+            <summary>克隆一个面几何对象。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoRegion.Offset(System.Double,System.Double)">
+            <summary>面对象的偏移方法。</summary>
+            <param name="deltaX">相对于起始状态，X 坐标值的偏移量。</param>
+            /// <param name="deltaY">相对于起始状态，Y 坐标值的偏移量。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.GeoRegion.GetBounds">
+            <summary>获取面对象的外接矩形。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoRegion.Bounds">
+            <summary>获取面对象的外接矩形。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoRegion.Parts">
+            <summary>组成二维面对象的子对象集合。一个面对象可以由多个子面对象组成，例如群岛就由多个面组成，整个群岛就是一个面对象，组成这个群岛的子岛就是这个面的子对象。该属性为动态数据集合，集合中 Count 属性的值就是子对象个数，Item 属性对应每个子面对象。<br/>注意：在设置面的首尾节点时尾节点必须与首节点重合。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.GeoRegion.Center">
+            <summary>获取对象的几何中心点坐标。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Point2D">
+            <summary>
+            	<para>地理坐标系下点对象</para>
+            	<para>地理坐标系下坐标值为双精度的点对象，即其坐标值的范围为 ±5.0*1e-324 到 ±1.7*1e308，有效位为15-16位。<br/>点对象是各种几何对象的基础，如几何线对象实际就是一串 Point2D 的点串，而几何面则是一串起始点和结束点相同的点串。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.#ctor">
+            <summary>
+            利用 X，Y 坐标对来初始化 Point2D 类的新实例。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.#ctor(System.Double,System.Double)">
+            <summary>利用 X，Y 坐标对来初始化 Point2D 类的新实例。</summary>
+            <param name="x">地理坐标系下 X 坐标值。</param>
+            <param name="y">地理坐标系下 Y 坐标值。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.IsNullOrEmpty(SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>
+            判断Point2D是否为null，以及是否为空值。如果X或者Y的值不是一个有效的数字，就认为这个Point2D为空值。
+            </summary>
+            <param name="point">需要判断的Point2D对象。</param>
+            <returns>返回判断的结果。为true说明对象为null或者为空值。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.op_Equality(SuperMap.WindowsPhone.Core.Point2D,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>用于判断两个点对象是否恒等。</summary>
+            <returns>如果两个点对象恒等，返回 true；否则返回 false。</returns>
+            <param name="point1">地理坐标系下点对象。</param>
+            <param name="point2">地理坐标系下点对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.op_Inequality(SuperMap.WindowsPhone.Core.Point2D,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>用于判断两个点对象是否不等。</summary>
+            <returns>如果两个点对象不等，返回 true；否则返回 false。</returns>
+            <param name="point1">地理坐标系下点对象。</param>
+            <param name="point2">地理坐标系下点对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.Equals(System.Object)">
+            <overloads>判断两个点对象是否具有相同坐标值。</overloads>
+            <summary>判断指定的 Object 对象是否与当前点对象具有相同坐标值。</summary>
+            <returns>1. 当两个点对象具有相同坐标值，返回 true；否则返回 false。<br/>2. 当参数为空时，返回 false。</returns>
+            <param name="obj">将与当前点对象进行比较的 Object 对象。 </param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.GetHashCode">
+            <summary>获取 Point2D 点对象的哈希码。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.Equals(SuperMap.WindowsPhone.Core.Point2D)">
+            <returns>1. 当两个点对象具有相同坐标值，返回 true；否则返回 false。<br/>2. 当参数为空时，返回 false。</returns>
+            <summary>判断指定的 Point2D 类型点对象是否与当前点对象具有相同坐标值。<br/></summary>
+            <overloads>判断两个点对象是否具有相同坐标值。</overloads>
+            <param name="point">将与当前点对象进行比较的 Point2D 类型点对象。<br/></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.ToString">
+            <summary> 将 Point2D 对象转化成规定字符串表示形式。</summary>
+            <returns>返回字符串表达式，其格式为 “x，y”。</returns>
+            <overloads>将 Point2D 对象转化成字符串表示形式。</overloads>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.Offset(System.Double,System.Double)">
+            <summary>面对象的偏移方法。</summary>
+            <param name="deltaX">地理坐标系下 x 坐标（横向）的偏移量。</param>
+            <param name="deltaY">地理坐标系下 y 坐标（纵向）的偏移量。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.ToString(System.IFormatProvider)">
+            <summary>在将 Point2D 对象转化成规定字符串表示形式前，先检索控制格式化的对象。</summary>
+            <returns>返回字符串表达式，其格式为 “x，y”。</returns>
+            <overloads>将 Point2D 对象转化成字符串表示形式。</overloads>
+            <param name="provider">提供用于检索控制格式化的对象的机制。该参数为 IFormatProvider 类，请参见 Microsoft Visual Studio 帮助文档。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2D.Clone">
+            <summary>创建当前对象的副本。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Point2D.X">
+            <summary>获取或设置当前点对象在地理坐标系下的 x 坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Point2D.Y">
+            <summary>获取或设置当前点对象在地理坐标系下的 y 坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Point2D.Tag">
+            <summary>用来存放点的额外信息，比如M值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Point2D.Empty">
+            <summary>获取 Point2D 点对象的空值，即该对象的 x、y 坐标为正无穷。用该属性对 Point2D 点对象完成初始化，如 new Point2D p= Point2D.Empty。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Point2D.PropertyChanged">
+            <summary>当一个属性值发生变化时，触发该事件。继承自INotifyPropertyChanged。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Point2DCollection">
+            <summary>Point2D 点对象的动态数据集合。在添加项、移除项或刷新整个列表时，此集合将提供通知。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DCollection.#ctor">
+            <summary>初始化 Point2DCollection 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DCollection.Clone">
+            <summary>克隆一个 Point2DCollection 对象。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DCollection.GetBounds">
+            <summary>获取点集合的地理范围，即点集合的最小外接矩形。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DCollection.RemoveRange(System.Int32,System.Int32)">
+            <summary>从指定索引处开始移除指定个数的点对象。</summary>
+            <param name="index">指定索引。</param>
+            <param name="count">指定点对象个数。</param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Point2DCollectionConverter">
+            <summary>Point2DCollection 类型转换器类</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DCollectionConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>返回一个值，该值指示类型转换器能否将指定类型的对象转换为此转换器的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="sourceType">转换源对象类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DCollectionConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将指定对象转换为此转换器的类型。</summary>
+            <param name="value">要转换为此转换器类型的对象。</param>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <returns>转换后的值。</returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Point2DConverter">
+            <summary>Point2D 类型转换器类</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>返回一个值，该值指示类型转换器能否将指定类型的对象转换为此转换器的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="sourceType">转换源对象类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Point2DConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将指定对象转换为此转换器的类型。</summary>
+            <param name="value">要转换为此转换器类型的对象。</param>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <returns>转换后的值。</returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Rectangle2D">
+            <summary>  
+            	<para>地理坐标系下矩形对象</para>
+            	<para>该类的对象通常用于确定范围，可用来表示几何对象的最小外接矩形、地图窗口的可视范围、数据集的范围等。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.#ctor">
+            <summary>
+            实例化 Rectangle2D 类的新实例。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>地理坐标系下，使用指定的左边界、右边界横坐标和上边界、下边界纵坐标初始化 Rectangle2D 类的新实例。</summary>
+            <param name="left">地理坐标系下矩形左边界 x 坐标值。</param>
+            <param name="bottom">地理坐标系下矩形下边界的 y 坐标值。</param>
+            <param name="right">地理坐标系下矩形右边界的 x 坐标值。该值必须大于或等于 left。</param>
+            <param name="top">地理坐标系下矩形上边界的 y 坐标值。该值必须大于或等于 bottom。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.#ctor(SuperMap.WindowsPhone.Core.Point2D,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>地理坐标系下，使用指定的左下角点坐标值和右上角点坐标值来初始化 Rectangle2D 类的新实例。</summary>
+            <param name="point1">地理坐标系下矩形左下角点坐标值。</param>
+            <param name="point2">地理坐标系下矩形右上角点坐标值。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.#ctor(SuperMap.WindowsPhone.Core.Point2D,System.Double,System.Double)">
+            <summary>地理坐标系下，使用指定的左下角点坐标值、宽和高值来初始化 Rectangle2D 类的新实例。</summary>
+            <param name="bottomLeft">地理坐标系下矩形左下角点坐标值。</param>
+            <param name="width">地理坐标系下矩形的宽度。</param>
+            <param name="height">地理坐标系下矩形的高度。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.CreateFromXYWidthHeight(System.Double,System.Double,System.Double,System.Double)">
+            <summary>根据长度、宽度、X坐标值和Y坐标值范围，创建矩形对象。</summary>
+            <param name="x">地理坐标系下目标对象的横坐标。</param>
+            <param name="y">地理坐标系下目标对象的纵坐标。</param>
+            <param name="width">地理坐标系下目标对象的宽度。</param>
+            <param name="height">地理坐标系下目标对象的长度。</param>
+            <returns>如果创建矩形对象成功，则返回 true；否则返回 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.IsNullOrEmpty(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>
+            验证指定的Rectangle2D对象是否为null或者为Empty。当对象为null，或者对象存在不可用的属性值时，返回true；否则返回false。
+            </summary>
+            <param name="rect">需要验证的Rectangle2D对象。</param>
+            <returns>验证结果，为true表明该对象为null，或者对象中存在不可用的属性值。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.op_Equality(SuperMap.WindowsPhone.Core.Rectangle2D,SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>用于判断两个矩形对象是否恒等。</summary>
+            <returns>如果两个矩形对象恒等，返回 true；否则返回 false。</returns>
+            <param name="rect1">地理坐标系下矩形对象。</param>
+            <param name="rect2">地理坐标系下矩形对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.op_Inequality(SuperMap.WindowsPhone.Core.Rectangle2D,SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>用于判断两个矩形对象是否不等。</summary>
+            <returns>如果两个点对象不等，返回 true；否则返回 false。</returns>
+            <param name="rect1">地理坐标系下矩形对象。</param>
+            <param name="rect2">地理坐标系下矩形对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Equals(System.Object)">
+            <summary>判断指定的 Object 类型矩形对象是否与当前矩形对象具有相同坐标值。</summary>
+            <returns>1. 当两个矩形对象具有相同坐标值，返回 true；否则返回 false。<br/>2. 当参数为空时，返回 false。</returns>
+            <overloads>判断两个矩形对象是否具有相同坐标值。</overloads>
+            <param name="obj">与当前矩形对象进行比较的 Object 类型矩形对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.GetHashCode">
+            <summary>获取 Rectangle2D 矩形对象的哈希码。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.ToString">
+            <summary>将 Rectangle2D 对象转化成规定字符串表示形式。</summary>
+            <returns>返回字符串表达式,格式为 "x的值,y的值"。</returns>
+            <overloads>将 Rectangle2D 对象转化成字符串表示形式。</overloads>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Equals(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>判断指定的 Rectangle2D 类型矩形对象是否与当前矩形对象具有相同坐标值。</summary>
+            <returns>1. 当两个矩形对象具有相同坐标值，返回 true；否则返回 false。<br/>2. 当参数为空时，返回 false。</returns>
+            <overloads>判断两个矩形对象是否具有相同坐标值。</overloads>
+            <param name="rectangle">与当前矩形对象进行比较的 Rectangle2D 类型矩形对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Offset(System.Double,System.Double)">
+            <summary>Rectangle2D 矩形对象的偏移量。<br/>矩形控制点的新坐标值将调整为该点的原坐标值与偏移量之和。例如原矩形左上角坐标值为（x，y），偏移量为（dx，dy），则该点的新坐标值为（x+dx，y+dy）。</summary>
+            <param name="dx">地理坐标系下 x 坐标（横向）的偏移量。</param>
+            <param name="dy">地理坐标系下 y 坐标（纵向）的偏移量。</param>
+            <returns>偏移后的矩形对象。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Inflate(System.Double,System.Double)">
+            <summary>将矩形对象沿轴放大或缩小指定量。<br />沿轴放大是沿坐标轴的两个方向（正方向和负方向）同时进行。例如，50x50的矩形沿 x 轴放大50个单位，则结果矩形的长度为150个单位，即原始长度50个单位，沿负方向延长50个单位，沿正方向延长50个单位，以保持矩形的几何中心不变。如果指定变量为负数，则 Rectangle2D 沿着相应的方向缩小，若该负数绝对值大于 Rectangle2D 的长或宽的二分之一时，该 Rectangle2D 变为空。</summary>
+            <param name="width">沿 x 轴的变量。如果 x 为正，该矩形沿 x 轴放大指定量；如果 x 为负，该矩形沿 x 轴缩小指定量。</param>
+            <param name="height">沿 y 轴的变量。如果 y 为正，该矩形沿 y 轴放大指定量；如果 y 为负，该矩形沿 y 轴缩小指定量。</param>
+            <returns>返回放大或者缩小后的结果。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.IntersectsWith(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>判断该矩形是否与指定矩形相交。</summary>
+            <returns>如果两个矩形相交，则返回 true；否则返回 false。如果参数为空，返回 false。</returns>
+            <param name="rect">用于进行相交操作的矩形。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Intersect(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>将该矩形对象与指定矩形求交集，并将求交结果代替原矩形。如果两个矩形不相交，则结果矩形对象为空。</summary>
+            <param name="rect">用于进行相交操作的矩形。</param>
+            <returns>两个矩形相交的结果。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Union(SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>获取指定点对象与当前矩形对象并集的最小外接矩形。<br/>1. 当指定点对象为空时，所得结果为该矩形本身；<br/>2. 当该矩形对象为空时，所得结果为指定点对象。<br/>3. 当指定矩形对象和该矩形对象都为空时，所得结果为空。</summary>
+            <overloads>获取指定对象与当前矩形对象并集的最小外接矩形。</overloads>
+            <param name="point">指定点对象。</param>
+            <returns>合并后的矩形。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Union(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>获取指定矩形对象与当前矩形对象并集的最小外接矩形。<br/>1. 当指定矩形对象为空时，所得结果为该矩形本身；<br/>2. 当该矩形对象为空时，所得结果为指定矩形对象。<br/>3. 当指定矩形对象和该矩形对象都为空时，所得结果为空。</summary>
+            <param name="rect">指定矩形对象。</param>
+            <returns>合并后的矩形。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Contains(System.Double,System.Double)">
+            <summary>判断目标坐标点对象是否包含在该矩形对象内。<br/>点在矩形对象边界上也视为在矩形对象内。</summary>
+            <returns>如果目标点对象在该矩形内，则返回 true；否则返回 false。</returns>
+            <overloads>判断目标对象是否包含在当前矩形对象内。</overloads>
+            <param name="x">地理坐标系下目标点对象的横坐标。</param>
+            <param name="y">地理坐标系下目标点对象的纵坐标。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Contains(SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>判断目标坐标点对象是否包含在该矩形对象内。<br/>点在矩形对象边界上也视为在矩形对象内。</summary>
+            <returns>如果目标点对象在该矩形内，则返回 true；否则返回 false。当参数为空时，返回 false。</returns>
+            <param name="point">目标点对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Contains(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>判断指定的矩形对象是否完全包含在该矩形对象内。<br/>目标矩形对象与该矩形对象重合也视为在矩形对象内。</summary>
+            <returns>如果目标矩形对象在该矩形对象内，则返回 true；否则返回 false。该参数为空时，返回 false。</returns>
+            <param name="rect">目标矩形对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Expand(System.Double)">
+            <summary>缩放矩形对象。</summary>
+            <returns>返回缩放后的 Rectangle2D 对象。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.Clone">
+            <summary>
+            克隆一个矩形对象。
+            </summary>
+            <returns>返回一个与原对象具有相同坐标的矩形对象。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2D.ToString(System.IFormatProvider)">
+            <summary>在将 Rectangle2D 对象转化成规定字符串表示形式前，先检索控制格式化的对象。</summary>
+            <returns>返回字符串表达式,格式为 "x的值,y的值"。</returns>
+            <param name="provider">提供用于检索控制格式化的对象的机制。该参数为 IFormatProvider 类，请参见 Microsoft Visual Studio 帮助文档。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Empty">
+            <summary>获取 Rectangle2D 对象的空值，即该对象的左下角坐标值为正无穷，右上角坐标值为负无穷。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Left">
+            <summary>获取地理坐标系下矩形对象的左边界 x 坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Right">
+            <summary>获取地理坐标系下矩形对象的右边界 x 坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Bottom">
+            <summary>获取地理坐标系下矩形对象的下边界 y 坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Top">
+            <summary>获取地理坐标系下矩形对象的上边界 y 坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Center">
+            <summary>获取地理坐标系下矩形对象的中心点。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Height">
+            <summary>获取地理坐标系下矩形对象的高度。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.Width">
+            <summary>获取地理坐标系下矩形对象的宽度。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.TopRight">
+            <summary>地理坐标系下矩形对象的右上角点坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.BottomLeft">
+            <summary>地理坐标系下矩形对象的左下角点坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.TopLeft">
+            <summary>地理坐标系下矩形左上角点坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Rectangle2D.BottomRight">
+            <summary>地理坐标系下矩形右下角点坐标值。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Rectangle2DConverter">
+            <summary>Rectangle2D 类型转换器类</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2DConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>确定是否可返回一个值，该值指示类型转换器能否将指定类型的对象转换为此转换器的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="sourceType">转换源对象类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2DConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将指定对象转换为此转换器的类型。</summary>
+            <param name="value">要转换为此转换器类型的对象。</param>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <returns>转换后的值。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2DConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>确定是否可从 Rectangle2D 转换到指定的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="destinationType">要转换到的类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Rectangle2DConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>从 Rectangle2D 转换到指定的类型。</summary>
+            <param name="context">一个提供格式上下文的对象。</param>
+            <param name="culture">用作当前区域性的 CultureInfo。</param>
+            <param name="value">要转换为此转换器类型的对象。</param>
+            <param name="destinationType">要转换到的类型。</param>
+            <returns>如果该转换器能够执行转换，则为 true；否则为 false。</returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.FillStyle">
+            <summary>
+            	<para>面要素风格类</para>
+            	<para>对面状要素进行风格设置的父类。系统提供了一种预定义面要素风格 PredefinedFillStyle 类，用户可以继承 FillStyle 自定义面要素风格类。</para>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Style">
+            <summary>
+            	<para>风格基类</para>
+            	<para>设置地理要素 Feature 风格的父类，子类包括点状符号风格（MarkerStyle）、线状符号风格（LineStyle）、填充符号风格（FillStyle）、文本风格（TextStyle）和一些预定义的风格类。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Style.ControlTemplateProperty">
+            <summary>标识 ControlTemplate 的依赖项属性。</summary>
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Style.#ctor">
+            <summary>初始化 Style 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.Style.OnPropertyChanged(System.String)">
+            <summary>属性发生变化后触发的事件。</summary>
+            <param name="propertyName">要在事件中报告的事件数据。即属性发生变化的属性名称。</param>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Core.Style.PropertyChanged">
+            <summary>当属性发生变化时触发该事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.Style.ControlTemplate">
+            <remarks>关于控件模板类请参见 Microsoft 帮助文档。</remarks>
+            <summary>获取或设置风格类的具体内容、形式。继承该父类的子类可通过 XAML 定义风格模板类。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.FillStyle.#ctor">
+            <summary>初始化 FillStyle 类的新实例。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.FillProperty">
+            <summary>标识 Fill 的依赖项属性。</summary>
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeProperty">
+            <summary>Stroke 的依赖项属性。</summary>
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeThicknessProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeThickness 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeDashArrayProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashArray 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeDashCapProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashCap 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeDashOffsetProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashOffset 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeEndLineCapProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashOffset 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeLineJoinProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeLineJoin 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.FillStyle.StrokeStartLineCapProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeStartLineCap 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.Fill">
+            <summary>获取或设置面要素填充颜色。</summary>
+            <remarks>可以使用画笔对象 Brush 以纯色、线性渐变、径向渐变和图像进行绘制。有关 Brush 和填充颜色的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.Stroke">
+            <summary>获取或设置面要素边界线颜色。</summary>
+            <remarks>可以使用画笔对象 Brush 以纯色、线性渐变、径向渐变和图像进行绘制。有关 Brush 和填充颜色的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeThickness">
+            <summary>获取或设置面要素轮廓的宽度，以像素为单位。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeDashArray">
+            <summary>获取或设置双精度值的集合，指示用于勾勒形状轮廓的虚线和间隙的样式，以像素为单位。</summary>
+            <remarks>有关 StrokeDashArray 详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeDashCap">
+            <summary>获取或设置一个 PenLineCap 类型的枚举值，该值指定如何绘制虚线的两端，此设置将应用于每条虚线的两端。</summary>
+            <remarks>有关该属性与 PenLineCap 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeDashOffset">
+            <summary>获取或设置一个值，它指定虚线样式内虚线开始处的距离，以像素为单位。通常，应对此属性使用整型数值。非整数值可导致子像素呈现，并且可能会更改笔画的外观颜色。</summary>
+            <remarks>有关 StrokeDashOffset 详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeEndLineCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值描述位于直线末端的形状。<br />注：如果在没有 Stroke 或没有离散起点或终点的形状上设置此属性，则此属性不起作用。例如，如果在始终为闭合笔画的 Ellipse 上设置此属性，则此属性不起作用。</summary>
+            <remarks>有关 StrokeEndLineCap 与 PenLineCap 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeLineJoin">
+            <summary>获取或设置一个 PenLineJoin 枚举值，该值指定在所绘形状的顶点处使用的连接类型。<br />如果在没有顶点的元素（如 Line 元素）上设置此属性，则此属性不起作用。</summary>
+            <remarks>有关 StrokeLineJoin 和 PenLineJoin 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.FillStyle.StrokeStartLineCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值描述位于 Stroke 起始处的形状。<br />如果在没有 Stroke 或没有起点或终点的形状上设置此属性，则此属性不起作用。例如，如果在带有闭合笔画的 Ellipse 上设置此属性，则此属性不起作用。</summary>
+            <remarks>有关 StrokeStartLineCap 和 PenLineCap 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.LineStyle">
+            <summary>
+            	<para>线要素风格类</para>
+            	<para>对线要素进行风格设置的父类。系统提供了一种预定义线要素风格 PredefinedLineStyle 类，用户可以继承 LineStyle 自定义线要素风格类。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.LineStyle.#ctor">
+            <summary>LineStyle 类的无参构造函数。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>Stroke 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeThicknessProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeThickness 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeDashArrayProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashArray 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeDashCapProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashCap 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeDashOffsetProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashOffset 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeEndLineCapProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeDashOffset 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeLineJoinProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeLineJoin 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.LineStyle.StrokeStartLineCapProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>StrokeStartLineCap 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.Stroke">
+            <summary>获取或设置线绘制方式的 Brush，使用其输出对区域进行"绘制"。画笔不同，其输出类型也不同。某些画笔使用纯色、渐变或图像绘制区域。</summary>
+            <remarks>可以使用画笔对象 Brush 以纯色、线性渐变、径向渐变和图像进行绘制。有关 Brush 和填充颜色的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeThickness">
+            <summary>获取或设置线要素的宽度，以像素为单位。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeDashArray">
+            <summary>获取或设置双精度值的集合，指示用于勾勒形状轮廓的虚线和间隙的样式，以像素为单位。</summary>
+            <remarks>有关 StrokeDashArray 详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeDashCap">
+            <summary>获取或设置一个 PenLineCap 类型的枚举值，该值指定如何绘制虚线的两端，此设置将应用于每条虚线的两端。</summary>
+            <remarks>有关该属性与 PenLineCap 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeDashOffset">
+            <summary>获取或设置一个值，它指定虚线样式内虚线开始处的距离，以像素为单位。通常，应对此属性使用整型数值。非整数值可导致子像素呈现，并且可能会更改笔画的外观颜色。</summary>
+            <remarks>有关 StrokeDashOffset 详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeEndLineCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值描述位于直线末端的形状。<br />注：如果在没有 Stroke 或没有离散起点或终点的形状上设置此属性，则此属性不起作用。例如，如果在始终为闭合笔画的 Ellipse 上设置此属性，则此属性不起作用。</summary>
+            <remarks>有关 StrokeEndLineCap 与 PenLineCap 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeLineJoin">
+            <summary>获取或设置一个 PenLineJoin 枚举值，该值指定在所绘形状的顶点处使用的连接类型。<br />如果在没有顶点的元素（如 Line 元素）上设置此属性，则此属性不起作用。</summary>
+            <remarks>有关 StrokeLineJoin 和 PenLineJoin 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.LineStyle.StrokeStartLineCap">
+            <summary>获取或设置一个 PenLineCap 枚举值，该值描述位于 Stroke 起始处的形状。<br />如果在没有 Stroke 或没有起点或终点的形状上设置此属性，则此属性不起作用。例如，如果在带有闭合笔画的 Ellipse 上设置此属性，则此属性不起作用。</summary>
+            <remarks>有关 StrokeStartLineCap 和 PenLineCap 的详细信息请参见 Microsoft 帮助文档。</remarks>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.MarkerStyle">
+            <summary>
+            	<para>点要素风格类</para>
+            	<para>对点要素进行风格设置的父类。系统提供了一种预定义点要素风格 PredefinedMarkerStyle 类，用户可以继承 MarkerStyle 自定义点要素风格类。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.MarkerStyle.OffsetXProperty">
+            <summary>标识 OffsetX 的依赖项属性。</summary>
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.MarkerStyle.OffsetYProperty">
+            <summary>OffsetY 的依赖项属性。</summary>
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.MarkerStyle.OffsetX">
+            <summary>获取或设置锚点横向（X 方向）偏移量，默认为0。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.MarkerStyle.OffsetY">
+            <summary>获取或设置锚点纵向（Y 方向）偏移量，默认为0。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PictureFillStyle">
+            <summary>
+            	<para>图片填充风格</para>
+            	<para>使用图片来填充多边形。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PictureFillStyle.#ctor">
+            <summary>初始化 PictureFillStyle 类的新实例。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PictureFillStyle.SourceProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>标识 Source 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PictureFillStyle.Source">
+            <summary>获取或设置导入图片的路径。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PictureMarkerStyle">
+            <summary>
+            	<para>图片填充风格</para>
+            	<para>将图片作为点状符号显示。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PictureMarkerStyle.#ctor">
+            <summary>初始化 PictureMarkerStyle 类的新实例。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PictureMarkerStyle.SourceProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>标识 Source 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PictureMarkerStyle.HeightProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>标识 Height 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PictureMarkerStyle.WidthProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>标识 Width 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PictureMarkerStyle.Source">
+            <summary>获取或设置导入图片的路径。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PictureMarkerStyle.Height">
+            <summary>获取或设置图片的高度，以像素为单位。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PictureMarkerStyle.Width">
+            <summary>获取或设置图片的宽度，以像素为单位。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PredefinedFillStyle">
+            <summary>
+            	<para>系统预定义面要素风格设置类</para>
+            	<para>用户可以直接使用该类设置面要素风格，也可以继承 FillStyle 类自定义其他的面要素风格设置类。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PredefinedFillStyle.#ctor">
+            <summary>初始化 PredefinedFillStyle 类的新实例。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PredefinedLineStyle">
+            <summary>
+            	<para>系统预定义线要素风格设置类</para>
+            	<para>用户可以直接使用该类设置线要素风格，也可以继承 LineStyle 类自定义其他的线要素风格设置类。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PredefinedLineStyle.#ctor">
+            <summary>初始化 PredefinedLineStyle 类的新实例。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedLineStyle.SymbolProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>标识 Symbol 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PredefinedLineStyle.Symbol">
+            <summary>获取或设置线要素形状，LineSymbol 枚举类，该枚举类提供常用的线要素形状。如果不能满足要求，用户也可继承 LineStyle 类自定义其他的风格。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PredefinedLineStyle.LineSymbol">
+            <summary>线要素形状枚举类。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedLineStyle.LineSymbol.Dash">
+            <summary><img src="dash.png"/></summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedLineStyle.LineSymbol.DashDot">
+            <summary><img src="dashdot.png"/></summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedLineStyle.LineSymbol.DashDotDot">
+            <summary><img src="dashdotdot.png"/></summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedLineStyle.LineSymbol.Dot">
+            <summary><img src="dot.png"/></summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedLineStyle.LineSymbol.Solid">
+            <summary><img src="solid.png"/></summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle">
+            <summary>
+            	<para>系统预定义的点要素风格设置类</para>
+            	<para>用户可以直接使用该类设置点要素风格，也可以继承 MarkerStyle 类自定义其他的点要素风格设置类。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.ColorProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>Color 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.SizeProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>Size 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.SymbolProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>Symbol 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.#ctor">
+            <summary>PredefinedMarkerStyle 类的新实例。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.Color">
+            <summary>获取或设置点要素填充颜色，必设属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.OffsetX">
+            <summary>获取或设置锚点横向（X 方向）偏移量，默认为0。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.OffsetY">
+            <summary>获取或设置锚点纵向（Y 方向）偏移量，默认为0。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.Size">
+            <summary>获取或设置点要素大小。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.Symbol">
+            <summary>获取或设置点要素形状，MarkerSymbol 枚举类，该枚举类提供常用的线要素形状。如果不能满足要求，用户也可继承 MarkerStyle 类自定义其他的风格。。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol">
+            <summary>点要素形状枚举类。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol.Circle">
+            <summary>
+            	<para>圆:<img src="circle.png"/></para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol.Square">
+            <summary>
+            正方形:<img src="square.png"/>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol.Cross">
+            <summary>
+            	<para>十字形:<img src="cross.png"/></para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol.Diamond">
+            <summary>
+            菱形:<img src="diamond.png"/>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol.Triangle">
+            <summary>
+            三角形:<img src="triangle.png"/>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.PredefinedMarkerStyle.MarkerSymbol.Star">
+            <summary>
+            星形:<img src="star.png"/>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.TextStyle">
+            <summary>
+            	<para>文本样式类</para>
+            	<para>该类继承了 MarkerStyle 类。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.TextStyle.FontFamilyProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>标识 FontFamily 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.TextStyle.FontSizeProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>FontSize 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.TextStyle.ForegroundProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>ForeGround 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.TextStyle.TextProperty">
+            <remarks>依赖项属性的用途在于提供一种方法来基于其他输入的值计算属性值。</remarks>
+            <summary>Text 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Core.TextStyle.#ctor">
+            <summary>初始化 TextStyle 类的新实例。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.TextStyle.FontFamily">
+            <summary>获取或设置字体类型。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.TextStyle.FontSize">
+            <summary>获取或设置字体大小。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.TextStyle.Foreground">
+            <summary>获取或设置字体颜色。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Core.TextStyle.Text">
+            <summary>获取或设置文本内容。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Core.Unit">
+            <summary>单位枚举类。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Meter">
+            <summary>米</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Centimeter">
+            <summary>厘米</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Decimeter">
+            <summary>分米</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Foot">
+            <summary>英尺</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Inch">
+            <summary>英寸</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Kilometer">
+            <summary>公里</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Mile">
+            <summary>英里</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Millimeter">
+            <summary>毫米</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Yard">
+            <summary>码</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Undefined">
+            <summary>未定义</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.DecimalDegree">
+            <summary>十進制度</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Degree">
+            <summary>度</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Minute">
+            <summary>分</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Second">
+            <summary>秒</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Core.Unit.Radian">
+            <summary>弧度</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.CloudLayer">
+            <summary>
+            	<para>云服务图层</para>
+            	<para>云服务可以让用户通过因特网灵活、快速和低成本的存储和读取海量数据。该类是通过 SuperMap 云服务发布的数据搭建的一种图层，继承自分块缓存图层（TiledCachedLayer）。</para>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.TiledCachedLayer">
+            <summary>
+            分块缓存图层<br/>
+            分块缓存图层是客户端呈现栅格图层的一种图层，它主要将一个完整的地图切割成多个相同大小的正方形块图片，地图最终呈现时就是由这些块图片拼合而成。之所以称之为缓存图层，是因为这些正方形块图片是事先切好，直接从服务器获取。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.TiledLayer">
+            <summary>
+            	<para>分块图层基类</para>
+            	<para>分块图层是抽象类，支持各种地图服务的分块缓存图层和分块动态图层继承该类。<br/>有关分块图层的相关知识请参见 《分块图层和动态图层》。</para>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ImageLayer">
+            <summary>栅格图层类</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.Layer">
+            <summary>
+            <para>图层类</para>
+            <para>所有图层的基类。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.IDProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.ID">ID</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.MaxVisibleResolutionProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.MaxVisibleResolution">MaxVisibleResolution</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.MinVisibleResolutionProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.MinVisibleResolution">MinVisibleResolution</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.MinVisibleScaleProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.MinVisibleScale">MinVisibleScale</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.MaxVisibleScaleProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.MaxVisibleScale">MaxVisibleScale</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.OpacityProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.Opacity">Opacity</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Layer.IsVisibleProperty">
+            <summary>
+                标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Layer.IsVisible">IsVisible</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.#ctor">
+            <summary>初始化 Layer 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.Initialize">
+            <summary>初始化该图层的一些信息，例如 Bounds、Url、CRS 等。 </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.OnFailed(System.Exception)">
+            <summary>图层初始化失败。 </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.ToBitmap">
+            <summary>将图层转化为位图。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.Cancel">
+            <summary>取消图层对服务器的图片请求。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.Refresh">
+            <summary>刷新图层。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.OnLayerChanged">
+            <summary>引发图层发生变化事件。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.OnProgress(System.Int32)">
+            <summary>引发图层加载进度事件。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Layer.OnPropertyChanged(System.String)">
+            <summary>引发属性发生更改事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.ID">
+            <summary>获取或设置图层唯一标识。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.MaxVisibleResolution">
+            <summary>获取或设置图层的最大可见分辨率。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.MinVisibleResolution">
+            <summary>获取或设置图层的最小可见分辨率。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.MinVisibleScale">
+            <summary>获取或设置图层的最小可见比例尺。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.MaxVisibleScale">
+            <summary>获取或设置图层的最大可见比例尺。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Opacity">
+            <summary>获取或设置图层不透明度。取值范围为0-1，0表示透明，1表示不透明。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.IsVisible">
+            <summary>判断图层是否可见。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Layer.PropertyChanged">
+            <summary>当一个属性值发生变化时，触发该事件。继承自INotifyPropertyChanged。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Layer.Failed">
+            <summary>图层初始化失败，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Layer.Initialized">
+            <summary>图层初始化完毕，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Layer.Progress">
+            <summary>图层初始化过程中，触发该事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Error">
+            <summary>获取或设置初始化失败返回的异常。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.IsInitialized">
+            <summary>判断图层是否初始化完毕。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.CRS">
+            <summary>获取或设置当前图层的坐标参考系。坐标参考系使用 EPSG 发布的代表特定椭球体、单位、地理坐标系或投影坐标系的 Well Konwn ID 值（简称 WKID）。多个图层叠加时，该属性必设。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Metadata">
+            <summary>获取或设置描述图层的元数据，包括图层标题和详细描述。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Url">
+            <summary>获取或设置当前图层地址。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Bounds">
+            <summary>获取或设置图层的地理范围。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Dpi">
+            <summary>单位面积内像素的多少，即扫描精度。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.ViewBounds">
+            <summary>获取当前图层地理可视范围。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.ViewSize">
+            <summary>获取图层显示区域大小，可看作地图控件大小。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.Resolution">
+            <summary>获取当前图层的分辨率。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Layer.IsScaleCentric">
+            <summary>获取是否以比例尺为中心计算 dpi 。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ImageLayer.#ctor">
+            <summary>初始化 ImageLayer 类的新实例。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ImageLayer.Transparent">
+            <summary>获取或设置图层透明度。true 表示透明。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ImageLayer.ImageFormat">
+            <summary>获取或设置栅格图片的格式。支持 PNG 和 JPEG 两种格式。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.#ctor">
+            <summary>初始化 TiledLayer 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.GetCachedResolutions">
+            <summary>获取缓存图层的分辨率数组。</summary>
+            <returns>返回缓存图层的分辨率数组。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.GetTile(System.Int32,System.Int32,System.Int32,System.Double,System.Threading.CancellationToken)">
+            <summary>获取单个图片块的 Url 地址。<br/>地图被预先分割为若干块图片，每一个块图片都有自己唯一的索引号，如：（0，0），（1，2），（1，3）。反之根据索引号和比例尺就可以确定唯一一个分块图片。 </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.NeedShowTiles(System.Double,System.Int32[],System.Boolean,System.Int32@)">
+            <summary>
+            计算需要添加的Tile块。
+            </summary>
+            <param name="resolution"></param>
+            <param name="span"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.Refresh">
+            <summary>刷新图层。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.Cancel">
+            <summary>取消图层对服务器的图片请求。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.ClearLocalStorage">
+            <summary>清除缓存的地图。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledLayer.GetProgress">
+            <summary>
+            获取当前进度。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TiledLayer.TileSize">
+            <summary>获取或设置分块图片的大小。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.TiledLayer.TileLoaded">
+            <summary>每一张瓦片图加载完毕后都会触发该事件，返回当前加载的瓦片图的行列号，当前分辨率级别，以及 bounds 等。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.TiledLayer.TileLoading">
+            <summary>每一张瓦片图开始初始化时都会触发事件，返回当前加载的瓦片图的行列号，当前分辨率级别。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TiledLayer.Origin">
+            <summary>获取或设置图层左上角在地理坐标系中的坐标值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TiledLayer.LocalStorage">
+            <summary>
+            获取或者设置地图的本地缓存。当为null时，不使用本地缓存。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledCachedLayer.#ctor">
+            <summary>
+                初始化 <see cref="T:SuperMap.WindowsPhone.Mapping.TiledCachedLayer">TiledCachedLayer</see> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledCachedLayer.GetTile(System.Int32,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>获取单个图片块的 Url 地址。<br />缓存的地图首先被分割为多个比例尺下的图片，对于同一个地图比例尺下的地图又被分割为若干块图片，每一个块图片都有自己唯一的索引号，如：（0，0），（1，2），（1，3）等。反之根据图片索引号和比例尺就可以确定唯一一个块图片。</summary>
+            <returns>单个图片块的 URL 地址。</returns>
+            <param name="indexX">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="indexY">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <param name="level">比例尺级别。</param>
+            <param name="cancellationToken">用来取消当前操作的取消标记。 </param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledCachedLayer.GetTile(System.Int32,System.Int32,System.Int32,System.Double,System.Threading.CancellationToken)">
+            <summary>获取单个图片块的 Url 地址。<br />缓存的地图首先被分割为多个比例尺下的图片，对于同一个地图比例尺下的地图又被分割为若干块图片，每一个块图片都有自己唯一的索引号，如：（0，0），（1，2），（1，3）等。反之根据图片索引号和比例尺就可以确定唯一一个块图片。</summary>
+            <returns>单个图片块的 URL 地址。</returns>
+            <param name="indexX">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="indexY">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <param name="resolution">当前图层的分辨率。</param>
+            <param name="level">比例尺级别。</param>
+            <param name="cancellationToken">用来取消当前操作的取消标记。 </param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledCachedLayer.GetCachedResolutions">
+            <summary>获取分块缓存图层的分辨率数组。</summary>
+            <returns>返回分块缓存图层的分辨率数组。</returns>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TiledCachedLayer.Resolutions">
+            <summary>获取当前图层的分辨率数组。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.CloudLayer.#ctor">
+            <summary>初始化 CloudLayer 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.CloudLayer.Initialize">
+            <summary>初始化该图层的一些信息。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.CloudLayer.GetTile(System.Int32,System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>获取单个图片块的 URL 地址。<br/>缓存的地图首先被分割为多个比例尺下的图片，对于同一个地图比例尺下的地图又被分割为若干块图片，每一个块图片都有自己唯一的索引号，如：（0，0），（1，2），（1，3）等。反之根据图片索引号和比例尺就可以确定唯一一个块图片。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.CloudLayer.MapName">
+            <summary>获取或设置地图名称，默认为："quanguo"。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.DrawParameter.UseTransitions">
+            <summary>获取或设置是否使用动画。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.DrawParameter.Resoluitons">
+            <summary>获取或设置地图分辨率数组。<br/>1.对于分块缓存图层也拥有 Resolutions 属性，它们之间的关系是：当分块缓存图层和 Map 的分辨率数组 Resolutions 中存在相等的分辨率值时以该分辨率出图，否则不显示。当没有设置 Map 的分辨率数组 Resolutions 时，以图层的 Resolutions 显示。<br/>2.对于动态方式获取的图层，当不设置 Map 的分辨率数组 Resolutions 时，地图为无极缩放。</summary>       
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.DrawParameter.Resolution">
+            <summary>
+            需要更改的分辨率。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ElementsLayer">
+            <summary>
+            	<para>元素图层</para>
+            	<para>可以添加各种元素，比如 Button、Rectangle；可以添加图片（JPEG/PNG）、音频（WMA/MP3）和视频（WMV）。除此之外，默认提供了能够在该图层上添加的三个元素 Pushpin（定位图钉）、PolylineBase （线元素）和 PolygonBase （面元素）。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.GetReferenceLength(System.Windows.UIElement)">
+            <summary>获取设置的地物的参考长度。</summary>
+            <returns>返回地物的参考长度。</returns>
+            <param name="elem">每个所指示地物的参考长度，单位是像素。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.GetReferenceSize(System.Windows.UIElement)">
+            <summary>获取设置的标签本人的参考尺寸</summary>
+            <returns>用户自己设置的标签的参考尺寸。如果不设置，则为标签的默认尺寸，单位是像素。</returns>
+            <param name="elem">每个所指示地物的参考长度，单位是像素。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.GetBBox(System.Windows.DependencyObject)">
+            <summary>获取图层上某个元素的边界范围。</summary>
+            <param name="obj">要为其检索值的属性的 DependencyProperty 标识符。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.SetBBox(System.Windows.DependencyObject,SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <example>当矩形四边的坐标值相等时，元素的中心将定位到该点。<code inline="false" title="" description="" lang="CS"></code><code title="Example1" description="" lang="C#">Ellipse myellipse = new Ellipse();     
+            Rectangle2D ellbounds = new Rectangle2D(left, bottom, right, top);
+            myellipse.SetValue(ElementsLayer.BBoxProperty, ellbounds);
+            this.ElementsLayer.AddChild(myellipse);</code><code title="Example2" description="" lang="CS">&lt;ELLIPSE id=dxCrLf &lt;SPAN x:Name="MyEllipse"&gt;&lt;/SPAN&gt; namespace:ElementsLayer.BBox="left, bottom, right, top"&amp;gt; 
+            &lt;/ELLIPSE&gt;</code></example>
+            <summary>设置图层上某个元素的边界范围。</summary>
+            <param name="obj">要设置的依赖项属性的标识符。</param>
+            <param name="value">新的本地值。</param>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.ElementsLayer.BBoxProperty">
+            <summary>标识 BBox 依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.OnBBoxChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>当 BBox 属性值更改时，触发该事件。</summary>
+            <param name="dependencyObject">BBox 的依赖项属性对象。</param>
+            <param name="e">提供事件的数据。 </param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.#ctor">
+            <summary>初始化 <see cref="T:SuperMap.WindowsPhone.Mapping.ElementsLayer">ElementsLayer</see>
+                类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.AddChild(System.Windows.UIElement)">
+            <overloads>向图层添加目标元素。</overloads>
+            <summary>将目标要素直接添加在图层上。</summary>
+            <param name="element">目标元素。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.AddChild(System.Windows.UIElement,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>将目标要素添加到图层指定点。</summary>
+            <param name="element">目标元素。</param>
+            <param name="location">指定位置点。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.AddChild(System.Windows.UIElement,SuperMap.WindowsPhone.Core.Point2D,System.Double,System.Windows.Size)">
+            <summary>将目标要素直接添加在图层上，启用自动避让时会调用此方法。关于具体避让原理说明详见IsAutoAvoidance接口。</summary>
+            <param name="element">目标元素。</param>
+            <param name="location">指定位置点。</param>
+            <param name="referenceLength">地物的参考长度，<br/>如果不设置默认为0。</param>
+            <param name="referenceSize">地物的参考尺寸，<br/>不设置则使用标签的默认尺寸。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.AddChild(System.Windows.UIElement,SuperMap.WindowsPhone.Core.Point2D,System.Double)">
+            <summary>将目标要素添加到图层指定点，启动自动避让时调用此方法。关于具体避让原理说明详见IsAutoAvoidance接口。</summary>
+            <param name="element">目标元素。</param>
+            <param name="location">指定位置点。</param>
+            <param name="referenceLength">地物的参考长度，<br/>如果不设置默认为0。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ElementsLayer.AddChild(System.Windows.UIElement,SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>将目标要素添加到图层指定区域。</summary>
+            <param name="element">目标元素。</param>
+            <param name="bbox">指定区域。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ElementsLayer.Children">
+            <example>
+            	<code title="Example1" description="" lang="C#">ElementsLayer.Children.Add(UIElement);</code>
+            	<code title="Example2" description="" lang="XAML">&lt;namespace:ElemntsLayer&gt;
+              &lt;UIElement/&gt;
+            &lt;/namespace:ElemntsLayer&gt;</code>
+            </example>
+            <summary>获取图层上所有元素，通过该属性的 Add 或 Remove 方法可以增加或删除元素。</summary>
+            <remarks>可以通过 Children 的 Add 方法添加元素，也可以直接使用 ElementsLayer.Child （）方法添加元素。以 XAML 的方式添加元素也可以省略 Children 节点。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ElementsLayer.IsAutoAvoidance">
+            <summary>是否启用自动避让，<br/>启动自动避让时会调用 AddChild(UIElement,Point2D,Double,Size) 和 AddChild(UIElement,Point2D,Double) 方法。
+            <para>关于标签避让原理的说明：标签避让只有8个位置(如图1)，<br/>设标签长度为L，标签宽度为T（通过addChild方法中的referenceSize参数设置，如果不设置则使用标签的默认尺寸）。<br/>设置地物的参考长度为C（通过addChild方法中的referenceLength参数设置， 如果不设置默认为0）。<br/>则初始偏移距离为R（R=0.7×C）<br/>标签以中心点定位,标签初始位置为X，Y, <br/>则我们按下面的表格（图2）进行标签避让算法：</para>
+             <para>
+            		<list type="table">
+            			<item>
+            				<term><img src="avoidPrinciple.png"/></term>
+            				<description><img src="avoidAlgorithm.png"/></description>
+            			</item>
+            		</list>
+             </para>
+            	<para>避让流程如下图3所示，<br/>当同一位置出现标签压盖时，进入标签避让计算：<br/>避让方法，当标签压盖时，将标签Y方向加T，如果仍然压盖，将标签Y减2T（初始位置减T），如果仍然压盖，进入下一个位置计算。</para>
+                <para>
+            		<list type="table">
+            			<item>
+            				<term><img src="avoidProcess.png"/></term>
+            			</item>
+            		</list>
+            	</para>
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ElementsLayer.BoundsCollection">
+            <summary>标签的地理范围，启动避让则是避让后的地理范围。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ElementsLayer.Bounds">
+            <example>
+            	<code title="Example1" description="" lang="XAML">&lt;namespace:ElementsLayer id="myElementsLayer" Bounds="left,bottom,right,top"&gt;
+            &lt;/namespace:ElementsLayer&gt;</code>
+            </example>
+            <summary>获取或设置图层的地理范围。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.LayerFailedEventArgs">
+            <summary>为 Failed 事件提供数据</summary>
+            <remarks>Failed 事件在图层初始化失败时引发。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.LayerFailedEventArgs.Error">
+            <summary>获取或设置Failed 事件的异常信息。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ProgressEventArgs">
+            <summary>为 Progress 事件提供数据</summary>
+            <remarks>Progress  事件在加载所有的地图图片时引发。</remarks>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ProgressEventArgs.Progress">
+            <summary>获取或设置Progress 事件的进度信息。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ResolutionsEventArgs">
+            <summary>
+            	<para>分辨率数据事件类</para>
+            	<para>该类为 EventHandler 事件提供分辨率数据。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ResolutionsEventArgs.#ctor(System.Double[],System.Double[])">
+            <summary>初始化 ResolutionsEventArgs 类的新实例。</summary>
+            <param name="newResolutions">分辨率更改后的值。</param>
+            /// <param name="oldResulotions">分辨率更改前的值。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ResolutionsEventArgs.NewResolutions">
+            <summary>获取分辨率更改后的值。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ResolutionsEventArgs.OldResulotions">
+            <summary>获取分辨率更改前的值。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ScalesEventArgs">
+            <summary>
+            	<para>比例尺数据事件类</para>
+            	<para>该类为 EventHandler 事件提供比例尺数据。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ScalesEventArgs.#ctor(System.Double[],System.Double[])">
+            <summary>初始化 ScalesEventArgs 类的新实例。</summary>
+            <param name="oldScales">比例尺更改前的值。</param>
+            /// <param name="newScales">比例尺更改后的值。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ScalesEventArgs.OldScales">
+            <summary>获取比例尺更改前的值。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ScalesEventArgs.NewScales">
+            <summary>获取比例尺更改后的值。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ViewBoundsEventArgs">
+            <summary>为 ViewBoundsChanged 事件和 ViewBoundsChanging 事件提供数据</summary>
+            <remarks>ViewBoundsChanged 事件和 ViewBoundsChanging 事件在地图地理可视范围发生变化而引发。</remarks>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ViewBoundsEventArgs.#ctor(SuperMap.WindowsPhone.Core.Rectangle2D,SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>
+                初始化 <see cref="T:SuperMap.WindowsPhone.Mapping.ViewBoundsEventArgs">ViewBoundsEventArgs</see> 类的新实例。
+            </summary>
+            <param name="oldViewBounds">发生变化前的地图地理可视范围。</param>
+            <param name="newViewBounds">发生变化后的地图地理可视范围。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ViewBoundsEventArgs.NewViewBounds">
+            <summary>获取或设置ViewBoundsChanged 事件和 ViewBoundsChanging 事件发生变化后的地图地理可视范围。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.ViewBoundsEventArgs.OldViewBounds">
+            <summary>获取或设置ViewBoundsChanged 事件和 ViewBoundsChanging 事件发生变化前的地图地理可视范围。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.FeaturesLayer">
+            <summary>
+            矢量要素图层<br/>
+            该图层主要用于承载 Feature 矢量要素，包括 GeoPoint、GeoLine、GeoRegion、文本和用户自定义要素。文本作为一个 Feature 实际上是一个 Geometry 为 GeoPoint，Style 为 TextStyle 的矢量点。<br/>在为要素设置风格时可以使用预定义风格类，如 PredefinedMarkerStyle；也可以使用 Windows Phone 8 SDK 提供的控件类，从而实现要素的可视化状态和动画效果。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.FeaturesLayer.FeaturesProperty">
+            <summary>标识 Features 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.FeaturesLayer.ToolTipHideDelayProperty">
+            <summary>
+                标识 <see cref="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetToolTipHideDelay(System.Windows.DependencyObject)">ToolTipHideDelayProperty</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.SetToolTipHideDelay(System.Windows.DependencyObject,System.TimeSpan)">
+            <summary>设置 ToolTip 隐藏的时间间隔。</summary>
+            <param name="o">进行数据绑定的属性的依赖项属性标识符。</param>
+            <param name="value">表示时间间隔，TimeSpan 类型。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetToolTipHideDelay(System.Windows.DependencyObject)">
+            <summary>获取 ToolTip 隐藏的时间间隔。</summary>
+            <returns>返回 ToolTip 隐藏的时间间隔，返回值为 TimeSpan 类型。</returns>
+            <param name="o">进行数据绑定的属性的依赖项属性标识符。</param>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.FeaturesLayer.ToolTipVerticalOffsetProperty">
+            <summary>
+                标识 <see cref="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetToolTipVerticalOffset(System.Windows.FrameworkElement)">ToolTipVerticalOffset</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.SetToolTipVerticalOffset(System.Windows.FrameworkElement,System.Double)">
+            <summary>设置 ToolTip 信息提示框的垂直方向偏移值。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetToolTipVerticalOffset(System.Windows.FrameworkElement)">
+            <summary>获取 ToolTip 信息提示框的垂直方向偏移值。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.FeaturesLayer.ToolTipHorizontalOffsetProperty">
+            <summary>
+                标识 <see cref="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetToolTipHorizontalOffset(System.Windows.FrameworkElement)">ToolTipHorizontalOffset</see>
+                属性的附加属性。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.SetToolTipHorizontalOffset(System.Windows.FrameworkElement,System.Double)">
+            <summary>设置 ToolTip 信息提示框的水平方向偏移值。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetToolTipHorizontalOffset(System.Windows.FrameworkElement)">
+            <summary>获取 ToolTip 信息提示框的水平方向偏移值。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.#ctor">
+            <summary>
+                初始化 <see cref="T:SuperMap.WindowsPhone.Mapping.FeaturesLayer">FeaturesLayer</see>
+                类的新实例。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.ClearFeatures">
+            <summary>删除图层中所有要素。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.FromFeatures(System.Collections.Generic.IEnumerable{SuperMap.WindowsPhone.Core.Feature},SuperMap.WindowsPhone.Rendering.IRenderer)">
+            <overloads>静态方法，实现将 Features 加载到 FeaturesLayer 中。</overloads>
+            <summary>从某对象中获取它的 Style，并将这个 Style 作为当前要加载的 Features 的 Style，实现将当前 Features 加载到 FeaturesLayer 中。</summary>
+            <returns>返回加载了 Features 的 FeaturesLayer 对象。</returns>
+            <param name="features">要加载的矢量要素集合对象 FeatureCollection。</param>
+            <param name="renderer">获取到的某对象的 Style。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.FromFeatures(System.Collections.Generic.IEnumerable{SuperMap.WindowsPhone.Core.Feature})">
+            <summary>将 Features 加载到 FeaturesLayer 中。</summary>
+            <returns>返回加载了 Features 的 FeaturesLayer 对象。</returns>
+            <param name="features">要加载的矢量要素集合对象 FeatureCollection。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.FromFeatures(System.Collections.Generic.IEnumerable{SuperMap.WindowsPhone.Core.Feature},SuperMap.WindowsPhone.Core.Style)">
+            <summary>为要加载的 Features 自定义 Style，实现将当前 Features 加载到 FeaturesLayer 中。</summary>
+            <param name="features">要加载的矢量要素集合对象 FeatureCollection。</param>
+            <param name="style">自定义的 Style 对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.AddFeatureSet(SuperMap.WindowsPhone.Core.FeatureCollection)">
+            <summary>将矢量要素集合对象 FeatureCollection加载到 FeaturesLayer 中。</summary>
+            <param name="featureSet">要加载的矢量要素集合对象 FeatureCollection。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.AddFeatureSet(SuperMap.WindowsPhone.Core.FeatureCollection,SuperMap.WindowsPhone.Core.Style)">
+            <summary>将矢量要素集合对象 FeatureCollection加载到 FeaturesLayer 中。</summary>
+            <param name="featureSet">要加载的矢量要素集合对象 FeatureCollection。</param>
+            /// <param name="style">要加载的矢量要素样式 Style 。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.AddFeature(SuperMap.WindowsPhone.Core.Feature)">
+            <summary>在 FeaturesLayer 中添加矢量要素。</summary>
+            <param name="feature">矢量要素。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.FindFeaturesInHostCoordinates(System.Windows.Point)">
+            <summary>在当前 FeaturesLayer 中查找与输入的 X、Y 坐标对相符的矢量要素。</summary>
+            <overloads>在当前 FeaturesLayer 中查找与输入的对象具有相同坐标值的矢量要素。</overloads>
+            <returns>返回查询到的矢量要素集合 FeatureCollection。</returns>
+            <param name="intersectingPoint">
+            X、Y 坐标对。
+            </param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.FindFeaturesInHostCoordinates(System.Windows.Rect)">
+            <summary>在当前 FeaturesLayer 中查找与输入的矩形对象相符的矢量要素。</summary>
+            <param name="intersectingRect">
+            矩形对象。
+            </param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.GetEnumerator">
+            <summary>返回 FeaturesLayer 的 IEnumerator。</summary>
+            <returns>用于 FeaturesLayer 的 IEnumerator。</returns>
+            <remarks><b>IEnumerator</b>接口表示：支持对非泛型集合的简单迭代。具体说明请参见MSDN IEnumerator。</remarks>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.FeaturesLayer.Refresh">
+            <summary>刷新图层。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.FeaturesLayer.Features">
+            <summary>获取或设置图层的矢量要素集合。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.MouseLeftButtonDown">
+            <summary>在点按 Feature 时发生。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.MouseLeftButtonUp">
+            <summary>当手指抬离 Feature 时发生。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.MouseEnter">
+            <summary>当手指进入 Feature 的边界区域时，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.MouseLeave">
+            <summary>当手指离开 Feature 的边界区域时，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.MouseMove">
+            <summary>在以下情况下发生：当触摸 Feature 时（或当 Feature 具有触摸输入捕获时），手指的坐标位置发生改变。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.Tap">
+            <summary>
+            当手指单次触碰 Feature 的情况下发生。
+            </summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.DoubleTap">
+            <summary>
+            当连续两次触碰 Feature 的情况下发生。
+            </summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.FeaturesLayer.Hold">
+            <summary>
+            当长时间按住 Feature 的情况下发生。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.FeaturesLayer.SelectedFeatures">
+            <summary>获取矢量图层中选中的矢量要素集合。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.FeaturesLayer.Bounds">
+            <summary>获取或设置图层的地理范围。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.FeaturesLayer.IsHitTestVisible">
+            <summary>获取或设置界面元素的包含区域是否可用于命中测试。如果可用于命中测试，则为 true；否则为 false。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.FeaturesLayer.ToolTip">
+            <summary>设置图层或图层中各 Feature 的信息提示框或获取图层的信息提示框。矢量图层和矢量要素都有信息提示框属性，在矢量图层中设置该属性则没有设置过信息提示框的 Feature 会将矢量图层的信息提示框作为自己的信息提示框。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.FeaturesLayer.Renderer">
+            <summary>获取或绘制客户端矢量要素专题图。目前支持矢量要素单值专题图和范围分段专题图。</summary>
+            <remarks>客户端矢量要素专题图是在矢量要素图层中对要素某一属性做专题图。绘制专题图过程全部由客户端完成。<br/>而服务端专题图是将客户端指定的专题图参数传递给服务器，由服务器完成计算后将结果返回客户端，最后在客户端的动态图层上将结果呈现出来。</remarks>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.LayerCollection">
+            <summary>表示一个 Layer 对象集合。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.LayerCollection.#ctor">
+            <summary>
+            	<para align="left">
+                    初始化 <see cref="T:SuperMap.WindowsPhone.Mapping.LayerCollection">LayerCollection</see> 类的新实例。
+                </para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.LayerCollection.GetCRS">
+            <summary>获取 Layer 集合的坐标参考系。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.LayerCollection.GetBounds(SuperMap.WindowsPhone.Core.CoordinateReferenceSystem)">
+            <summary>获取 Layer 集合的地理范围。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.LayerCollection.GetResolutions(SuperMap.WindowsPhone.Core.CoordinateReferenceSystem)">
+            <summary>获取Layer 集合的分辨率。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.LayerCollection.ClearItems">
+            <summary>移除所有图层。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.LayerCollection.LayersInitialized">
+            <summary>图层集合初始化完毕，触发该事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.LayerCollection.Item(System.String)">
+            <summary>
+            获取 id 作为索引器。
+            </summary>
+            <param name="id">作为索引器的 id 值。</param>
+            <returns></returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.Map">
+            <summary>
+            	<para>地图控件</para>
+            	<para>地图控件用于装载各类图层。它有自己的比例尺、分辨率、坐标系等属性，虽然图层也有这些属性，但是当图层加载到地图控件中进行显示时就会以地图控件的属性值为准。当图层的坐标系与 Map 的坐标系不一致时地图就可能显示不出来。如果当 Map 与 Layer 的坐标参考系都为空，或者 Map 与 Layer 任一个坐标参考系为空时，地图数据可以正常显示；如果当 Map 与 Layer 都设置了坐标参考系且坐标参考系一致时，地图数据正常显示，反之不一致时可能地图数据显示不出来；如果当 Map 的坐标参考系为空，但加载了两个坐标参考系不一致的图层，则 Map 以第一个图层的坐标参考系作为自己的坐标系，第二个图层可能显示不出来。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.oldResolution">
+            <summary>
+            当分辨率发生变化时，记录上一次的分辨率。
+            暂时作为多点缩放时的辅助字段，后续一起迁移到Action中。
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.ISDoubleTapProperty">
+            <summary>isDoubleTap依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.ZoomFactorProperty">
+            <summary>zoomFactor 依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.PanFactorProperty">
+            <summary>panFactor 依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.#ctor">
+            <summary>初始化 Map 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ArrangeOverride(System.Windows.Size)">
+            <summary>在派生类中重写时，可对地图控件进行排列和大小调整。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OnApplyTemplate">
+            <summary>当应用新模板时生成地图控件的可视化树。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.GetNextResolution(System.Boolean)">
+            <summary>获取下一级别的分辨率。如果设置了地图比例尺级别，则获取下一个比例尺级别 Level 对应的尺度；否则默认返回缩放2倍后的尺度，可通过 ZoomFactor 调整缩放因子。</summary>
+            <returns>返回缩放的下一级比例尺。</returns>
+            <param name="plus">是放大还是缩小。ture 表示放大，false 表示缩小。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.GetNextScale(System.Boolean)">
+            <summary>获取下一级别的比例尺。如果设置了地图比例尺级别 Level，则获取下一个比例尺界别 Level 对应的尺度；否则默认返回缩放2倍后的尺度，可通过 ZoomFactor 调整缩放因子。</summary>
+            <returns>返回缩放的下一级比例尺。</returns>
+            <param name="plus">是放大还是缩小。ture 表示放大，false 表示缩小。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.PanByPixel(System.Double,System.Double)">
+            <summary>根据给定的以像素为单位的漫游距离进行地图平移。<br />如果参数为空，则不平移。</summary>
+            <param name="pixelX">X 方向上漫游的距离，像素单位。</param>
+            <param name="pixelY">Y 方向上漫游的距离，像素单位。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OpenInfoWindow(SuperMap.WindowsPhone.Core.Point2D,System.Windows.UIElement)">
+            <summary>在地图上指定位置打开一个信息框。信息框为一个具有可视外观并可以处理基本输入的对象 UIElement，信息框用于显示某个地物的属性信息等。</summary>
+            <param name="location">指定信息框的中心点在地图上的位置。</param>
+            <param name="element">具有可视外观并可以处理基本输入的信息框对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OpenInfoWindow(SuperMap.WindowsPhone.Core.Point2D,System.Double,System.Double,System.Windows.UIElement)">
+            <summary>在地图上指定位置打开一个信息框。信息框为一个具有可视外观并可以处理基本输入的对象 UIElement，信息框用于显示某个地物的属性信息等。</summary>
+             <param name="location">指定信息框的中心点在地图上的位置。</param>
+             <param name="offsetPixelX">X 坐标值偏移像素。</param>
+             <param name="offsetPixelY">Y 坐标值偏移像素。</param>
+            <param name="element">具有可视外观并可以处理基本输入的信息框对象。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.CloseInfoWindow">
+            <summary>关闭信息框。信息框为一个具有可视外观并可以处理基本输入的对象 UIElement，信息框用于显示某个地物的属性信息等。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.MapToScreen(SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>将地图中指定点的地图坐标转换为像素坐标。即地图坐标点在地图控件中的像素坐标。</summary>
+            <returns>返回像素坐标点。</returns>
+            <param name="point2D">要转换的地图坐标点。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.PanTo(SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>以指定点为目标中心点对地图进行平移。</summary>
+            <param name="center">目标中心点。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ScreenToMap(System.Windows.Point)">
+            <summary>将地图中指定点的像素坐标转换为地图坐标。</summary>
+            <returns></returns>
+            <param name="point">将要转化的像素坐标点。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ViewEntire">
+            <summary>全幅显示地图。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.Zoom(System.Double)">
+            <summary>保持中心点不变，按照给定缩放因子进行缩放。当地图中设置了比例尺或分辨率数组时，将以数组中与设置的缩放因子 ratio 最接近的值来进行地图缩放。</summary>
+            <param name="ratio">缩放因子。例如，2表示放大一倍，0.5表示缩小一倍。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomTo(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>按指定的矩形区域进行缩放。</summary>
+            <param name="bounds">缩放区域的范围。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomToResolution(System.Double)">
+            <overloads>按给定的目标分辨率进行缩放。</overloads>
+            <summary>按给定的目标分辨率进行缩放。当地图中设置了分辨率数组 Resolutions 时，将以数组中与设置的目标分辨率最接近的值来进行地图缩放。</summary>
+            <param name="resolution">目标分辨率。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomToResolution(System.Double,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>按给定的目标分辨率缩放，并漫游到给定的目标中心点。当地图中设置了分辨率数组 Resolutions 时，将以数组中与设置的目标分辨率最接近的值来进行地图缩放。</summary>
+            <param name="resolution">目标分辨率。</param>
+            <param name="center">目标中心点地图坐标。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.Pan(System.Double,System.Double)">
+            <summary>地图坐标系下，根据给定的漫游距离进行地图平移。如果参数为空则不平移。</summary>
+            <param name="offsetX">X 方向上平移的距离，地图单位。</param>
+            <param name="offsetY">Y 方向上平移的距离，地图单位。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomToLevel(System.Int32)">
+            <summary>按给定的缩放级别进行缩放。只有设置了 Map 的 分别率数组 Resolutions  或比例尺数组  Scales，该方法才能正常使用。</summary>
+            <overloads>按给定的缩放级别进行缩放。</overloads>
+            <param name="level">目标缩放级别。该值为分别率数组。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomToLevel(System.Int32,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>按给定的缩放级别缩放，并漫游到给定的目标中心点。只有设置了 Map 的 分别率数组 Resolutions  或比例尺数组  Scales，该方法才能正常使用。</summary>
+            <param name="level">目标缩放级别。该值为分别率数组。</param>
+            <param name="center">目标中心点地图坐标。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomIn">
+            <summary>地图放大。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomOut">
+            <summary>地图缩小。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomToScale(System.Double)">
+            <summary>按给定的目标比例尺进行缩放。当地图中设置了比例尺数组  Scales 时，将以数组中与设置的目标比例尺最接近的值来进行地图缩放。</summary>
+            <overloads>按给定的目标比例尺进行缩放。</overloads>
+            <param name="scale">目标比例尺。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.ZoomToScale(System.Double,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>按给定的目标比例尺，缩放并漫游到给定的目标中心点。当地图中设置了比例尺数组  Scales 时，将以数组中与设置的目标比例尺最接近的值来进行地图缩放。</summary>
+            <param name="scale">目标比例尺。</param>
+            <param name="center">目标中心点坐标。</param>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.PanDurationProperty">
+            <summary>PanDuration 依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.ZoomDurationProperty">
+            <summary>ZoomDuration 依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.LayersProperty">
+            <summary>layers 依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Mapping.Map.AngleProperty">
+            <summary>标识 <see cref="P:SuperMap.WindowsPhone.Mapping.Map.Angle">Angle</see>
+                    属性的附加属性。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>在鼠标指针悬停在地图控件上的情况下按下鼠标左键时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指鼠标左键按下事件。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>在鼠标指针悬停在地图控件上的情况下抬起鼠标左键时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指鼠标左键抬起事件。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <summary>当鼠标进入地图控件的边界区域时，触发该事件。</summary>
+            <param name="e">事件参数对象，这里指鼠标进入事件。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OnMouseMove(System.Windows.Input.MouseEventArgs)">
+            <summary>在鼠标指针悬停在地图控件上的情况下移动鼠标指针时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指鼠标平移事件。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.Map.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <summary>当鼠标离开地图控件的边界区域时，触发该事件。</summary>
+            <param name="e">事件参数对象，这里指鼠标离开事件。</param>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.Progress">
+            <summary>加载所有地图图片的进度事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.ViewBoundsChanging">
+            <summary>当地图地理可视范围改变时，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.ViewBoundsChanged">
+            <summary>当地图地理可视范围改变后，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.ScalesChanged">
+            <summary>当地图比例尺改变时，触发该事件。		</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.ResolutionsChanged">
+            <summary>当地图分辨率改变时，触发该事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.ZoomEffectEnabled">
+            <summary>获取或设置缩放特效是否显示，默认显示。该属性在运行时不改变，不起作用。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.IsDoubleTap">
+            <summary>获取或设置地图是否触发DoubleTap事件。当某些情况下（如用户频繁单击标绘点）需暂时停止通过DoubleTap事件触发地图放大时，可通过此属性进行控制。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.ZoomFactor">
+            <summary>地图缩放因子。默认值为2.0，即当触发键盘 “+” 号或向上滚轮时地图放大两倍；当触发键盘 “-” 号或向下滚轮时地图缩小两倍。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.PanFactor">
+            <summary>地图平移步距，取值范围为0-1。默认值为0.1，即当触发键盘左方向键或鼠标向左拖动地图一步时向左平移地图 ViewBounds 的十分之一；当触发键盘右方向键或鼠标向右拖动地图一步时向右平移地图 ViewBounds 的十分之一。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.ScreenContainer">
+            <summary>获取屏幕图层。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Metadata">
+            <summary>获取或设置地图元数据。它是一个字典类型，用户可以自由的为地图设置各种描述信息。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.CRS">
+            <summary>获取或设置地图的坐标参考系。坐标参考系使用 EPSG 发布的代表特定椭球体、单位、地理坐标系或投影坐标系的 Well Konwn ID 值（简称 WKID）。<br/></summary>
+            <seealso cref="T:SuperMap.WindowsPhone.Core.CoordinateReferenceSystem">CoordinateReferenceSystem Class</seealso>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Bounds">
+            <summary>获取地图的地理范围。该属性等于 Map 中加载的所有图层的地理范围的并集。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.ViewBounds">
+            <summary>获取或设置地图的可视地理范围。例如现有一幅世界地图，它的 bounds 为 （-180，-90，180，90），在初始化地图时设置 viewBounds 为 （0，0，180，90），系统会根据用户传入的这个 viewBounds 计算得到中心点和分辨率，然后利用中心点、分辨率和地图控件大小计算得到真正适合显示的 viewBounds。因此最终的 viewBounds 可能与用户输入的 viewBounds 不一致的情况。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Center">
+            <summary>获取当前可视范围的地图地理中心点。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Level">
+            <summary>获取地图的缩放级别。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.MinResolution">
+            <summary>获取或设置地图的最小分辨率。如果分别率数组 Resolutions 不为空，则该值为分别率数组 Resolutions 的最小值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.MaxResolution">
+            <summary>获取或设置地图的最大分辨率。如果分别率数组 Resolutions 不为空，则该值为分别率数组 Resolutions 的最大值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Resolution">
+            <summary>获取地图当前分辨率。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Resolutions">
+            <summary>获取或设置地图分辨率数组。<br/>1.对于分块缓存图层也拥有 Resolutions 属性，它们之间的关系是：当分块缓存图层和 Map 的分辨率数组 Resolutions 中存在相等的分辨率值时以该分辨率出图，否则不显示。当没有设置 Map 的分辨率数组 Resolutions 时，以图层的 Resolutions 显示。<br/>2.对于动态方式获取的图层，当不设置 Map 的分辨率数组 Resolutions 时，地图为无极缩放。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Scales">
+            <summary>获取或设置 Map 的地图比例尺数组。<br/>1.对于 TiledCachedIServerLayer 也拥有 Scales 属性并且该属性为必设属性。它们之间的关系是：当 TiledCachedIServerLayer 和 Map 的比例尺数组 Scales 中有存在相等比例尺值时出图，否则不显示。当没有设置 Map 的比例尺数组 Scales 时，以图层的 Scales 显示。<br/>2.对于动态方式获取的图层，当不设置 Map 的比例尺数组 Scales 时，地图为无极缩放。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.MinScale">
+            <summary>获取或设置地图的最小比例尺。如果比例尺组 Scales 不为空，则该值为比例尺组 Scales 的最小值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.MaxScale">
+            <summary>获取或设置地图的最大比例尺。如果比例尺组 Scales 不为空，则该值为比例尺组 Scales 的最大值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Scale">
+            <summary>获取地图当前比例尺。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.PanDuration">
+            <summary>获取或设置两次漫游操作间的延时时间，默认值为0.75秒。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.ZoomDuration">
+            <summary>获取或设置两次缩放操作间的延时时间，默认值为1.0秒。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Layers">
+            <summary>获取或者设置当前地图中的所有图层。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Angle">
+            <summary>获取或设置地图旋转角度，取值范围为0~360度，默认值为0。</summary>
+            <remarks>
+            	<para>
+                默认值为0。</para>如果取值小于0，则该值连续加360，直至大于或等于0；如果取值大于360，则该值连续减360，直至小于或等于360。<br/>例如-760等价于320，760等价于40。</remarks>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.AngleChanged">
+            <summary>当地图地旋转角度改变后，触发该事件。</summary>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Mapping.Map.PropertyChanged">
+            <summary>当地图控件中的属性改变时，触发该事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.Map.Theme">
+            <summary>获取或设置默认主题风格。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.Map.AngleChangedEventHandler">
+            <summary>
+            	<see cref="E:SuperMap.WindowsPhone.Mapping.Map.AngleChanged">AngleChanged</see> 事件相对应的委托。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ZoomEffect">
+            <summary>
+            	<para>地图缩放效果的控件</para>
+            	<para>用于地图缩放时的控件。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ZoomEffect.#ctor">
+            <summary>初始化 ZoomEffect 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ZoomEffect.OnApplyTemplate">
+            <summary></summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ZoomEffect.beginZoomin">
+            <summary>实现放大效果的方法。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ZoomEffect.beiginZoomout">
+            <summary>实现缩小效果的方法。。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.MapImage">
+            <summary>
+            图片源，包含图片的url、图片数据等信息
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.MapImage.Url">
+            <summary>
+            图片的url。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.MapImage.Data">
+            <summary>
+            图片数据。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.MapImage.MapImageType">
+            <summary>
+            图片信息的类型，包括图片的url、图片数据两类。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.MapImageType">
+            <summary>
+            图片信息类型枚举。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.ExecutantPool">
+            <summary>
+            最终请求图片的地方，通过SemaphoreSlim限制同时请求的数量，当打到上限后，阻塞线程。
+            设置缓冲区，可以缓村需要请求图片的Tile。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ExecutantPool.AddTiles(System.Collections.Generic.IList{SuperMap.WindowsPhone.Mapping.Tile})">
+            <summary>
+            向线程池中加入待请求的tile。此tile会先进入队列中进行等待，直到有空闲的线程，才会开始请求。
+            </summary>
+            <param name="tile"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ExecutantPool.Clear(System.String)">
+            <summary>
+            从队列中移除掉指定图层的Tile。
+            逻辑还不太清晰，与CancelByLayerId的关系。
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ExecutantPool.Start">
+            <summary>
+            从队列中获取Tile，并请求图片。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ExecutantPool.DownloadImage(SuperMap.WindowsPhone.Mapping.Tile)">
+            <summary>
+            开始请求图片
+            </summary>
+            <param name="tile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.ExecutantPool.CancelByLayerId(System.String)">
+            <summary>
+            通过图层id清除正在请求的Tile，此处设计不太合理，下回修改吧……
+            </summary>
+            <param name="layerId"></param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.IOfflineStorage">
+            <summary>
+            <para>离线缓存接口，通过该接口实现对地图图片块的离线存储，读取等操作。</para>
+            <para>离线缓存可以将浏览过的地图图片块缓存到本地，当再次浏览相同的区域时，不需要再次通过网络请求图片，</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.IOfflineStorage.IsImageExistAsync(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过图片块的尺寸、分辨率、级别、行列号，来确定离线缓存中是否存在对应的图片。
+            </summary>
+            <param name="width">图片块的宽度。</param>
+            <param name="height">图片块的高度。</param>
+            <param name="resolution">图片块的分辨率。</param>
+            <param name="level">比例尺级别。</param>
+            <param name="column">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="row">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <returns>返回bool值，表明对应的图片是否存在。为true表明存在对应的图片。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.IOfflineStorage.ImageReadAsync(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过图片块的尺寸、分辨率、级别、行列号，读取图片数据。
+            </summary>
+            <param name="width">图片块的宽度。</param>
+            <param name="height">图片块的高度。</param>
+            <param name="resolution">图片块的分辨率。</param>
+            <param name="level">比例尺级别。</param>
+            <param name="column">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="row">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <returns>获取到的图片数据。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.IOfflineStorage.ImageWriteAsync(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            通过图片块的尺寸、分辨率、级别、行列号，将图片数据保存到离线缓存中。
+            </summary>
+            <param name="width">图片块的宽度。</param>
+            <param name="height">图片块的高度。</param>
+            <param name="resolution">图片块的分辨率。</param>
+            <param name="level">比例尺级别。</param>
+            <param name="column">比例尺级别。</param>
+            <param name="row">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <param name="data">图片数据。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.IOfflineStorage.Clear">
+            <summary>
+            清除所有的离线缓存图片。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.OfflineStorage">
+            <summary>
+            地图的本地缓存类。管理图片的存储。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.OfflineStorage.#ctor(System.String)">
+            <summary>
+            初始化OfflineStorage的新实例。
+            </summary>
+            <param name="rootName">本地缓存的文件夹名称。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.OfflineStorage.BuildPath(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            拼凑图片的存储路径。如果当前图片是动态出图，level为-1.格式为：图片尺寸X图片尺寸分辨率列号行号，最后的文件名即为行号。如果当前图片是按切好的缓存出图，level大于-1.格式为：图片尺寸X图片尺寸级别列号行号，最后的文件名即为行号。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.OfflineStorage.IsImageExistAsync(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过图片块的尺寸、分辨率、级别、行列号，来确定离线缓存中是否存在对应的图片。
+            </summary>
+            <param name="width">图片块的宽度。</param>
+            <param name="height">图片块的高度。</param>
+            <param name="resolution">图片块的分辨率。</param>
+            <param name="level">比例尺级别</param>
+            <param name="column">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="row">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <returns>返回bool值，表明对应的图片是否存在。为true表明存在对应的图片</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.OfflineStorage.ImageReadAsync(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过图片块的尺寸、分辨率、级别、行列号，来读取对应的图片数据。
+            </summary>
+            <param name="width">图片块的宽度。</param>
+            <param name="height">图片块的高度。</param>
+            <param name="resolution">图片块的分辨率。</param>
+            <param name="level">比例尺级别</param>
+            <param name="column">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="row">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <returns>获取到的图片数据。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.OfflineStorage.ImageWriteAsync(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            通过图片块的尺寸、分辨率、级别、行列号，将图片数据保存到离线缓存中。
+            </summary>
+            <param name="width">图片块的宽度。</param>
+            <param name="height">图片块的高度。</param>
+            <param name="resolution">图片块的分辨率。</param>
+            <param name="level">比例尺级别</param>
+            <param name="column">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="row">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <param name="data">图片数据。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.OfflineStorage.RootName">
+            <summary>
+            存储根目录的名字。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.QueueBuffer">
+            <summary>
+            Tiles的缓冲区，用来存放待请求的Tiles。结构类似于二维数组，
+            第一维是一个Dictionary，Key为图层id；第二维是一个双向链表，存放这个图层中的Tile。
+            在弹出Tile时，取第一个长度大于0的链表的最后一个。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.InsertItemsById(System.String,System.Collections.Generic.IEnumerable{SuperMap.WindowsPhone.Mapping.Tile})">
+            <summary>
+            根据ID插入一批新的索引。
+            </summary>
+            <param name="id"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.Clear(System.String)">
+            <summary>
+            根据ID清除对应的索引。
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.Register(System.String)">
+            <summary>
+            向缓冲区中注册一个新的成员。
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.Unregiest(System.String)">
+            <summary>
+            从缓冲区中注销一个已有的成员。
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.Contains(System.String,SuperMap.WindowsPhone.Mapping.Tile)">
+            <summary>
+            确定Tile是否在链表中。
+            </summary>
+            <param name="id"></param>
+            <param name="tile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.Pop">
+            <summary>
+            弹出一个Tile，同时将其从链表中移除掉。
+            查找方式是：第一个长度大于0的链表的第一个值。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueBuffer.AddLast(System.String,SuperMap.WindowsPhone.Mapping.Tile)">
+            <summary>
+            向链表最后面插入一个Tile。
+            </summary>
+            <param name="id"></param>
+            <param name="tile"></param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.QueueBuffer.Count">
+            <summary>
+            缓冲区中的Tiles数量。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueSystem.Register(System.String,SuperMap.WindowsPhone.Mapping.IOfflineStorage,System.Func{SuperMap.WindowsPhone.Mapping.Tile,System.Threading.Tasks.Task{SuperMap.WindowsPhone.Mapping.Tile}})">
+            <summary>
+            注册一个新的图层。
+            </summary>
+            <param name="id"></param>
+            <param name="storage"></param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.QueueSystem.Unregiest(System.String)">
+            <summary>
+            注销一个图层。
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.TiledDynamicLayer">
+            <summary>
+            分块动态图层<br/>
+            分块动态图层是客户端呈现栅格图层的一种。分块动态图层主要将一个完整的地图切割成多个相同大小的正方形块图片，地图就是由这些块图片拼合而成最终呈现的。之所以称之为动态图层，是因为这些正方形图片块是根据当前请求的图片分辨率或比例尺即时生成，而非事先切好。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledDynamicLayer.#ctor">
+            <summary>
+                初始化 <see cref="T:SuperMap.WindowsPhone.Mapping.TiledDynamicLayer">TileDynamicLayer</see> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledDynamicLayer.GetTile(System.Int32,System.Int32,System.Double,System.Threading.CancellationToken)">
+            <summary>获取单个图片块的 Url 地址。<br />地图根据当前比例尺被动态分割为若干块图片，每一个块图片都有自己唯一的索引号，如：（0，0），（1，2），（1，3）。反之根据索引号和比例尺就可以确定唯一一个分块图片。</summary>
+            <returns>单个分块图片的 URL 地址。</returns>
+            <param name="indexX">图片块所在的 X 方向（横向）上的索引值。</param>
+            <param name="indexY">图片块所在的 Y 方向（纵向）上的索引值。</param>
+            <param name="resolution">地图分辨率。</param>
+            <param name="cancellationToken">用来取消当前操作的取消标记。</param>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledDynamicLayer.GetTile(System.Int32,System.Int32,System.Int32,System.Double,System.Threading.CancellationToken)">
+            <summary>获取单个图片块的 Url 地址。<br />地图根据当前比例尺被动态分割为若干块图片，每一个块图片都有自己唯一的索引号，如：（0，0），（1，2），（1，3）。反之根据索引号和比例尺就可以确定唯一一个分块图片。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Mapping.TiledDynamicLayer.GetCachedResolutions">
+            <summary>获取缓存动态图片分辨率。</summary>
+            <returns>返回缓存动态图片分辨率。</returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Mapping.TileLoadEventArgs">
+            <summary>瓦片图加载事件类</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TileLoadEventArgs.Column">
+            <summary>获取单个图片块（瓦片图）所在的列数。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TileLoadEventArgs.ImageSource">
+            <summary>获取当前单个图片块（瓦片图）的路径。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TileLoadEventArgs.Level">
+            <summary>获取单个图片块（瓦片图）的比例尺级别，动态出图为 -1 ，缓存图片有不同的分辨率级别。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TileLoadEventArgs.Row">
+            <summary>获取单个图片块（瓦片图）的行数。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Mapping.TileLoadEventArgs.Bounds">
+            <summary>获取单个图片块（瓦片图）的地理范围。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Rendering.IRenderer">
+            <summary>
+            	<para>客户端专题图接口</para>
+            	<para>该接口用于绘制客户端专题图。目前提供客户端单值专题（UniqueRenderer）和范围分段专题图（RangeRenderer），它们继承 IRender。在 FeaturesLayer 中存在 Render 属性，将设置好的 UniqueRenderer 或 RangeRenderer 对象赋值给 Render 即可对 FeaturesLayer 中的地理要素绘制客户端专题图。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.IRenderer.GetStyle(SuperMap.WindowsPhone.Core.Feature)">
+            <summary>获取指定矢量要素的风格。</summary>
+            <returns>返回该要素的风格。</returns>
+            <param name="feature">矢量要素。</param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Rendering.RangeItem">
+            <summary>
+            	<para>矢量要素范围分段专题图子项类</para>
+            	<para>该类指定了范围分段专题图子项的最小和最大值，以及子项的风格。</para>
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.RangeItem.MaximumValue">
+            <summary>获取或设置子项分段字段的最大值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.RangeItem.MinimumValue">
+            <summary>获取或设置子项分段字段的最小值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.RangeItem.Style">
+            <summary>获取或设置子项的风格，Style 类。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Rendering.RangeRenderer">
+            <summary>
+            	<para>矢量要素范围分段专题图类</para>
+            	<para>该类负责对矢量要素的指定属性按属性值进行分段，为每一范围段赋予一个指定风格，从而更好的表达某一特征在地图上的分布情况。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.RangeRenderer.#ctor">
+            <summary>初始化 RangeRender 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.RangeRenderer.GetStyle(SuperMap.WindowsPhone.Core.Feature)">
+            <summary>获取指定矢量要素的风格。</summary>
+            <returns>返回该要素的风格。</returns>
+            <param name="feature">矢量要素。</param>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Rendering.RangeRenderer.PropertyChanged">
+            <summary>属性改变触发的事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.RangeRenderer.Items">
+            <summary>获取矢量要素范围分段专题图子项。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.RangeRenderer.DefaultStyle">
+            <summary>获取或设置矢量要素范围分段专题图的默认风格。如果未设置分段子项风格时，采用该默认风格。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.RangeRenderer.Attribute">
+            <summary>获取或设置用于分段计算的矢量要素属性字段。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Rendering.UniformRenderer">
+            <summary>
+            	<para>矢量要素统一风格渲染类</para>
+            	<para>该类负责对矢量要素进行统一的风格设置。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.UniformRenderer.#ctor">
+            <summary>初始化 UniformRenderer 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.UniformRenderer.GetStyle(SuperMap.WindowsPhone.Core.Feature)">
+            <summary>获取指定矢量要素的风格。</summary>
+            <returns>返回该要素的风格。</returns>
+            <param name="feature">矢量要素。</param>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Rendering.UniformRenderer.PropertyChanged">
+            <summary>属性改变触发的事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniformRenderer.MarkerStyle">
+            <summary>获取或设置面要素风格。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniformRenderer.LineStyle">
+            <summary>获取或设置线要素风格。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniformRenderer.FillStyle">
+            <summary>获取或设置点要素风格。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Rendering.UniqueItem">
+            <summary>
+            	<para>矢量要素单值专题图子项类</para>
+            	<para>该类指定了单值专题图子项的属性字段值，以及子项的风格。</para>
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniqueItem.Value">
+            <summary>获取或设置用于制作单值图的子项的字段值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniqueItem.Style">
+            <summary>获取或设置子项的风格。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Rendering.UniqueRenderer">
+            <summary>
+            	<para>矢量要素单值专题图类</para>
+            	<para>该类负责对矢量指定属性按属性值相同的要素进行归类，并为每一类赋予一个指定风格。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.UniqueRenderer.#ctor">
+            <summary>初始化 UniqueRender 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Rendering.UniqueRenderer.GetStyle(SuperMap.WindowsPhone.Core.Feature)">
+            <summary>获取指定矢量要素的风格。</summary>
+            <returns>返回该要素的风格。</returns>
+            <param name="feature">矢量要素。</param>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Rendering.UniqueRenderer.PropertyChanged">
+            <summary>属性改变触发的事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniqueRenderer.DefaultStyle">
+            <summary>获取或设置矢量要素单值专题图的默认风格。如果未设置单值专题图子项风格时，采用该默认风格。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniqueRenderer.Attribute">
+            <summary>获取或设置用于分段计算的矢量要素属性字段。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Rendering.UniqueRenderer.Items">
+            <summary>获取矢量要素单值专题图子项。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Resources.ExceptionStrings">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.BboxIsNotSet">
+            <summary>
+              查找类似 该元素附加项属性ElementsLayer.BBox没有设置 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.CanntAddToMFLayer">
+            <summary>
+              查找类似 不能将Feature加到多个FeaturesLayer上 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.CRSIsNull">
+            <summary>
+              查找类似 CRS为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.DestinationTypeIsNull">
+            <summary>
+              查找类似 目标类型为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.ElementsLayerIsAlone">
+            <summary>
+              查找类似 ElementsLayer单独使用时无法添加ShapeBase。 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.HeightLessThanZero">
+            <summary>
+              查找类似 高度将小于0 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidMatch">
+            <summary>
+              查找类似 Map的尺度设置与TiledLayer尺度设置不匹配 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidMultiplicationConverter">
+            <summary>
+              查找类似 MultiplicationConverter不支持该类型 {0} 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidResolutions">
+            <summary>
+              查找类似 分辨率数组不能设置为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidScales">
+            <summary>
+              查找类似 比例尺数组不能设置为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidStringArray">
+            <summary>
+              查找类似 无法转换为String Array 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidSupportGeometry">
+            <summary>
+              查找类似 暂不支持该Geometry类型 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidToCRS">
+            <summary>
+              查找类似 无法成功转换为CoordinateReferenceSystem 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidToDoubleArray">
+            <summary>
+              查找类似 无法成功转换为DoubleArray 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.InvalidURISchemeHost">
+            <summary>
+              查找类似 无效的URI模式宿主 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.IvalidIntensity">
+            <summary>
+              查找类似 强烈程度的范围大于1或者小于0 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.LayerToMap">
+            <summary>
+              查找类似 该Layer已经隶属于其他Map 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.OperationIsBusy">
+            <summary>
+              查找类似 请求繁忙 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.ParametersError">
+            <summary>
+              查找类似 参数错误 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.ParseFailed">
+            <summary>
+              查找类似 文本解析失败 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.Point2DsIsNull">
+            <summary>
+              查找类似 Point2Ds为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.PolicyFileAvailable">
+            <summary>
+              查找类似 请确认Web服务器根目录下存在跨域策略文件，服务地址等参数是否正确。 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.RadiusLessThanOne">
+            <summary>
+              查找类似 半径范围小于1 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.RightLessThanLeft">
+            <summary>
+              查找类似 right必须大于left 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.RootElementIsNull">
+            <summary>
+              查找类似 RootElement为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.SchemeError">
+            <summary>
+              查找类似 必须以HTTP(S)模式启动应用程序，请确认把您的网站设为启动项目。 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.ServiceAddressError">
+            <summary>
+              查找类似 服务地址错误 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.ServiceStarted">
+            <summary>
+              查找类似 请确认您的地图服务已经启动，地图名称等参数是否正确。 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.TextParseFailed">
+            <summary>
+              查找类似 坐标解析失败 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.TopLessThanBottom">
+            <summary>
+              查找类似 top必须大于bottom. 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.WidthLessThanZero">
+            <summary>
+              查找类似 宽度小于0 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Resources.ExceptionStrings.CountLessThanOne">
+            <summary>
+              查找类似 数量小于1 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Service.HttpRequestMethod">
+            <summary>
+            HTTP请求方法类
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Service.HttpRequestMethod.GET">
+            <summary>
+            GET 请求
+            </summary>
+        </member>
+        <member name="F:SuperMap.WindowsPhone.Service.HttpRequestMethod.POST">
+            <summary>
+            POST 请求
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Service.ServiceBase">
+            <summary>
+            	<para>服务基类</para>
+            	<para>抽象类，查询、量算服务类均继承该类。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceBase.#ctor">
+            <summary>初始化 ServiceBase 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceBase.#ctor(System.String)">
+            <summary>使用服务器的 URL 参数实例化 ServiceBase 对象。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceBase.SubmitRequest(System.String,SuperMap.WindowsPhone.Service.HttpRequestMethod)">
+            <param name="url">服务 url 地址。</param>
+            <param name="parameters">服务参数。</param>
+            <param name="onCompleted">表示异步操作完成时调用的参数。</param>
+            <param name="state">提供异步任务的用户指定的标识符。</param>
+            <param name="forcePost">是否强制使用 Post 方式请求。</param>
+            <summary>请求将用户数据发送到服务器。</summary>
+            <overloads>重载函数。请求将用户数据发送到服务器。</overloads>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceBase.SubmitRequest(System.String,SuperMap.WindowsPhone.Service.HttpRequestMethod,System.String)">
+            <param name="url">服务 url 地址。</param>
+            <param name="parameters">服务参数。</param>
+            <param name="onCompleted">表示异步操作完成时调用的参数。</param>
+            <param name="state">提供异步任务的用户指定的标识符。</param>
+            <param name="forcePost">是否强制使用 Post 方式请求。</param>
+            <param name="isEditable">属性是否可编辑。</param>
+            <param name="isTempLayersSet">是否创建临图层集合。</param>
+            <summary>请求将用户数据发送到服务器。</summary>
+            <overloads>重载函数。请求将用户数据发送到服务器。</overloads>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceBase.OnPropertyChanged(System.String)">
+            <summary>属性发生变化后触发的事件。</summary>
+            <param name="name">要在事件中报告的事件数据。即属性发生变化的属性名称。</param>
+        </member>
+        <member name="E:SuperMap.WindowsPhone.Service.ServiceBase.PropertyChanged">
+            <summary>更改属性值时触发该事件。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceBase.DisableClientCaching">
+            <summary>获取或设置是否禁用客户端缓存，默认值为 false 。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceBase.ProxyURL">
+            <summary>获取或设置代理服务访问地址 URL 。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceBase.Token">
+            <summary>一个用户定义对象，此对象将被传递给完成异步操作时所调用的方法。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceBase.Url">
+            <summary>获取或设置服务访问地址。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Service.ServiceRequest">
+            <summary>
+            	<para>服务请求基类</para>
+            	<para>该类封装在 ServiceBase 中，如果需要自定义某些服务请求，可继承 ServiceBase 自定义服务，这样就无需用户调用处理 WebClient 等方法。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceRequest.#ctor">
+            <summary>请求服务时触发该事件。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Service.ServiceRequest.BeginRequest">
+            <summary>根据用户状态发出服务请求。</summary>
+            <param name="state">用户状态。</param>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceRequest.RequestMethod">
+            <summary>是否强制使用 Post 方式请求。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceRequest.Url">
+            <summary>获取或设置服务访问地址。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceRequest.ProxyUrl">
+            <summary>获取或设置代理服务访问地址。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Service.ServiceRequest.PostBody">
+            <summary>用户扩展参数。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Theme.RawTheme">
+            <summary>
+            	<para>RawTheme 主题库类</para>
+            	<para>该类提供了四色配图的默认主题库。</para>
+            </summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Theme.Theme">
+            <summary>
+            	<para>主题风格类</para>
+            	<para>该类提供了 SuperMap.Web.Actions 和 Feature 的默认绘制风格。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Theme.Theme.#ctor">
+            <summary>初始化 Theme 类的新实例。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.Fill">
+            <summary>获取或设置指定形状内部绘制方式的 Brush。可以使用画笔对象以纯色、线性渐变、径向渐变和图像进行填充。<br/>注：为线条（Line 或 Polyline）设置 Fill 将毫无意义，因为线条没有内部区域。应改用线条的 Stroke 和 StrokeThickness 属性。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.Stroke">
+            <summary>获取或设置指定形状轮廓绘制方式的 Brush。可以使用画笔对象以纯色、线性渐变、径向渐变和图像进行绘制。<br/>有关 Brush 、画笔和填充颜色的详细信息请参见 Microsoft 帮助文档。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.StrokeThickness">
+            <summary>获取或设置 Shape 笔画轮廓的宽度。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.Opacity">
+            <summary>获取或设置对象的不透明度。<br/>有关该属性的详细信息请参见 Microsoft 帮助文档。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.Size">
+            <summary>获取或设置点要素大小。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.Color">
+            <summary>获取或设置对象的填充颜色。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.HoverVertexStyle">
+            <summary>获取或设置顶点的样式。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.SnapStyle">
+            <summary>获取或设置捕捉点的样式。 </summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.Theme.HoverCenterStyle">
+            <summary>获取或设置中心点的样式。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Theme.RawTheme.#ctor">
+            <summary>初始化 RawTheme 类的新实例。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.RawTheme.FCGreen">
+            <summary>获取或设置绿色值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.RawTheme.FCOrange">
+            <summary>获取或设置橙色值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.RawTheme.FCBlue">
+            <summary>获取或设置蓝色值。</summary>
+        </member>
+        <member name="P:SuperMap.WindowsPhone.Theme.RawTheme.FCYollew">
+            <summary>获取或设置黄色值。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.DoubleArrayConverter">
+            <summary>
+            	<para>Double 数组转换器类</para>
+            	<para>该类将对象转换成 double 数组。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.DoubleArrayConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>确定是否返回该转换器是否可以将给定类型的对象转换为此转换器的类型。 （继承自 TypeConverter。）</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.DoubleArrayConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将一个字符串对象转换成 double 数组。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.DoubleCollectionConverter">
+            <summary>
+            	<para>Double 数组转换器类</para>
+            	<para>该类将对象转换成 double 数组。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.DoubleCollectionConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>确定返回该转换器是否可以将给定类型的对象转换为此转换器的类型。 </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.DoubleCollectionConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>将 double 数组转换成一个字符串对象。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.DoubleUtil.ValueCheck(System.Double)">
+            <summary>
+            校验double值的有效性，如果返回false，这个值不可用，不能参与计算。
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.Extensions">
+            <summary>客户端转换器类</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.ToPolylineElement(SuperMap.WindowsPhone.Core.GeoLine)">
+            <summary>将 GeoLine 类型转换为 PolylineElement 类型 。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.ToGeoLine(SuperMap.WindowsPhone.Core.PolylineElement)">
+            <summary>将 PolylineElement 类型转换为 GeoLine 类型 。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.ToPolygonElement(SuperMap.WindowsPhone.Core.GeoRegion)">
+            <summary>将 GeoRegion 类型转换为 PolygonElement 类型 。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.ToGeoRegion(SuperMap.WindowsPhone.Core.PolygonElement)">
+            <summary>将 PolygonElement 类型转换为 GeoRegion 类型 。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.ToGeoRegion(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>将 Rectangle2D 类型转换为 Rectangle2D 类型 。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.ToPolygonElement(SuperMap.WindowsPhone.Core.Rectangle2D)">
+            <summary>将 Rectangle2D 类型转换为 PolygonElement 类型。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.Contains(SuperMap.WindowsPhone.Core.GeoRegion,SuperMap.WindowsPhone.Core.Point2D)">
+            <summary>判断目标坐标点对象是否包含在该面对象区域内。<br/>点在面区域边界上也视为在面对象内。</summary>
+            <param name="region">目标面对象。</param>
+            <param name="point">目标点对象。 </param>
+            <returns>如果目标点对象在该面区域内，则返回 true；否则返回 false。</returns>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.Extensions.Contains(SuperMap.WindowsPhone.Core.GeoRegion,System.Double,System.Double)">
+            <summary>判断目标坐标点对象是否包含在该面对象区域内。<br/>点在面区域边界上也视为在面对象内。</summary>
+            <param name="region">目标面对象。</param>
+            <param name="x">地理坐标系下目标点对象的横坐标。</param>
+            <param name="y">地理坐标系下目标点对象的纵坐标。 </param>
+            <returns>如果目标点对象在该面区域内，则返回 true；否则返回 false。</returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.IntArrayConverter">
+            <summary>
+            int 数组转换器类<br/>
+            该类将对象转换成 int 数组。
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.IntArrayConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>返回该转换器是否可以将给定类型的对象转换为此转换器的类型。 （继承自 TypeConverter。）</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.IntArrayConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将给定值转换为此转换器的类型。（继承自 TypeConverter。）</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.MathUtil.MinMaxCheck(System.Double,System.Double,System.Double)">
+            <summary>
+            判断值是否超出最大最小值得范围。如果超出，返回最大值/最小值。
+            </summary>
+            <param name="value"></param>
+            <param name="minRes"></param>
+            <param name="maxValue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.MultiplicationConverter">
+            <summary>
+            	<para>多类型数值转换器</para>
+            	<para>该类通过绑定引擎传递数据时修改数据，可以修改 double 、 int 和 float 类型的值。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.MultiplicationConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>在将源数据传递到目标以在 UI 中显示之前，对源数据进行修改。</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.MultiplicationConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>在将目标数据传递到源对象之前，对目标数据进行修改。</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.ScaleHelper">
+            <summary>
+            	<para>该类用于实现地图分辨率与比例尺之间的相互转换。</para>
+            	<para>该类是用来转换分辨率和比例尺。<br/>分辨率与比例尺的概念及关系：<br/>1. 地图分辨率表示屏幕上一个像素（pixel）所代表的地面实际距离。<br/>2. 比例尺通常以比率(如 1:10000 )来表示，表示图上距离与实地距离之比。例如 1:10000 表示图上 1cm 代表实际距离 10000cm，即100米。 <br/>3. 地图分辨率与比例尺之间的转换关系:<br/><img src="./images/ScaleFormula.png"/>..........................(1)<br/>Scale————地图比例尺；<br/>Resolution————地图分辨率；<br/>PPI————每英寸的像素点数。<br/>4. PPI 与 DPI 之间的关系：PPI （pixels per inch）是指图像分辨率，表示每英寸内的像素(pixel)个数，图像 PPI 值越高，画面的细节就越丰富。DPI 是指设备分辨率，意指每英寸上的网点数（dot per inch），如：屏幕分辨率、打印机分辨率。DPI 中的点（Dot）与图像分辨率中的像素（Pixel）是两个容易混淆的概念，DPI 中的点可以说是硬件设备最小的显示单元，而像素则既可是一个点,又可是多个点的集合。目前在 GIS 行业，大多数地图在显示于屏幕上时，地图图片 PPI 中的像素默认与屏幕 DPI 中的点是一一对应的。<strong>在产品中，所指的 DPI 即为图像分辨率 PPI。</strong><br/> </para>
+            </summary>
+        </member>
+        <!-- 对于成员“M:SuperMap.WindowsPhone.Utilities.ScaleHelper.ScaleConversion(System.Double,System.Double,SuperMap.WindowsPhone.Core.CoordinateReferenceSystem)”忽略有格式错误的 XML 注释 -->
+        <member name="M:SuperMap.WindowsPhone.Utilities.ScaleHelper.GetSmDpi(SuperMap.WindowsPhone.Core.Rectangle2D,System.Windows.Rect,System.Double,SuperMap.WindowsPhone.Core.CoordinateReferenceSystem)">
+            <summary>获取地图 dpi，dpi 作用在于根据公式（1）进行比例尺与分辨率之间的相互转换..</summary>
+            <remarks>计算地图 dpi 需要 referViewBounds（地理范围）、referViewer（图片大小）、referScale（比例尺）、datumAxis（椭球半径，可选）四个参数:<br/>referViewBounds ———— 表示 referScale 所指定的比例尺下，由 referViewer 所指定的图片大小所代表的实际地理范围；<br/>referViewer ———— 表示图片像素大小，Rectangle 类型；<br/>referScale ———— referViewBounds 与 referViewer 所对应的比例尺。<br/>datumAxis ———— 【可选】地图所采用的地球椭球体长轴半径。该参数用于经纬度向平面米制单位的转换，<strong color='0xff0000'>作用于地图单位为经纬度的地图，若地图单位为米，可视该参数无效。</strong>该参数默认为 WGS84 椭球体的长轴半径（赤道半径）：6378137 m<br/>下面简单列举几个常用椭球长轴半径：Krassovsky 1940:6378245、IAG 78:6378140、WGS 1984:6378137<br/><br/>上述四个参数（以下简称 DPI 参数）可以通过 SuperMap iServer 获取，方法如下：<br/>假设通过 SuperMap iServer Java 6R 已发布“世界地图”，访问服务地址：http://supermapiserver:8090/iserver/services/map-world/rest/maps/世界地图.rjson，可以获取“世界地图” DPI 参数，如下图：<br/><img src="./images/dpiParam.png"/>...........<img src="./images/dpiParam2.png"/><br/>获取到 referViewBounds、referViewer、referScale、referScale、datumAxis 后，getDpi() 方法根据公式(2)计算 DPI 值：<br/><img src="./images/DPIFormula.png"/>..........................(2)<br/>其中 Resolution = referViewBounds/referViewer，Scale = referScale。<br/></remarks>
+            <param name="referViewBounds">地图的参照可视范围，即地图初始化时默认的地图显示范围。 </param>
+            <param name="referViewer">地图参考显示尺寸。 </param>
+             <param name="referScale">地图初始化时默认的显示比例尺。</param>
+             <param name="crs">地图坐标系信息。默认采用经纬度为单位，地球椭球体长轴半径为6378137。</param>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.StringArrayConverter">
+            <summary>
+            	<para>string 数组转换器</para>
+            	<para>提供一种类型转换器，以在由逗号分隔的值组成的字符串与字符串数组之间进行转换。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.StringArrayConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>返回该转换器是否可以将给定类型的对象转换为此转换器的类型。 （继承自 TypeConverter。）</summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.StringArrayConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>将给定值转换为此转换器的类型。 （继承自 TypeConverter。）</summary>
+        </member>
+        <member name="T:SuperMap.WindowsPhone.Utilities.XMLHelper">
+            <summary><para>XML辅助类 </para></summary>
+        </member>
+        <member name="M:SuperMap.WindowsPhone.Utilities.XMLHelper.FromGeometry(SuperMap.WindowsPhone.Core.Geometry)">
+            <summary>将几何对象转变成GML标准的XML对象。</summary>
+        </member>
+    </members>
+</doc>

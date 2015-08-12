@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BboxIsNotSet" xml:space="preserve">
+    <value>该元素附加项属性ElementsLayer.BBox没有设置</value>
+    <comment>The ElementsLayer.BBox property isn't set</comment>
+  </data>
+  <data name="CanntAddToMFLayer" xml:space="preserve">
+    <value>不能将Feature加到多个FeaturesLayer上</value>
+    <comment>The Feature isn't allowed to be added in two or more FeaturesLayer layers.</comment>
+  </data>
+  <data name="CRSIsNull" xml:space="preserve">
+    <value>CRS为空</value>
+    <comment>The CRS is null.</comment>
+  </data>
+  <data name="DestinationTypeIsNull" xml:space="preserve">
+    <value>目标类型为空</value>
+    <comment>The target type is null.</comment>
+  </data>
+  <data name="ElementsLayerIsAlone" xml:space="preserve">
+    <value>ElementsLayer单独使用时无法添加ShapeBase。</value>
+    <comment>The ShapeBase can't be added if the ElementsLayer is used individually.</comment>
+  </data>
+  <data name="HeightLessThanZero" xml:space="preserve">
+    <value>高度将小于0</value>
+    <comment>The height is less than 0.</comment>
+  </data>
+  <data name="InvalidMatch" xml:space="preserve">
+    <value>Map的尺度设置与TiledLayer尺度设置不匹配</value>
+    <comment>The scale of Map doesn't match with the scale of TiledLayer.</comment>
+  </data>
+  <data name="InvalidMultiplicationConverter" xml:space="preserve">
+    <value>MultiplicationConverter不支持该类型 {0}</value>
+    <comment>The {0} type isn't supported in MultiplicationConverter.</comment>
+  </data>
+  <data name="InvalidResolutions" xml:space="preserve">
+    <value>分辨率数组不能设置为空</value>
+    <comment>The resolution array can't be null.</comment>
+  </data>
+  <data name="InvalidScales" xml:space="preserve">
+    <value>比例尺数组不能设置为空</value>
+    <comment>The scale array can't be null.</comment>
+  </data>
+  <data name="InvalidStringArray" xml:space="preserve">
+    <value>无法转换为String Array</value>
+    <comment>Failed to convert to StringArray.</comment>
+  </data>
+  <data name="InvalidSupportGeometry" xml:space="preserve">
+    <value>暂不支持该Geometry类型</value>
+    <comment>The Geometry type isn't supported.</comment>
+  </data>
+  <data name="InvalidToCRS" xml:space="preserve">
+    <value>无法成功转换为CoordinateReferenceSystem</value>
+    <comment>Failed to convert to CoordinateReferenceSystem.</comment>
+  </data>
+  <data name="InvalidToDoubleArray" xml:space="preserve">
+    <value>无法成功转换为DoubleArray</value>
+    <comment>Failed to convert to DoubleArray.</comment>
+  </data>
+  <data name="InvalidURISchemeHost" xml:space="preserve">
+    <value>无效的URI模式宿主</value>
+    <comment>The URI scheme host is invalid.</comment>
+  </data>
+  <data name="IvalidIntensity" xml:space="preserve">
+    <value>强烈程度的范围大于1或者小于0</value>
+    <comment>The intensity ranges from 0-1.</comment>
+  </data>
+  <data name="LayerToMap" xml:space="preserve">
+    <value>该Layer已经隶属于其他Map</value>
+    <comment>This Layer belongs to another Map.</comment>
+  </data>
+  <data name="OperationIsBusy" xml:space="preserve">
+    <value>请求繁忙</value>
+    <comment>The request is busy.</comment>
+  </data>
+  <data name="ParametersError" xml:space="preserve">
+    <value>参数错误</value>
+    <comment>Parameter error</comment>
+  </data>
+  <data name="ParseFailed" xml:space="preserve">
+    <value>文本解析失败</value>
+    <comment>Failed to parse the text.</comment>
+  </data>
+  <data name="Point2DsIsNull" xml:space="preserve">
+    <value>Point2Ds为空</value>
+    <comment>The Point2Ds is null.</comment>
+  </data>
+  <data name="PolicyFileAvailable" xml:space="preserve">
+    <value>请确认Web服务器根目录下存在跨域策略文件，服务地址等参数是否正确。</value>
+    <comment>Determines whether the access domain policy file exists in the root catalog of the server, and whether the parameters like service address are right.</comment>
+  </data>
+  <data name="RadiusLessThanOne" xml:space="preserve">
+    <value>半径范围小于1</value>
+    <comment>The radius is less than 1.</comment>
+  </data>
+  <data name="RightLessThanLeft" xml:space="preserve">
+    <value>right必须大于left</value>
+    <comment>The right must be greater than left</comment>
+  </data>
+  <data name="RootElementIsNull" xml:space="preserve">
+    <value>RootElement为空</value>
+    <comment>The RootElement is null</comment>
+  </data>
+  <data name="SchemeError" xml:space="preserve">
+    <value>必须以HTTP(S)模式启动应用程序，请确认把您的网站设为启动项目。</value>
+    <comment>The application must be started in the mode of HTTP(s). Make sure that your project is set to the start item</comment>
+  </data>
+  <data name="ServiceAddressError" xml:space="preserve">
+    <value>服务地址错误</value>
+    <comment>The service address is wrong</comment>
+  </data>
+  <data name="ServiceStarted" xml:space="preserve">
+    <value>请确认您的地图服务已经启动，地图名称等参数是否正确。</value>
+    <comment>Make sure that your map service is started, and parameters like map name are right.</comment>
+  </data>
+  <data name="TextParseFailed" xml:space="preserve">
+    <value>坐标解析失败</value>
+    <comment>Failed to parse the coordinates.</comment>
+  </data>
+  <data name="TopLessThanBottom" xml:space="preserve">
+    <value>top必须大于bottom.</value>
+    <comment>The top must be greater than the bottom.</comment>
+  </data>
+  <data name="WidthLessThanZero" xml:space="preserve">
+    <value>宽度小于0</value>
+    <comment>The width is less than 0.</comment>
+  </data>
+  <data name="CountLessThanOne" xml:space="preserve">
+    <value>数量小于1</value>
+    <comment>The count is less than 1.</comment>
+  </data>
+</root>

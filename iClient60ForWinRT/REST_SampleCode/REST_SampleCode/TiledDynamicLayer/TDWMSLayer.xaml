@@ -1,0 +1,26 @@
+﻿<Page  x:Class="REST_SampleCode.TDWMSLayer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:im="using:SuperMap.WinRT.Mapping"      
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <im:Map x:Name="MyMap" Margin="10,10,-10,-10" >
+            <im:TiledWMSLayer ID="tiledWMSLayer"
+                Url="http://support.supermap.com.cn:8090/iserver/services/maps/wms130/World"              
+                Version="1.3.0"  EnableGetCapabilities="True" TileSize="512">
+            </im:TiledWMSLayer>
+            <im:FeaturesLayer ID="featuresLayer"/>
+        </im:Map>
+
+        <Border HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource PanelBorderStyle}" Height="72" Width="198" Margin="0,42,20,0" >
+            <Border Height ="40" Width = "162" BorderBrush="#FFb9b9b9" BorderThickness="1" >
+                    <Button x:Name="getWFS" Content="获取WFS数据" 
+        			Width="156" Height="32"       			 
+        			Click="getWFS_Click"
+        			Background="#FF1fafbf"      			
+        			Foreground="white"
+        			Style="{StaticResource ButtonBlueStyle}"  FontSize="14" FontFamily="Microsoft YaHei" FontWeight="Normal"  Margin="3"/>
+               </Border>         
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,17 @@
+﻿<Page x:Class="REST_SampleCode.TiledWMTSLayerTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="using:SuperMap.WinRT.Mapping">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--地图控件-->
+        <ic:Map x:Name="MyMap">
+            <ic:TiledWMTSLayer ID="WMTSLayer" Url="http://support.supermap.com.cn:8090/iserver/services/maps/wmts100"
+                               TileMatrixSet="GlobalCRS84Scale_World"
+                               Style="default"
+                               LayerName="World"/>
+        </ic:Map>
+    </Grid>
+</Page>

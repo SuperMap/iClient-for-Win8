@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentFile Version="2010" Moniker="..\Libraries\SuperMap.WindowsPhone.dll" DocType="DX.NET" IsLocalizationDisabled="false">
+  <RelatedProject>Reference.dxp</RelatedProject>
+  <ExcludedProjectLocale>zh-CHS</ExcludedProjectLocale>
+  <State>
+    <Attributes>
+      <Attribute key="dtscrollpos" valuetype="integer">148</Attribute>
+      <Attribute key="inheritedMembers" valuetype="string">on</Attribute>
+      <Attribute key="protectedMembers" valuetype="string">on</Attribute>
+    </Attributes>
+  </State>
+  <LastSelectedItem>SuperMap.WindowsPhone</LastSelectedItem>
+  <item qn="SuperMap.WindowsPhone">
+    <summary ChangeDateTime="2013-04-15T02:14:28.2857891Z">${namespace_WindowsPhone_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Actions_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namescpace_actions_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Clustering_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namescpace_Clustering_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Core_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namespace_core_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Mapping_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namescpace_mapping_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Rendering_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namescpace_Rendering_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Resources_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namescpace_resources_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Service_namespace">
+    <summary ChangeDateTime="2013-04-15T02:16:48.0289532Z">${namescpace_Service_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Theme_namespace">
+    <summary ChangeDateTime="2013-04-15T02:17:03.846336Z">${namescpace_Theme_title}</summary>
+  </item>
+  <item qn="SuperMap.WindowsPhone~SuperMap.WindowsPhone.Utilities_namespace">
+    <summary ChangeDateTime="2013-04-15T02:21:30.7198047Z">${namescpace_utilities_title}</summary>
+  </item>
+  <Filters>
+    <CONTENTSTORECOMMON>
+      <IsIncludedItemsOnly>true</IsIncludedItemsOnly>
+    </CONTENTSTORECOMMON>
+    <CONTENTSTORELOCALIZATION>
+      <IsPrimaryLocaleContentPreviewEnabled>true</IsPrimaryLocaleContentPreviewEnabled>
+    </CONTENTSTORELOCALIZATION>
+    <DX.NETCONTENTSTOREFILTER>
+      <ShowProtectedMembers>true</ShowProtectedMembers>
+      <ShowProtectedFriendMembers>true</ShowProtectedFriendMembers>
+      <ShowFriendMembers>false</ShowFriendMembers>
+      <ShowPrivateMembers>false</ShowPrivateMembers>
+      <ShowInheritedMembers>false</ShowInheritedMembers>
+      <IsSourceCodeContentVisible>true</IsSourceCodeContentVisible>
+    </DX.NETCONTENTSTOREFILTER>
+  </Filters>
+</ContentFile>

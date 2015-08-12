@@ -1,0 +1,3 @@
+﻿在 ElementsLayer 上可以通过 Xaml 或代码的方式添加任意的 windows Runtime 提供的元素,如 Ellipse、Rectangle等；
+也可以添加 SuperMap 提供的元素 Pushpin（图钉）、PolyLineBase（线要素）、PolygonElement（多边形要素）。 
+在使用代码添加元素时，如果需要为元素设置风格或动画，建议先在 Xaml 文件中对风格或动画预定义并将其放在 Resources 中。

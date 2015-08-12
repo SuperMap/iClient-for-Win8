@@ -1,0 +1,30 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Map_Query_QueryByGeometryService.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="clr-namespace:SuperMap.WindowsPhone.Mapping;assembly=SuperMap.WindowsPhone"
+    xmlns:is="clr-namespace:SuperMap.WindowsPhone.iServerJava6R;assembly=SuperMap.WindowsPhone.iServerJava6R"
+    xmlns:icc="clr-namespace:SuperMap.WindowsPhone.Core;assembly=SuperMap.WindowsPhone"
+    xmlns:im="clr-namespace:SuperMap.WindowsPhone.Mapping;assembly=SuperMap.WindowsPhone.iServerJava6R"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+       <ic:Map x:Name="MyMap">
+            <im:TiledDynamicRESTLayer ID="TDLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World"/>
+            <ic:FeaturesLayer ID="MyFeatureLayer"/>
+            <ic:ElementsLayer ID="ELayer"/>
+        </ic:Map>
+       <Button Content="point" HorizontalAlignment="Left" Margin="336,37,0,0" VerticalAlignment="Top" Width="134" Background="#FFF19F4C" Click="Button_Click_1"/>
+       
+    </Grid>
+
+</phone:PhoneApplicationPage>

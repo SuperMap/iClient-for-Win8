@@ -1,0 +1,2 @@
+﻿使用客户端专题图，需要添加对程序集 Visifire.Charts.dll（） 的引用，并在程序中引用命名空间 using Visifire.Charts;
+using Visifire.Commons。

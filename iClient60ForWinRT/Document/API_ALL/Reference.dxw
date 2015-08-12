@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationWorkspace>
+  <RecentItems>
+    <RecentItem Key="SuperMap.WinRT.dxc.-" IsPinned="false" Type="Innovasys.DocumentX.ContentFiles.RecentContentFile" Assembly="Innovasys.DocumentX.ContentFiles">
+      <HandlerName>CONTENT FILES</HandlerName>
+      <Category>Content Files</Category>
+    </RecentItem>
+    <RecentItem Key="SuperMap.WinRT.Controls.dxc.-" IsPinned="false" Type="Innovasys.DocumentX.ContentFiles.RecentContentFile" Assembly="Innovasys.DocumentX.ContentFiles">
+      <HandlerName>CONTENT FILES</HandlerName>
+      <Category>Content Files</Category>
+    </RecentItem>
+    <RecentItem Key="SuperMap.WinRT.REST.dxc.-" IsPinned="false" Type="Innovasys.DocumentX.ContentFiles.RecentContentFile" Assembly="Innovasys.DocumentX.ContentFiles">
+      <HandlerName>CONTENT FILES</HandlerName>
+      <Category>Content Files</Category>
+    </RecentItem>
+    <RecentItem Key="SuperMap.WinRT.dxc.zh-CHS" IsPinned="false" Type="Innovasys.DocumentX.ContentFiles.RecentContentFile" Assembly="Innovasys.DocumentX.ContentFiles">
+      <HandlerName>CONTENT FILES</HandlerName>
+      <Category>Content Files</Category>
+    </RecentItem>
+  </RecentItems>
+  <ProjectProfileApplicationPlugin DesignTimeProjectProfile="fc4efe9c-147f-47aa-941d-7b510334cc1f" DesignTimeProjectLocale="-" />
+</ApplicationWorkspace>

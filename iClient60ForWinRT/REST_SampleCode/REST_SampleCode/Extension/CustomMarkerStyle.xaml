@@ -1,0 +1,471 @@
+﻿<Page  xmlns:navigation="clr-namespace:Windows.UI.Xaml.Controls;assembly=System.Windows.Controls.INavigate" x:Class="REST_SampleCode.CustomMarkerStyle"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="using:SuperMap.WinRT.Core"
+    xmlns:im="using:SuperMap.WinRT.Mapping"
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.Resources>
+            <!--点样式-->
+            <ic:PredefinedMarkerStyle x:Name="MyMarkerStyle1" Symbol="Circle" Size="18" Color="Green"/>
+            <ic:PredefinedMarkerStyle x:Name="MyMarkerStyle2" Symbol="Cross" Size="18"/>
+            <ic:PredefinedMarkerStyle x:Name="MyMarkerStyle3" Symbol="Diamond" Size="18"/>
+            <ic:PredefinedMarkerStyle x:Name="MyMarkerStyle4" Symbol="Square" Size="18"/>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle5">
+                <!--使用 ControlTemplate 自定义点要素的外观-->
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Rectangle Fill= "Red" HorizontalAlignment="Left" Height="20.334"  Margin="-10.167,-10.167,0,0"  Stretch="Fill"  VerticalAlignment="Top" Width="20.334"></Rectangle>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle6">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard AutoReverse="True"  RepeatBehavior="ForEver">
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="regularPolygon">
+                                                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FF57D096"/>
+                                                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FF6657D0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="regularPolygon">
+                                                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FFE5BF0C"/>
+                                                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FFAFB498"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="regularPolygon" HorizontalAlignment="Left" Height="40.166"  Margin="-20.083,-20.083,0,0" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="40.166">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle7" >
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Width="19" Height="18" Canvas.Left="-9.5" Canvas.Top="-9" Fill="#FF00FF00" Data="F1 M 12.6,4.55872L 10.1908,11.9466L 2.40625,11.9466L 3.28322e-008,4.55872L 6.29125,-3.05176e-005L 12.6,4.55872 Z " Stretch="Fill" />
+                            </Canvas>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle8">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path Width="19" Height="16" Canvas.Left="-9.5" Canvas.Top="-8" Fill="#FF061258" Data="F1 M 12.6758,5.50668L 9.52,11.0133L 3.17333,11.0133L -9.05991e-008,5.50668L 3.17333,0L 9.52,0L 12.6758,5.50668 Z " Stretch="Fill" />
+                            </Canvas>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle9">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Path Width="19" Height="19" Fill="Black" Data="F1 M 12.6758,9.03586L 9.05333,12.6933L 3.67792,12.6933L -1.70072e-007,9.03586L -1.70072e-007,3.6575L 3.67792,0L 9.03583,0L 12.6758,3.6575L 12.6758,9.03586 Z " Canvas.Left="-9.5" Stretch="Fill"  Canvas.Top="-9.5" />
+                            </Canvas>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle10">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Path Width="20.664" Height="20.693" Fill="#FD00FF00" Data="F1 M 12.6758,2.63083L 12.6758,10.1179L 10.08,12.6933L 2.55792,12.6466C 2.52097,12.6156 2.4184,12.5159 2.25021,12.3477C 2.08201,12.1795 1.8234,11.9243 1.47438,11.5821C 1.12535,11.2398 0.633889,10.7518 -1.11262e-008,10.1179L -1.11262e-008,2.61331L 2.61333,0L 10.08,0L 12.6758,2.63083 Z " Canvas.Left="-10.369" Canvas.Top="-10.375" UseLayoutRounding="False" Stretch="Fill" />
+                            </Canvas>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle11">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:1" AutoReverse="True"  RepeatBehavior="ForEver" To="180" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="path">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseIn"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Duration="0:0:1" To="-90" AutoReverse="True"  RepeatBehavior="ForEver" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="path1">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuinticEase EasingMode="EaseIn"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Path x:Name="path" Data="M-24,-24 L32,32" Fill="Blue" HorizontalAlignment="Left" Height="20" Margin="-9.833,-9.667,0,0" Stretch="Fill" Stroke="Blue" UseLayoutRounding="False" VerticalAlignment="Top" Width="20" StrokeThickness="3" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <CompositeTransform/>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path x:Name="path1" Data="M-24,-24 L32,32" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="20" Margin="-10.017,-9.684,0,0" Stretch="Fill" Stroke="Blue" UseLayoutRounding="False" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.5,0.5" StrokeThickness="3">
+                                <Path.RenderTransform>
+                                    <CompositeTransform Rotation="89.949"/>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle12">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid Height="18" Margin="-8,-9,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="16">
+                            <Grid Margin="1,0,1,2">
+                                <Path Data="M0.50000042,15.417009 L13.500001,15.417009 L13.500001,16.417009 L0.50000042,16.417009 z M7,0 L8.4760475,1.511261 L8.4842501,1.5080271 C8.6450701,1.4491434 8.8187828,1.4170074 9.000001,1.4170074 C9.8284283,1.4170074 10.500001,2.0885801 10.500001,2.9170074 C10.500001,3.0982256 10.467865,3.2719383 10.408981,3.4327583 L10.392816,3.4737577 L11.425579,4.5311604 L11.48425,4.5080271 C11.64507,4.4491434 11.818783,4.4170074 12.000001,4.4170074 C12.828428,4.4170074 13.500001,5.0885801 13.500001,5.9170074 C13.500001,6.124114 13.458028,6.3214178 13.382124,6.5008755 L13.371768,6.5237808 L14,7.1669998 L12.829042,7.1669998 L12.777805,7.1998472 C12.695334,7.249958 12.607648,7.2923403 12.515751,7.3259878 L12.500001,7.3313169 L12.500001,15.417007 L1.5000001,15.417007 L1.5000001,7.3313169 L1.4842497,7.3259878 C1.3923531,7.2923403 1.3046665,7.249958 1.2221954,7.1998472 L1.1709584,7.1669998 L0,7.1669998 L0.62823236,6.5237799 L0.6178776,6.5008755 C0.54197341,6.3214178 0.50000012,6.124114 0.50000018,5.9170074 C0.50000012,5.0885801 1.1715729,4.4170074 2,4.4170074 C2.1812184,4.4170074 2.3549311,4.4491434 2.5157502,4.5080271 L2.5744214,4.5311604 L3.6071854,3.4737577 L3.5910199,3.4327583 C3.532136,3.2719383 3.5000002,3.0982256 3.5000002,2.9170074 C3.5000002,2.0885801 4.1715732,1.4170074 5.0000005,1.4170074 C5.1812186,1.4170074 5.3549314,1.4491434 5.5157509,1.5080271 L5.523953,1.511261 z" Fill="#FFF30000" Margin="0,0,0,-0.417" Stretch="Fill"  StrokeThickness="0" UseLayoutRounding="False"/>
+                                <Rectangle Fill="White" HorizontalAlignment="Left" Margin="3,7,0,1"  StrokeThickness="0" Width="3"/>
+                                <Rectangle Fill="White" HorizontalAlignment="Right" Margin="0,7,3,1"  StrokeThickness="0" Width="3"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle13">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard  AutoReverse="True"  RepeatBehavior="ForEver">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="path">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.443"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.024"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="path">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.443"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.024"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Ellipse Fill="#FF27CBE0" HorizontalAlignment="Left" Margin="-17,-15,0,0"  StrokeThickness="0" Width="31" Height="31" VerticalAlignment="Top"/>
+                            <Path x:Name="path" Data="M2.75,4.6456766 L2.75,8.7394266 L5.7109375,8.7394266 C6.690104,8.7394266 7.3854165,8.5571346 7.796875,8.1925516 C8.208333,7.8279686 8.4140625,7.3149481 8.4140625,6.6534891 C8.4140625,6.1743231 8.2929688,5.7641668 8.0507813,5.4230204 C7.8085933,5.0818748 7.489583,4.8566141 7.09375,4.7472391 C6.8385415,4.6795311 6.3671875,4.6456766 5.6796875,4.6456766 z M1.234375,3.2941141 L5.5546875,3.2941141 C6.315104,3.2941141 6.895833,3.3305731 7.296875,3.4034891 C7.859375,3.4972391 8.3307285,3.6756248 8.7109375,3.9386454 C9.0911455,4.2016668 9.3971348,4.5701561 9.6289063,5.0441141 C9.8606768,5.5180731 9.9765625,6.0389061 9.9765625,6.6066141 C9.9765625,7.5805731 9.666666,8.4047918 9.046875,9.0792704 C8.427083,9.7537498 7.3072915,10.090989 5.6875,10.090989 L2.75,10.090989 L2.75,14.747239 L1.234375,14.747239 z" HorizontalAlignment="Left" Height="24.62" Margin="-10.057,-12.167,0,0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="20.19">
+                                <Path.Fill>
+                                    <SolidColorBrush Color="White">
+                                        <SolidColorBrush.RelativeTransform>
+                                            <MatrixTransform Matrix="Identity"/>
+                                        </SolidColorBrush.RelativeTransform>
+                                        <SolidColorBrush.Transform>
+                                            <MatrixTransform Matrix="Identity"/>
+                                        </SolidColorBrush.Transform>
+                                    </SolidColorBrush>
+                                </Path.Fill>
+                                <Path.RenderTransform>
+                                    <CompositeTransform/>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle14">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Canvas HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-238,-64,0,0">
+                            <Path Data="M544,228.25009 C542.375,227.3754 541.25,228.74998 541.25,228.74998 C537.125,234.24806 530.625,234.24985 526.625,228.5 C526.625,228.5 526.125,227.62497 524.875,228.45805" HorizontalAlignment="Left" Margin="228.375,63.792,0,0" Stretch="Fill" Stroke="#FF121983" UseLayoutRounding="False" Width="20.125" StrokeThickness="2" Height="5.886" VerticalAlignment="Top"/>
+                            <Path Data="M530.66669,222 C530.66669,222 532.08301,223.91667 530.83301,225.83333 C529.58301,227.75 530.1665,229.00061 531.91602,230.50073" HorizontalAlignment="Left" Margin="232.915,56,0,0" Stretch="Fill" Stroke="#FF121983" UseLayoutRounding="False" Width="2.752" Height="9.5" VerticalAlignment="Top"/>
+                            <Path Data="M530.66669,222 C530.66669,222 532.08301,223.91667 530.83301,225.83333 C529.58301,227.75 530.1665,229.00061 531.91602,230.50073" HorizontalAlignment="Left" Margin="236.504,56,0,0" Stretch="Fill" Stroke="#FF121983" UseLayoutRounding="False" Width="2.752" Height="9.5" VerticalAlignment="Top"/>
+                            <Path Data="M530.66669,222 C530.66669,222 532.08301,223.91667 530.83301,225.83333 C529.58301,227.75 530.1665,229.00061 531.91602,230.50073" HorizontalAlignment="Left" Margin="240,56,0,0" Stretch="Fill" Stroke="#FF121983" UseLayoutRounding="False" Width="2.752" Height="9.5" VerticalAlignment="Top"/>
+                        </Canvas>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle15">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard >
+                                            <DoubleAnimation AutoReverse="True" RepeatBehavior="ForEver" Duration="0:0:0.5" To="2.281" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="path" />
+                                            <DoubleAnimation AutoReverse="True" RepeatBehavior="ForEver" Duration="0:0:0.5" To="2.281" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="path" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Path x:Name="path" Data="M1.5,1 C1.5,1.2761424 1.2761424,1.5 1,1.5 C0.72385764,1.5 0.5,1.2761424 0.5,1 C0.5,0.72385764 0.72385764,0.5 1,0.5 C1.2761424,0.5 1.5,0.72385764 1.5,1 z" Fill="#FF040404" HorizontalAlignment="Left" Height="4" Margin="-2,-2,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="4" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <CompositeTransform/>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Data="M7.5,4 C7.5,5.9329967 5.9329967,7.5 4,7.5 C2.0670035,7.5 0.5,5.9329967 0.5,4 C0.5,2.0670035 2.0670035,0.5 4,0.5 C5.9329967,0.5 7.5,2.0670035 7.5,4 z" HorizontalAlignment="Left" Height="16" Margin="-8,-8,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="16" UseLayoutRounding="False"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle16">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse HorizontalAlignment="Left" Height="20" Margin="-10,-10,0,0" Stroke="#FF220395" VerticalAlignment="Top" Width="20" StrokeThickness="2"/>
+                            <Ellipse HorizontalAlignment="Left" Height="7" Margin="-11,-9,0,0" Stroke="#FF220395" StrokeThickness="2" VerticalAlignment="Top" Width="7" Fill="#FF220395"/>
+                            <Ellipse HorizontalAlignment="Left" Height="7" Margin="4,2,0,0" Stroke="#FF220395" StrokeThickness="2" VerticalAlignment="Top" Width="7" Fill="#FF220395"/>
+                            <Ellipse HorizontalAlignment="Left" Height="7" Margin="-11,2,0,0" Stroke="#FF220395" StrokeThickness="2" VerticalAlignment="Top" Width="7" Fill="#FF220395"/>
+                            <Ellipse HorizontalAlignment="Left" Height="7" Margin="4,-9,0,0" Stroke="#FF220395" StrokeThickness="2" VerticalAlignment="Top" Width="7" Fill="#FF220395"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle17">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Path Data="M3,0 L12,0 L12,1.0000002 L8,1.0000002 L8,3.9999998 L12,3.9999998 L12,1.0000002 L13,1.0000002 L13,3.9999998 L18,3.9999998 L18,6 L19,6 L19,9 L17,9 C17,10.104569 16.104568,11 15,11 C13.895431,11 13,10.104569 13,9 L7,9 C7,10.104569 6.1045694,11 5,11 C3.8954306,11 3,10.104569 3,9 L1,9 L1,7 L0,7 L0,3.9999998 L1,3.9999998 L1,1.0000002 L3,1.0000002 L3,3.9999998 L7,3.9999998 L7,1.0000002 L3,1.0000002 z" Fill="#FFAB1A9E" HorizontalAlignment="Left" Height="16.21" Margin="-13.685,-7.617,0,0" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="28"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle18">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <Rectangle Fill="#FFEF245B" HorizontalAlignment="Left" Height="28" Margin="-12,-14,0,0" VerticalAlignment="Top" Width="24"/>
+                            <Rectangle Fill="White" HorizontalAlignment="Left" Height="26" Margin="-8,-12,0,0" VerticalAlignment="Top" Width="16"/>
+                            <Rectangle Fill="#FFEF245B" HorizontalAlignment="Left" Height="5" Margin="-1,9,0,0" VerticalAlignment="Top" Width="2"/>
+                            <Path Data="M6,12 L8,12 L8,13 L6,13 z M3,12 L5,12 L5,13 L6,13 L6,16 L2,16 L2,13 L3,13 z M0,12 L2,12 L2,13 L0,13 z M6,10 L8,10 L8,11 L6,11 z M3,10 L5,10 L5,11 L3,11 z M0,10 L2,10 L2,11 L0,11 z M6,8 L8,8 L8,9 L6,9 z M3,8 L5,8 L5,9 L3,9 z M0,8 L2,8 L2,9 L0,9 z M6,6 L8,6 L8,7 L6,7 z M3,6 L5,6 L5,7 L3,7 z M0,6 L2,6 L2,7 L0,7 z M6,4 L8,4 L8,5 L6,5 z M3,4 L5,4 L5,5 L3,5 z M0,4 L2,4 L2,5 L0,5 z M6,2 L8,2 L8,3 L6,3 z M3,2 L5,2 L5,3 L3,3 z M0,2 L2,2 L2,3 L0,3 z M6,0 L8,0 L8,1 L6,1 z M3,0 L5,0 L5,1 L3,1 z M0,0 L2,0 L2,1 L0,1 z" Fill="#FFEF245B" HorizontalAlignment="Left" Height="26.373" Margin="-6.181,-10.538,0,0" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="13.186"/>
+                            <Rectangle Fill="#FFEF245B" HorizontalAlignment="Left" Height="2" Margin="-8,14,0,0" VerticalAlignment="Top" Width="16"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle19">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard   RepeatBehavior="ForEver">
+                                            <DoubleAnimation Duration="0:0:1" To="360" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="path"/>
+                                            <ColorAnimation Duration="0:0:1" To="Red" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
+                                            <DoubleAnimation Duration="0:0:1" To="1.28" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="path"/>
+                                            <DoubleAnimation Duration="0:0:1" To="1.28" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="path"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Path x:Name="path" Data="M8,15 L9,15 L9,18 L12,18 L12,15 L14,15 L14,17 L14.999999,17 L14.999999,20 L14,20 L14,21 L12,21 L9,21 L8,21 L8,20 L6.0000005,20 L6.0000005,17 L8,17 z M17,6 L20,6 L20,8 L21,8 L21,9 L21,12 L21,13 L21,14 L20,14 L20,15 L17,15 L17,14 L15,14 L15,12 L18,12 L18,9 L15,9 L15,8 L17,8 z M2,6 L5,6 L5,8 L6,8 L6,9 L5,9 L3,9 L3,12 L6,12 L6,14 L5,14 L5,15 L2,15 L2,14 L3,14 L0,14 L0,8 L2,8 z M8,0 L14,0 L14,2 L15,2 L15,5 L14,5 L14,6 L12,6 L12,5 L12,3 L9,3 L9,5 L9,6 L8,6 L8,5 L6.0000005,5 L6.0000005,2 L8,2 z" Fill="#FFEF245B" HorizontalAlignment="Left" Height="25" Margin="-12.5,-12.5,0,0" Stretch="Fill"  VerticalAlignment="Top" Width="25" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <CompositeTransform/>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle20">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <Rectangle Fill="#FFEF245B" HorizontalAlignment="Left" Height="14.172" Margin="-6.588,-7.431,0,0" VerticalAlignment="Top" Width="14.172" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" >
+                                <Rectangle.RenderTransform>
+                                    <CompositeTransform Rotation="45"/>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <Rectangle Fill="White" HorizontalAlignment="Left" Height="5" Margin="-6,-3,0,0" VerticalAlignment="Top" Width="13"/>
+                            <Rectangle Fill="White" HorizontalAlignment="Left" Height="4.168" Margin="-5.752,-2.558,0,0" VerticalAlignment="Top" Width="12.504" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" >
+                                <Rectangle.RenderTransform>
+                                    <CompositeTransform Rotation="90"/>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle21" >
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <Rectangle Fill="#FF1579E7" HorizontalAlignment="Left" Height="20" Margin="-10,-10,0,0" VerticalAlignment="Top" Width="20"/>
+                            <Path Data="M0,15 L2,15 L2,17 L0,17 z M12,14 L14.000001,14 L14.000001,15 L15,15 L15,17 L14,17 L14,15 L12,15 z M5,0 L8,0 L8,12 L8,8 L9,8 L9,9 L11,9 L11,12 L12,12 L12,14 L8,14 L5,14 L3,14 L3,15 L2,15 L2,9 L0,9 L0,3 L2,3 L2,8 L3,8 L3,12 L5,12 z" Fill="White" HorizontalAlignment="Left" Height="18.889" Margin="-10,-10,0,0" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="16.667"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle22">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <Path Data="M6.0679321,5.0856886 L9.5365705,5.0856886 C9.192831,6.2211151 8.6164608,7.2054977 7.8074589,8.0388374 C7.0054016,7.2089701 6.425559,6.2245874 6.0679321,5.0856886 z M8.2918186,2.043998 L6.6981201,2.3669169 C6.8821421,2.8877552 7.0279703,3.3252583 7.1356058,3.6794274 L2.7815797,3.6794274 L2.7815797,5.0856886 L4.4586091,5.0856886 C4.8752623,6.616951 5.5835724,7.9398785 6.5835404,9.054471 C5.5314913,9.7697544 4.2259774,10.370454 2.6670001,10.856568 C2.9864342,11.25935 3.3336453,11.762826 3.7086329,12.366998 C5.3301086,11.762826 6.6981201,11.040598 7.8126678,10.200314 C8.92027,11.071848 10.267449,11.773242 11.854203,12.304497 C12.041698,11.985049 12.423629,11.474629 13,10.773234 C11.430606,10.384342 10.111204,9.8201017 9.0417948,9.080513 C10.027873,7.9936991 10.783057,6.6620903 11.307346,5.0856886 L12.854172,5.0856886 L12.854172,3.6794274 L8.8855495,3.6794274 C8.7501364,3.2801189 8.5522261,2.7349763 8.2918186,2.043998 z M8,0 C12.418278,0 16,3.5817218 16,8 C16,12.418278 12.418278,16 8,16 C3.5817218,16 0,12.418278 0,8 C0,3.5817218 3.5817218,0 8,0 z" HorizontalAlignment="Left" Height="16" Margin="-8.5,-7.5,0,0" RenderTransformOrigin="0.4895937518836,0.45034361704672" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="16">
+                                <Path.Fill>
+                                    <SolidColorBrush Color="#FFC62828">
+                                    </SolidColorBrush>
+                                </Path.Fill>
+                            </Path>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle23">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Path Data="M6,0 L12,0 L12,1.9999999 L13,1.9999999 L13,2.9999998 L15,2.9999998 L15,5 L18,5 L18,21 L13,21 L13,8 L12,8 L12,6 L10,6 L10,5 L7,5 L7,6 L6,6 L6,8 L4,8 L4,21 L0,21 L0,5 L3,5 L3,2.9999998 L4,2.9999998 L4,1.9999999 L6,1.9999999 z" Fill="#FFAB0E0E" HorizontalAlignment="Left" Margin="-8.8,-9.7,0,0" Stretch="Fill" StrokeThickness="4" UseLayoutRounding="False" Width="17.5" Height="20.418" VerticalAlignment="Top"/>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle24">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <PointAnimation Duration="0:0:0.5" To="0.485,1.001" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="path"/>
+                                            <DoubleAnimation Duration="0:0:0.5" To="2.285" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="path"/>
+                                            <DoubleAnimation Duration="0:0:0.5" To="2.285" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="path"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Normal"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Path x:Name="path" Data="M9,0 L11,0 L11,1 L12,1 L12,4 L15,4 L15,7 L17,7 L17,10 L15,10 L14,10 L14,12 L15,12 L15,13 L18,13 L18,16 L20,16 L20,18 L14,18 L12,18 L12,24 L11,24 L9,24 L8,24 L8,18 L6,18 L0,18 L0,16 L2.0000002,16 L2.0000002,13 L5,13 L5,12 L6,12 L6,10 L5,10 L3.0000005,10 L3.0000005,7 L5,7 L5,4 L8,4 L8,1 L9,1 z" Fill="#FF1C7A14" HorizontalAlignment="Left" Height="13.6" Margin="-5.5,-6.733,0,0" Stretch="Fill" UseLayoutRounding="False" VerticalAlignment="Top" Width="11.334" RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <CompositeTransform/>
+                                </Path.RenderTransform>
+                            </Path>
+
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle25">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <Ellipse HorizontalAlignment="Left" Height="16" Margin="-1,0,0,221" Stroke="Black" VerticalAlignment="Bottom" Width="16" RenderTransformOrigin="0.495,0.526"/>
+                            <Path Data="M1.75,246.58333 L13.166667,255.00034" HorizontalAlignment="Left" Height="9.417" Margin="0.835,0,0,224.334" Stretch="Fill" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="12.417"/>
+                            <Path Data="M13.583333,246.08333 L1.3336662,254.25034" HorizontalAlignment="Left" Height="9.167" Margin="0.335,0,0,224.752" Stretch="Fill" Stroke="Black" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="13.25"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle26">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Canvas>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard RepeatBehavior="ForEver">
+                                            <DoubleAnimation BeginTime="0" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="1" To="10" Duration="00:00:01" />
+                                            <DoubleAnimation BeginTime="0" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="10" Duration="00:00:01" />
+                                            <DoubleAnimation BeginTime="0" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)" From="1" To="0" Duration="00:00:01" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <!--<vsm:VisualState x:Name="MouseOver" />-->
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Ellipse Height="10" Width="10" Canvas.Left="-5" Canvas.Top="-5" RenderTransformOrigin="0.5,0.5" x:Name="ellipse" IsHitTestVisible="False">
+                                <Ellipse.RenderTransform>
+                                    <ScaleTransform />
+                                </Ellipse.RenderTransform>
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#00FF0000" />
+                                        <GradientStop Color="#FFFF0000" Offset="0.25" />
+                                        <GradientStop Color="#00FF0000" Offset="0.5" />
+                                        <GradientStop Color="#FFFF0000" Offset="0.75" />
+                                        <GradientStop Color="#00FF0000" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Ellipse Height="10" Width="10" Canvas.Left="-5" Canvas.Top="-5" Fill="#FFFF0000" x:Name="ellipse1" />
+                        </Canvas>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+
+            <ic:MarkerStyle x:Name="MyMarkerStyle27">
+                <ic:MarkerStyle.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid >
+                            <Ellipse HorizontalAlignment="Left" Height="16" Margin="-1,0,0,221" Stroke="Red" VerticalAlignment="Bottom" Width="16" RenderTransformOrigin="0.495,0.526"/>
+                            <Path Data="M1.75,246.58333 L13.166667,255.00034" HorizontalAlignment="Left" Height="9.417" Margin="0.835,0,0,224.334" Stretch="Fill" Stroke="Red" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="12.417"/>
+                            <Path Data="M13.583333,246.08333 L1.3336662,254.25034" HorizontalAlignment="Left" Height="9.167" Margin="0.335,0,0,224.752" Stretch="Fill" Stroke="Red" UseLayoutRounding="False" VerticalAlignment="Bottom" Width="13.25"/>
+                        </Grid>
+                    </ControlTemplate>
+                </ic:MarkerStyle.ControlTemplate>
+            </ic:MarkerStyle>
+        </Grid.Resources>
+        <im:Map x:Name="MyMap">
+            <im:TiledDynamicRESTLayer ID="tiledLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+            <im:FeaturesLayer ID="MyFeaturesLayer"/>
+        </im:Map>
+    </Grid>
+</Page>

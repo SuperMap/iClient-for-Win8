@@ -1,0 +1,38 @@
+﻿<Page x:Class="REST_SampleCode.CustomClientMeasure"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:im="using:SuperMap.WinRT.Mapping" 
+    xmlns:local="using:REST_SampleCode"
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <im:Map x:Name="MyMap">
+            <local:TiledBingMapsLayer ID="bingMapLayer"/>
+            <im:ElementsLayer ID="ELayer"></im:ElementsLayer>
+        </im:Map>
+        
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" >
+            <Border HorizontalAlignment="Right"  Height="220" Width="74" Margin="0,62,20,0" Style="{StaticResource PanelBorderStyle}">
+                <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="Mybtn"  ToolTipService.ToolTip="量算距离"  Margin="1" Height="50" Width="50" Style="{StaticResource ButtonBlueStyle}" 
+                         Click="mybtmeasuredistance_Click" >
+                        <Image Source="../Images/Distance.png"  />
+                    </Button>
+                    <Button x:Name="Area" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="量算面积" Style="{StaticResource ButtonBlueStyle}"
+                     Click="mybtnmeasurearea_Click" >
+                        <Image Source="../Images/Area.png" />
+                    </Button>
+                    <Button x:Name="pan" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="平移" Style="{StaticResource ButtonPurpleStyle}"
+                     Click="pan_Click" >
+                        <Image Source="../Images/Pan1.png" />
+                    </Button>
+                    <Button x:Name="Clear" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="清除全部要素" Style="{StaticResource ButtonPurpleStyle}"
+                       Click="Clear_Click" >
+                        <Image Source="../Images/Clear1.png" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

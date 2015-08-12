@@ -1,0 +1,50 @@
+﻿<ControlTemplate
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:icUtility="clr-namespace:SuperMap.WindowsPhone.Utilities;assembly=SuperMap.WindowsPhone"
+    xmlns:icClustering="clr-namespace:SuperMap.WindowsPhone.Clustering;assembly=SuperMap.WindowsPhone">
+    <Canvas x:Name="Root" Cursor="Hand" icClustering:Clusterer.ClusterChildElements="{IDs}">
+        <Canvas.Resources>
+            <icUtility:DictionaryConverter x:Name="DictConvert" />
+        </Canvas.Resources>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="CommonStates">
+
+                <VisualState x:Name="MouseOver">
+                    <Storyboard FillBehavior="Stop" >
+                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="Scatters" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.6" />
+                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="Scatters" Storyboard.TargetProperty="Width" To="35" Duration="0:0:0.6" />
+                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="mainStyle" Storyboard.TargetProperty="StrokeThickness" To="3" Duration="0:0:0.5" RepeatBehavior="Forever"  AutoReverse="True"  />
+                    </Storyboard>
+                </VisualState>
+
+                <VisualState x:Name="Normal">
+                    <Storyboard>
+                    
+                        <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="Scatters" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.6" />
+                        <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="Scatters" Storyboard.TargetProperty="Width" To="0" Duration="0:0:0.6" />
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Canvas Canvas.Left="0" Canvas.Top="-8" >
+
+            <Grid Width="0"  x:Name="Scatters" RenderTransformOrigin="0,0.5" >
+                {OutGrids}
+            </Grid>
+            <Grid Width="20" Height="20" Canvas.Left="-10" Canvas.Top="-2">
+
+
+
+                <Ellipse Fill="{Binding Style.FillColor}" x:Name="mainStyle"
+						 StrokeThickness="2" Stroke="{Binding Style.ForeColor}" />
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+					Text="{Binding Path=Attributes, Converter={StaticResource DictConvert}, ConverterParameter=Count, Mode=OneWay}"
+					FontSize="9" Margin="0" FontWeight="Bold"
+					Foreground="{Binding Style.ForeColor}" />
+            </Grid>
+        </Canvas>
+    </Canvas>
+</ControlTemplate>
+

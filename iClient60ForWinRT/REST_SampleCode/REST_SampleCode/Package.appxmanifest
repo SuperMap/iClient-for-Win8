@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="3e80b184-249a-4742-82e2-4d82f7bc7290" Publisher="CN=admin" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>REST_SampleCode</DisplayName>
+    <PublisherDisplayName>admin</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="REST_SampleCode.App">
+      <VisualElements DisplayName="超图软件 SuperMap" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="REST_SampleCode" ForegroundText="light" BackgroundColor="#00acbf">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\WidthLogo.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#00acbf" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

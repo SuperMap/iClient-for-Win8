@@ -1,0 +1,451 @@
+﻿自定义缩放条，是继承了 Windows Runtime 的一些功能，进行扩展。它用来满足用户的功能需求，和自定义控件风格不同。
+自定义控件风格是不能改变控件功能，只是对外观进行设置。
+自定义缩放条存放在/Extension/SimpleZoomSlider.cs 和 /Extension/SimpleZoomSlider.xaml 中。
+CustomZoomSlider.xaml 对上述自定义控件进行引用。
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+SimpleZoomSlider.cs代码如下 
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using SuperMap.WinRT.Core;
+using SuperMap.WinRT.Mapping;
+
+namespace REST_SampleCode
+{
+
+    [TemplatePart(Name = "ZoomInElement", Type = typeof(RepeatButton))]
+    [TemplatePart(Name = "ZoomOutElement", Type = typeof(RepeatButton))]
+    [TemplatePart(Name = "ZoomSlider", Type = typeof(Slider))]
+    public class SimpleZoomSlider : Control
+    {
+        public static readonly DependencyProperty MapProperty = DependencyProperty.Register("Map", typeof(Map), typeof(SimpleZoomSlider), new PropertyMetadata(new PropertyChangedCallback(OnMapPropertyChanged)));
+        public Map Map
+        {
+            get
+            {
+                return (base.GetValue(MapProperty) as Map);
+            }
+            set
+            {
+                if (this.Map != null)
+                {
+                    this.Map.ViewBoundsChanged -= new EventHandler<ViewBoundsEventArgs>(Map_ViewBoundsChanged);
+                    this.Map.ViewBoundsChanging -= new EventHandler<ViewBoundsEventArgs>(Map_ViewBoundsChanging);
+                }
+
+                base.SetValue(MapProperty, value);
+                this.Map.ViewBoundsChanging += new EventHandler<ViewBoundsEventArgs>(Map_ViewBoundsChanging);
+                this.Map.ViewBoundsChanged += new EventHandler<ViewBoundsEventArgs>(Map_ViewBoundsChanged);
+            }
+        }
+
+        private static void OnMapPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as SimpleZoomSlider).Map = e.NewValue as Map;
+        }
+
+        private bool hasTieldCachedLayer;
+        private double[] layerResolutions;
+        private bool isResolutionsDefined;
+        private bool isSetLater;
+
+        private RepeatButton zoomInElement;
+        private RepeatButton zoomOutElement;
+        private Slider sliderElement;
+
+        public SimpleZoomSlider()
+        {
+            base.DefaultStyleKey = typeof(SimpleZoomSlider);
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            this.sliderElement = base.GetTemplateChild("ZoomSlider") as Slider;
+            this.zoomInElement = base.GetTemplateChild("ZoomInElement") as RepeatButton;
+            this.zoomOutElement = base.GetTemplateChild("ZoomOutElement") as RepeatButton;
+
+            this.SetupZoom();
+
+            if (this.sliderElement != null)
+            {
+                sliderElement.MouseEnter += new MouseEventHandler(zoomSliderElement_MouseEnter);
+                sliderElement.MouseLeave += new MouseEventHandler(zoomSliderElement_MouseLeave);
+
+                this.sliderElement.ValueChanged += new RoutedPropertyChangedEventHandler<double>(this.ZoomSlider_ValueChanged);
+            }
+            if (this.zoomInElement != null)
+            {
+                this.zoomInElement.Click += new RoutedEventHandler(this.ZoomInButton_Click);
+            }
+            if (this.zoomOutElement != null)
+            {
+                this.zoomOutElement.Click += new RoutedEventHandler(this.ZoomOutButton_Click);
+            }
+        }
+
+        private bool GoToState(bool useTransitions, string stateName)
+        {
+            return VisualStateManager.GoToState(this, stateName, useTransitions);
+        }
+        private void zoomSliderElement_MouseLeave(object sender, MouseEventArgs e)
+        {
+            isSliderGetFocused = false;
+        }
+
+        private void zoomSliderElement_MouseEnter(object sender, MouseEventArgs e)
+        {
+            isSliderGetFocused = true;
+        }
+
+        private void SetupZoom()
+        {
+            if (this.Map == null)
+            {
+                return;
+            }
+
+            foreach (Layer layer in this.Map.Layers)
+            {
+                if (layer is TiledCachedLayer)
+                {
+                    hasTieldCachedLayer = true;
+                    break;
+                }
+            }
+            if (this.Map.Scales == null && this.Map.Resolutions == null && !hasTieldCachedLayer)
+            {
+                if (this.sliderElement != null)
+                {
+                    this.sliderElement.Visibility = Visibility.Collapsed;
+                }
+                return;
+            }
+
+            this.layerResolutions = this.Map.Resolutions;
+            if (this.sliderElement != null)
+            {
+                if (this.layerResolutions != null)
+                {
+                    this.sliderElement.Minimum = 0.0;
+                    this.sliderElement.Maximum = this.layerResolutions.Length - 1;
+                    double num2 = this.GetValueFromMap(this.Map.ViewBounds);
+                    if (num2 >= 0.0)
+                    {
+                        this.sliderElement.Value = num2;
+                    }
+                    this.sliderElement.Visibility = Visibility.Visible;
+
+                    if (num2 > 0.0)
+                    {
+                        this.isResolutionsDefined = true;
+                    }
+                }
+                else if (isSetLater)
+                {
+                    this.sliderElement.Visibility = Visibility.Collapsed;
+                }//if由于layerResolutions后设而造成的,主要是tiledCachedLayer
+            }
+        }
+
+        private void ZoomViewEntire_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Map != null)
+            {
+                this.Map.ViewEntire();
+            }
+        }
+
+        private void ZoomInButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((this.sliderElement != null) && (this.sliderElement.Visibility == Visibility.Visible))
+            {
+                if (this.layerResolutions != null)
+                {
+                    double a = this.sliderElement.Value;
+                    a++;
+                    int resolutionsValue = Convert.ToInt32(Math.Round(a));
+                    if (resolutionsValue <= (this.layerResolutions.Length - 1))
+                    {
+                        Map.ZoomToResolution(this.layerResolutions[resolutionsValue]);
+                        sliderElement.Value = a;
+                        isThumbDragging = true;
+                    }
+                }
+            }
+            else
+            {
+                this.Map.Zoom(2);
+            }
+        }
+
+        private void ZoomOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((this.sliderElement != null) && (this.sliderElement.Visibility == Visibility.Visible))
+            {
+                if (this.layerResolutions != null)
+                {
+                    double a = this.sliderElement.Value;
+                    a--;
+                    int resolutionsValue = Convert.ToInt32(Math.Round(a));
+                    if (resolutionsValue >= 0)
+                    {
+                        this.Map.ZoomToResolution(this.layerResolutions[Convert.ToInt32(Math.Round(a))]);
+                        this.sliderElement.Value = a;
+                        isThumbDragging = true;
+                    }
+                }
+            }
+            else
+            {
+                this.Map.Zoom(0.5);
+            }
+        }
+
+        private bool isThumbDragging;
+        private bool isSliderGetFocused;
+
+        private void ZoomSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int index = Convert.ToInt32(Math.Round(e.NewValue));
+            if (isSliderGetFocused && layerResolutions != null)
+            {
+                this.Map.ZoomToResolution(this.layerResolutions[index]);
+                isThumbDragging = true;
+            }
+
+        }
+
+        private void Map_ViewBoundsChanging(object sender, ViewBoundsEventArgs e)
+        {
+            if (!isResolutionsDefined)
+            {
+                SetupZoom();
+                if (hasTieldCachedLayer)
+                {
+                    isSetLater = true;
+                }
+            }
+            if ((sliderElement != null) && !isThumbDragging)
+            {
+                double num = GetValueFromMap(Map.ViewBounds);
+
+                if ((num >= 0.0) && (sliderElement.Value != num))
+                {
+                    sliderElement.Value = num;
+                }
+            }
+        }
+
+        private void Map_ViewBoundsChanged(object sender, ViewBoundsEventArgs e)
+        {
+            if (!this.isResolutionsDefined)
+            {
+                this.SetupZoom();
+                if (this.hasTieldCachedLayer)
+                {
+                    isSetLater = true;
+                }
+            }
+
+            if ((this.sliderElement != null) && !this.isThumbDragging)
+            {
+                double num = this.GetValueFromMap(this.Map.ViewBounds);
+
+                if ((num >= 0.0) && (this.sliderElement.Value != num))
+                {
+                    this.sliderElement.Value = num;
+                }
+            }
+            this.isThumbDragging = false;
+        }
+
+        private double GetValueFromMap(Rectangle2D bounds)
+        {
+            if (((this.layerResolutions == null) || (this.layerResolutions.Length == 0)) || ((this.Map == null) || (bounds.IsEmpty)))
+            {
+                return -1.0;
+            }
+            double num = bounds.Width / this.Map.ActualWidth;
+            double t = this.Map.Resolution;
+            for (int i = 0; i < (this.layerResolutions.Length - 1); i++)
+            {
+                double num3 = this.layerResolutions[i];
+                double num4 = this.layerResolutions[i + 1];
+                if (num >= num3)
+                {
+                    return (double)i;
+                }
+                if ((num < num3) && (num > num4))
+                {
+                    return (i + ((num3 - num) / (num3 - num4)));
+                }
+            }
+            return Convert.ToDouble((int)(this.layerResolutions.Length - 1));
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+SimpleZoomSlider.xaml代码如下
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    xmlns:local="clr-namespace:REST_SampleCode"
+>
+    <Style x:Key="ZoomButtonStyle" TargetType="ButtonBase">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="0 4 0 4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Grid Background="Transparent" x:Name="Root">
+                        <Rectangle x:Name="BoundingBox" Stroke="LightBlue" StrokeThickness="1" Visibility="Collapsed" />
+                        <ContentPresenter
+                            x:Name="ContentElement"
+                            Margin="3"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:SimpleZoomSlider">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:SimpleZoomSlider">
+                    <Grid x:Name="Root"   >
+                        <!-- 放大 ZoomSlider 缩小-->
+
+                        <StackPanel Margin="0,11,0,6" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical"  >
+                            <!--ZoomInElement-->
+                            <RepeatButton x:Name="ZoomInElement"  Canvas.ZIndex="100" Delay="200" Interval="600" Canvas.Left="52" Canvas.Top="-51">
+                                <RepeatButton.Template>
+                                    <ControlTemplate>
+                                        <Grid Width="18" Height="18">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="MouseOver">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0.8" 
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Normal">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0"
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Pressed">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="1" 
+                    									Duration="0:0:0" 
+                    									Storyboard.TargetName="Hover"
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Ellipse Fill="#FFE0E0E0" Margin="-4,-4,-4,-4" Stroke="#FF4A4A4A"/>
+                                            <Ellipse Fill="#FFAFADA9"/>
+                                            <Ellipse x:Name="Hover" Opacity="0" Margin="-4,-4,-4,-4">
+                                                <Ellipse.Fill>
+                                                    <RadialGradientBrush>
+                                                        <GradientStop Color="#B2FFFFFF" Offset="0.665"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="0.629"/>
+                                                        <GradientStop Color="#36FFFFFF" Offset="0.808"/>
+                                                    </RadialGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Rectangle Height="2" Width="8" Fill="Yellow"/>
+                                            <Rectangle Height="8" Width="2" Fill="Yellow"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </RepeatButton.Template>
+                            </RepeatButton>
+
+                            <!--ZoomSlider-->
+                            <Slider x:Name="ZoomSlider" Margin="-1" Canvas.ZIndex="101"
+                                    Cursor="Hand"
+                                    VerticalAlignment="Top"
+                                    Grid.Row="1" 
+                                    Orientation="Vertical" 
+                                    LargeChange="1" 
+                                    Maximum="15" 
+                                    Minimum="0"
+                                    SmallChange="1" 
+                                    Value="0" 
+                                    Height="55"/>
+                            <!--ZoomOutElement-->
+                            <RepeatButton x:Name="ZoomOutElement" Canvas.ZIndex="100" Delay="200" Interval="600" Canvas.Left="52" Canvas.Top="28">
+                                <RepeatButton.Template>
+                                    <ControlTemplate>
+                                        <Grid Width="18" Height="18">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="MouseOver">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0.8"
+                    									Duration="0:0:0.2" 
+                    									Storyboard.TargetName="Hover" 
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Normal">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="0" 
+                    									Duration="0:0:0.2"
+                    									Storyboard.TargetName="Hover" 
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Pressed">
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="1" 
+                    									Duration="0:0:0" 
+                    									Storyboard.TargetName="Hover" 
+                    									Storyboard.TargetProperty="Opacity"/>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Ellipse Fill="#FFE0E0E0" Margin="-4,-4,-4,-4" Stroke="#FF4A4A4A"/>
+                                            <Ellipse Fill="#FFAFADA9"/>
+                                            <Ellipse x:Name="Hover" Opacity="0" Margin="-4,-4,-4,-4">
+                                                <Ellipse.Fill>
+                                                    <RadialGradientBrush>
+                                                        <GradientStop Color="#B2FFFFFF" Offset="0.665"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="0.629"/>
+                                                        <GradientStop Color="#36FFFFFF" Offset="0.808"/>
+                                                    </RadialGradientBrush>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+                                            <Rectangle Height="2" Width="8" Fill="Yellow"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </RepeatButton.Template>
+                            </RepeatButton>
+
+                        </StackPanel>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

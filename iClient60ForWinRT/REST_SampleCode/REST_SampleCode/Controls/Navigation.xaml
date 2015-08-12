@@ -1,0 +1,16 @@
+﻿<Page  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" x:Class="REST_SampleCode.Navigation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping" 
+    xmlns:is="using:SuperMap.WinRT.Controls"       
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="restLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />                          
+        </ic:Map>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
+            <is:Compass x:Name="MyCompass" Map="{Binding ElementName=MyMap}"  Canvas.ZIndex="100"/>
+            <is:ZoomSlider x:Name="MyZoomSlider" Map="{Binding ElementName=MyMap}" />
+        </StackPanel>
+    </Grid>
+</Page>

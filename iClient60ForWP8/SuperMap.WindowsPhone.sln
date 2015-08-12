@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMap.WindowsPhone", "SuperMap.WindowsPhone\SuperMap.WindowsPhone.csproj", "{6E2A2E48-F83D-4897-A37A-159D42CC488F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMap.WindowsPhone.REST", "SuperMap.WindowsPhone.REST\SuperMap.WindowsPhone.REST.csproj", "{92FB14FC-5B6B-40E4-8A87-E40297AF1734}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Debug|ARM.Build.0 = Debug|ARM
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Debug|x86.ActiveCfg = Debug|x86
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Debug|x86.Build.0 = Debug|x86
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Release|ARM.ActiveCfg = Release|ARM
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Release|ARM.Build.0 = Release|ARM
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Release|x86.ActiveCfg = Release|x86
+		{6E2A2E48-F83D-4897-A37A-159D42CC488F}.Release|x86.Build.0 = Release|x86
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Debug|ARM.ActiveCfg = Debug|ARM
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Debug|ARM.Build.0 = Debug|ARM
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Debug|x86.ActiveCfg = Debug|x86
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Debug|x86.Build.0 = Debug|x86
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Release|ARM.ActiveCfg = Release|ARM
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Release|ARM.Build.0 = Release|ARM
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Release|x86.ActiveCfg = Release|x86
+		{92FB14FC-5B6B-40E4-8A87-E40297AF1734}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

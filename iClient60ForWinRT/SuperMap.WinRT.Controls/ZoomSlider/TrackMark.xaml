@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:icControls="using:SuperMap.WinRT.Controls"
+>
+    <!--小横线，数量由level数决定-->
+    <Style TargetType="icControls:TrackMark">
+        <Setter Property="Foreground" Value="Black" />
+        <!--<Setter Property="Cursor" Value="Hand" />-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="icControls:TrackMark">
+                    <Border Background="Transparent" Padding="3">
+                        <Line X1="0" Y1="0" X2="6" Y2="0" HorizontalAlignment="Center" StrokeThickness="1" 
+                              Stroke="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

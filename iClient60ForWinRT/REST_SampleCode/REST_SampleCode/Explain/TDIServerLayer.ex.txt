@@ -1,0 +1,1 @@
+﻿加载 TiledDynamicIServerLayer 有四个必设属性:Url、MapName、MapServiceAddress、MapServicePort

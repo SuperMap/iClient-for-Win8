@@ -1,0 +1,19 @@
+﻿<Page  xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation" x:Class="REST_SampleCode.OverViewMap"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping" 
+    xmlns:is="using:SuperMap.WinRT.Controls"       
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--在地图中加载IServer 6R分块缓存图层-->
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="restLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+        </ic:Map>
+        <!--鹰眼控件-->
+        <is:OverviewMap x:Name="MyOverviewMap" HorizontalAlignment="Right" VerticalAlignment="Bottom"   
+                     CollapsedInTheInitialization="False"  Map="{Binding ElementName=MyMap}" >
+            <!--与鹰眼控件关联的图层-->
+            <ic:TiledDynamicRESTLayer ID="overviewLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+        </is:OverviewMap>
+    </Grid>
+</Page>

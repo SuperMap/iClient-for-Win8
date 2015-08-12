@@ -1,0 +1,5 @@
+﻿该示范代码使用 SuperMap iServer Java 的发布的世界地图服务.
+量算开发流程:
+1.通过 MeasureParameters 对象设置量算参数;
+2.通过 MeasureService 的 ProcessAsync 方法将客户端量算参数传递到服务端;
+3.通过 MeasureEventArgs 获取服务端返回的面积或距离量算结果.当量算距离时,面积结果为-1;当量算面积时,距离结果为-1.

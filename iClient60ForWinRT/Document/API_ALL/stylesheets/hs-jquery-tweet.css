@@ -1,0 +1,56 @@
+.tweet, .query
+{
+    font-family: Georgia, serif;
+    font-size: 120%;
+}
+.tweet .tweet_list, .query .tweet_list
+{
+    -webkit-border-radius: .5em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    background-color: #fdfdfd;
+	border: 1px solid #ccc;
+}
+.tweet .tweet_list .awesome, .tweet .tweet_list .epic, .query .tweet_list .awesome, .query .tweet_list .epic
+{
+    text-transform: uppercase;
+}
+.tweet .tweet_list li, .query .tweet_list li
+{
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: .5em;
+	margin-bottom: 0px;
+}
+.tweet .tweet_list li a, .query .tweet_list li a
+{
+    
+}
+.tweet .tweet_list .tweet_even, .query .tweet_list .tweet_even
+{
+    background-color: #f0f0f0;
+}
+.tweet .tweet_list .tweet_avatar, .query .tweet_list .tweet_avatar
+{
+    padding-right: .5em;
+    float: left;
+}
+.tweet .tweet_list .tweet_avatar img, .query .tweet_list .tweet_avatar img
+{
+    vertical-align: middle;
+}
+.tweetclear {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+	margin: 0px;
+}.tweet .tweet_list .tweet_time {
+	font-size: 80%;
+}
+.tweet .tweet_list .tweet_time a {
+	color: #999;
+	text-decoration: none;
+	display: block;
+}

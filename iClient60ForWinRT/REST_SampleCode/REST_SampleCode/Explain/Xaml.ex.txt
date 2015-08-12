@@ -1,0 +1,5 @@
+﻿在 ElementsLayer 上可以通过 Xaml 或代码的方式添加任意的 Windows Runtime 提供的元素,如 Ellipse、Rectangle等；
+也可以添加 SuperMap 提供的元素 Pushpin（图钉）、PolyLineBase（线要素）、PolygonElement（多边形要素）。
+
+需要注意的是：在添加元素时，除了 Pushpin、PolylineBase、PolygonElement 外其他元素都要设置 icMapping:ElementsLayer.BBox 的值。
+BBox 是一个 Rectangle2D 类型的外接矩形，赋值顺序为矩形的左边界、下边界、右边界和上边界。

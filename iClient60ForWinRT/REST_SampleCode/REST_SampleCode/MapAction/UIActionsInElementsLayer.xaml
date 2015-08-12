@@ -1,0 +1,65 @@
+﻿<Page  x:Class="REST_SampleCode.UIActionsInElementsLayer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+          
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--在地图中加载分块动态iServer图层和矢量要素图层-->
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="tiledLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+            <ic:ElementsLayer ID="MyElementsLayer"/>
+            <ic:FeaturesLayer ID="MyFeaturesLayer"/>
+        </ic:Map>
+        <!--布局控件-->
+
+        <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Style="{StaticResource PanelBorderStyle}">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5,10,5,10">
+                <Button x:Name="Point" Height="50" Width="50"  Margin="2" ToolTipService.ToolTip="绘制点" Style="{StaticResource ButtonBlueStyle}"
+                        Click="btn_Point_Click"  >
+                    <Image Source="../Images/DPoint.png"/>
+                </Button>
+                <Button x:Name="Line" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="绘制线段" Style="{StaticResource ButtonBlueStyle}"
+                        Click="btn_Line_Click" >
+                    <Image Source="../Images/DLine.png" />
+                </Button>
+                <Button x:Name="FreeLine"  Height="50" Width="50" Margin="1" ToolTipService.ToolTip="绘制自由线" Style="{StaticResource ButtonBlueStyle}" 
+                        ToolTipService.Placement="Left" Click="btn_FreeHand_Click">
+                    <Image Source="../Images/DFreeLine.png"/>
+                </Button>
+                <Button x:Name="Rectangle" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="绘制矩形" Style="{StaticResource ButtonBlueStyle}"
+                        ToolTipService.Placement="Left" Click="btn_Rectangle_Click">
+                    <Image Source="../Images/DRectangle.png"/>
+                </Button>
+                <Button x:Name="Polygon" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="绘制多边形" Style="{StaticResource ButtonBlueStyle}"
+                        ToolTipService.Placement="Left" Click="btn_Region_Click">
+                    <Image Source="../Images/DPolygon.png"/>
+                </Button>
+                <Button x:Name="FreePolygon" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="绘制自由面" Style="{StaticResource ButtonBlueStyle}"
+                        ToolTipService.Placement="Left" Click="btn_FreeRegion_Click">
+                    <Image Source="../Images/DFreePolygon.png"/>
+                </Button>
+                <Button x:Name="Circle" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="绘制圆" Style="{StaticResource ButtonBlueStyle}"
+                        ToolTipService.Placement="Left" Click="btn_Circle_Click">
+                    <Image Source="../Images/DCircle.png"/>
+                </Button>                           
+                <Button x:Name="ZoomIn" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="拉框放大" Style="{StaticResource ButtonPurpleStyle}"
+                            ToolTipService.Placement="Left" Click="btn_ZoomIn_Click">
+                    <Image Source="../Images/ZoomIn.png"/>
+                </Button>
+                <Button x:Name="ZoomOut" Height="50" Width="50"  Margin="1" ToolTipService.ToolTip="拉框缩小" Style="{StaticResource ButtonPurpleStyle}"
+                            ToolTipService.Placement="Left" Click="btn_ZoomOut_Click">
+                    <Image Source="../Images/ZoomOut.png"/>
+                </Button>
+				<Button x:Name="Pan" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="平移" Style="{StaticResource ButtonPurpleStyle}"
+                            ToolTipService.Placement="Left" Click="btn_Pan_Click">
+                    <Image Source="../Images/Pan1.png"/>
+                </Button>
+				<Button x:Name="Clear" Height="50" Width="50" Margin="1" ToolTipService.ToolTip="清除" Style="{StaticResource ButtonPurpleStyle}"
+                        ToolTipService.Placement="Left" Click="btn_Clear_Click">
+                    <Image Source="../Images/Clear1.png"/>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

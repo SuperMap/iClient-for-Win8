@@ -1,0 +1,38 @@
+﻿<Page x:Class="REST_SampleCode.OverlayAnalyst"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ic="using:SuperMap.WinRT.Mapping" 
+>
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--在地图中添加图层-->
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="tiledDynamicRESTLayer"
+                Url="http://support.supermap.com.cn:8090/iserver/services/map-jingjin/rest/maps/京津地区土地利用现状图"/>
+            <ic:FeaturesLayer ID="MyFeaturesLayer" />
+        </ic:Map>
+        <Border Width="300" Height="125" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource PanelBorderStyle}" Margin="0,32,22,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65"></RowDefinition>
+                    <RowDefinition Height="55"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Margin="10,14,0,0">
+                    <TextBlock  FontSize="16" FontFamily="Microsoft YaHei" TextWrapping="Wrap" Foreground="#FF666666" Width="280" Text="用京津地区湖泊数据集对土地利用类型数据集进行叠加裁剪"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                    <Border Height="36" Width="135" BorderBrush="#FFb9b9b9" BorderThickness="1" Margin="10,-5,10,0">
+                        <Button x:Name="DatasetOverlayAnalyst" Margin="2,0,0,0" Content="叠加分析" Foreground="#FFFFFFFF" FontSize="16" FontFamily="Microsoft YaHei" Width="130" Height="30" Click="DatasetOverlayAnalyst_Click" Style="{StaticResource ButtonBlueStyle}" FontWeight="Normal"/>
+                    </Border>
+                    <Border Height="36" Width="135" BorderBrush="#FFb9b9b9" BorderThickness="1" Margin="0,-5,0,0">
+                        <Button x:Name="clear" Content="清除"  Foreground="#FFFFFFFF" FontSize="16" FontFamily="Microsoft YaHei" Margin="2,0,0,0" Click="Clear_Click" Style="{StaticResource ButtonRedStyle}" Width="130" Height="30" FontWeight="Normal">
+                        </Button>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>      
+    </Grid>
+</Page>

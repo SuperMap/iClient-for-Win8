@@ -1,0 +1,804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06657652-0CFA-40EC-BC6B-D42E430E315D}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>REST_SampleCode</RootNamespace>
+    <AssemblyName>REST_SampleCode</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>REST_SampleCode_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>0385E5EAF1D5E2CDC2E60BE4DD1F3DF8F867F100</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GeoRSS.xaml.cs">
+      <DependentUpon>GeoRSS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MapHistroyControl.xaml.cs">
+      <DependentUpon>MapHistroyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MessageBox.cs" />
+    <Compile Include="Controls\Navigation.xaml.cs">
+      <DependentUpon>Navigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OverViewMap.xaml.cs">
+      <DependentUpon>OverViewMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScaleBar.xaml.cs">
+      <DependentUpon>ScaleBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuery\GetFeaturesByBufferTest.xaml.cs">
+      <DependentUpon>GetFeaturesByBufferTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuery\GetFeaturesByGeometryTest.xaml.cs">
+      <DependentUpon>GetFeaturesByGeometryTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuery\GetFeaturesByIDsTest.xaml.cs">
+      <DependentUpon>GetFeaturesByIDsTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuery\GetFeaturesBySQLTest.xaml.cs">
+      <DependentUpon>GetFeaturesBySQLTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicLayer\DynamicRESTLayerTest.xaml.cs">
+      <DependentUpon>DynamicRESTLayerTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ElementsLayer\Code.xaml.cs">
+      <DependentUpon>Code.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\BingMapTest.xaml.cs">
+      <DependentUpon>BingMapTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomClientMeasure.xaml.cs">
+      <DependentUpon>CustomClientMeasure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomDrawStar.xaml.cs">
+      <DependentUpon>CustomDrawStar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomFillStyle.xaml.cs">
+      <DependentUpon>CustomFillStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomGeoCircle.xaml.cs">
+      <DependentUpon>CustomGeoCircle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomGeoRectangle.xaml.cs">
+      <DependentUpon>CustomGeoRectangle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomLineStyle.xaml.cs">
+      <DependentUpon>CustomLineStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\CustomMarkerStyle.xaml.cs">
+      <DependentUpon>CustomMarkerStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\DataBinding.xaml.cs">
+      <DependentUpon>DataBinding.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\DictionaryConverter.cs" />
+    <Compile Include="Extension\DomainComponent\ExtendServerParameters.cs" />
+    <Compile Include="Extension\DomainComponent\ExtendServerResult.cs" />
+    <Compile Include="Extension\DomainComponent\ExtendServerService.cs" />
+    <Compile Include="Extension\InRegionCheck.xaml.cs">
+      <DependentUpon>InRegionCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\OpenStreetMapTest.xaml.cs">
+      <DependentUpon>OpenStreetMapTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\ServerExtend.xaml.cs">
+      <DependentUpon>ServerExtend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\TDTMapTest.xaml.cs">
+      <DependentUpon>TDTMapTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeaturesLayer\AddByCode.xaml.cs">
+      <DependentUpon>AddByCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FeaturesLayer\RendererTest.xaml.cs">
+      <DependentUpon>RendererTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupedItemsPage.xaml.cs">
+      <DependentUpon>GroupedItemsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupDetailPage.xaml.cs">
+      <DependentUpon>GroupDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\BufferAnalyst.xaml.cs">
+      <DependentUpon>BufferAnalyst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTClosestFacility.xaml.cs">
+      <DependentUpon>RESTClosestFacility.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTDistanceQueryTest.xaml.cs">
+      <DependentUpon>RESTDistanceQueryTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTFindMTSPPath.xaml.cs">
+      <DependentUpon>RESTFindMTSPPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTFindPath.xaml.cs">
+      <DependentUpon>RESTFindPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTFindTSPPath.xaml.cs">
+      <DependentUpon>RESTFindTSPPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTGeometryQueryTest.xaml.cs">
+      <DependentUpon>RESTGeometryQueryTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTMeasureTest.xaml.cs">
+      <DependentUpon>RESTMeasureTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTServiceArea.xaml.cs">
+      <DependentUpon>RESTServiceArea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTSQLQueryTest.xaml.cs">
+      <DependentUpon>RESTSQLQueryTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTThemeComposite.xaml.cs">
+      <DependentUpon>RESTThemeComposite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTThemeDotDensity.xaml.cs">
+      <DependentUpon>RESTThemeDotDensity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTThemeGraduatedSymbol.xaml.cs">
+      <DependentUpon>RESTThemeGraduatedSymbol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTThemeLabel.xaml.cs">
+      <DependentUpon>RESTThemeLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTThemeRange.xaml.cs">
+      <DependentUpon>RESTThemeRange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\RESTThemeUnique.xaml.cs">
+      <DependentUpon>RESTThemeUnique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\OverlayAnalyst.xaml.cs">
+      <DependentUpon>OverlayAnalyst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\SetLayerStatusTest.xaml.cs">
+      <DependentUpon>SetLayerStatusTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="REST\SurfaceAnalyst.xaml.cs">
+      <DependentUpon>SurfaceAnalyst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDetailPage.xaml.cs">
+      <DependentUpon>ItemDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MapAction\UIActionsInElementsLayer.xaml.cs">
+      <DependentUpon>UIActionsInElementsLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataModel\SampleDataSource.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="PrivacyPolicyPage.xaml.cs">
+      <DependentUpon>PrivacyPolicyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TiledDynamicLayer\TDWMSLayer.xaml.cs">
+      <DependentUpon>TDWMSLayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TiledDynamicLayer\TiledDynamicRESTLayerTest.xaml.cs">
+      <DependentUpon>TiledDynamicRESTLayerTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TiledDynamicLayer\TiledWMTSLayerTest.xaml.cs">
+      <DependentUpon>TiledWMTSLayerTest.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Common\ReadMe.txt" />
+    <None Include="iClient60ForWinRT.pfx" />
+    <None Include="REST_SampleCode_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\bg.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\LightGray.png" />
+    <Content Include="Assets\MediumGray.png" />
+    <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\WidthLogo.png" />
+    <Content Include="Explain\AddByCode.ex.txt" />
+    <Content Include="Explain\AddByXaml.ex.txt" />
+    <Content Include="Explain\AddImagesAndMedia.ex.txt" />
+    <Content Include="Explain\BingMapTest.ex.txt" />
+    <Content Include="Explain\BookMarkTest.ex.txt" />
+    <Content Include="Explain\BufferAnalyst.ex.txt" />
+    <Content Include="Explain\BufferQueryTest.ex.txt" />
+    <Content Include="Explain\ClosestFacility.ex.txt" />
+    <Content Include="Explain\Code.ex.txt" />
+    <Content Include="Explain\CustomClientMeasure.ex.txt" />
+    <Content Include="Explain\CustomClustererTest.ex.txt" />
+    <Content Include="Explain\CustomDrawStar.ex.txt" />
+    <Content Include="Explain\CustomFillStyle.ex.txt" />
+    <Content Include="Explain\CustomGeoCircle.ex.txt" />
+    <Content Include="Explain\CustomGeoRectangle.ex.txt" />
+    <Content Include="Explain\CustomLineStyle.ex.txt" />
+    <Content Include="Explain\CustomMarkerStyle.ex.txt" />
+    <Content Include="Explain\CustomZoomSlider.ex.txt" />
+    <Content Include="Explain\DataBinding.ex.txt" />
+    <Content Include="Explain\DynamicAndTiled.ex.txt" />
+    <Content Include="Explain\DynamicIS.ex.txt" />
+    <Content Include="Explain\DynamicIServer.ex.txt" />
+    <Content Include="Explain\DynamicRESTLayerTest.ex.txt" />
+    <Content Include="Explain\DynamicWMS.ex.txt" />
+    <Content Include="Explain\Edit.ex.txt" />
+    <Content Include="Explain\EditFeatures.ex.txt" />
+    <Content Include="Explain\Edition.ex.txt" />
+    <Content Include="Explain\GeoRSS.ex.txt" />
+    <Content Include="Explain\GetFeaturesByBufferTest.ex.txt" />
+    <Content Include="Explain\GetFeaturesByGeometryTest.ex.txt" />
+    <Content Include="Explain\GetFeaturesByIDsTest.ex.txt" />
+    <Content Include="Explain\GetFeaturesBySQLTest.ex.txt" />
+    <Content Include="Explain\GetLayersVisibleTest.ex.txt" />
+    <Content Include="Explain\HeatMapTest.ex.txt" />
+    <Content Include="Explain\InRegionCheck.ex.txt" />
+    <Content Include="Explain\IServerAndWMS.ex.txt" />
+    <Content Include="Explain\IServerJava.ex.txt" />
+    <Content Include="Explain\RESTClosestFacility.ex.txt" />
+    <Content Include="Explain\RESTDistanceQueryTest.ex.txt" />
+    <Content Include="Explain\RESTFindMTSPPath.ex.txt" />
+    <Content Include="Explain\RESTFindPath.ex.txt" />
+    <Content Include="Explain\RESTFindTSPPath.ex.txt" />
+    <Content Include="Explain\RESTGeometryQueryTest.ex.txt" />
+    <Content Include="Explain\RESTMeasureTest.ex.txt" />
+    <Content Include="Explain\RESTServiceArea.ex.txt" />
+    <Content Include="Explain\RESTSQLQueryTest.ex.txt" />
+    <Content Include="Explain\RESTThemeComposite.ex.txt" />
+    <Content Include="Explain\RESTThemeDotDensity.ex.txt" />
+    <Content Include="Explain\RESTThemeGraduatedSymbol.ex.txt" />
+    <Content Include="Explain\RESTThemeLabel.ex.txt" />
+    <Content Include="Explain\RESTThemeRange.ex.txt" />
+    <Content Include="Explain\RESTThemeUnique.ex.txt" />
+    <Content Include="Explain\LabelTheme.ex.txt" />
+    <Content Include="Explain\LegendTest.ex.txt" />
+    <Content Include="Explain\Magnifier.ex.txt" />
+    <Content Include="Explain\MapHistroyControl.ex.txt" />
+    <Content Include="Explain\Navigation.ex.txt" />
+    <Content Include="Explain\OpenStreetMapTest.ex.txt" />
+    <Content Include="Explain\OverlayAnalyst.ex.txt" />
+    <Content Include="Explain\OverViewMap.ex.txt" />
+    <Content Include="Explain\ProgressBar.ex.txt" />
+    <Content Include="Explain\ProjectionTest.ex.txt" />
+    <Content Include="Explain\Query.ex.txt" />
+    <Content Include="Explain\QueryByGeometry.ex.txt" />
+    <Content Include="Explain\QueryBySQL.ex.txt" />
+    <Content Include="Explain\RendererTest.ex.txt" />
+    <Content Include="Explain\RightMenu.ex.txt" />
+    <Content Include="Explain\ScaleBar.ex.txt" />
+    <Content Include="Explain\ServerExtend.ex.txt" />
+    <Content Include="Explain\ServerMeasure.ex.txt" />
+    <Content Include="Explain\ServiceArea.ex.txt" />
+    <Content Include="Explain\SetLayerStatusTest.ex.txt" />
+    <Content Include="Explain\SpatialOperateTest.ex.txt" />
+    <Content Include="Explain\SurfaceAnalyst.ex.txt" />
+    <Content Include="Explain\TDIServerLayer.ex.txt" />
+    <Content Include="Explain\TDTMapTest.ex.txt" />
+    <Content Include="Explain\TDWMSLayer.ex .txt" />
+    <Content Include="Explain\TDWMSLayer.ex.txt" />
+    <Content Include="Explain\ThemeGraph.ex.txt" />
+    <Content Include="Explain\TiledDynamicRESTLayerTest.ex.txt" />
+    <Content Include="Explain\TiledWMTSLayerTest.ex.txt" />
+    <Content Include="Explain\UIActions.ex.txt" />
+    <Content Include="Explain\UIActionsInElementsLayer.ex.txt" />
+    <Content Include="Explain\Xaml.ex.txt" />
+    <Content Include="Images\Area.png" />
+    <Content Include="Images\bingMap105.png" />
+    <Content Include="Images\bingMap250.png" />
+    <Content Include="Images\buffer105.png" />
+    <Content Include="Images\buffer250.png" />
+    <Content Include="Images\Clear.png" />
+    <Content Include="Images\Clear1.png" />
+    <Content Include="Images\code105.png" />
+    <Content Include="Images\code250.png" />
+    <Content Include="Images\Cs.png" />
+    <Content Include="Images\customFill105.png" />
+    <Content Include="Images\customFill250.png" />
+    <Content Include="Images\customLine105.png" />
+    <Content Include="Images\customLine250.png" />
+    <Content Include="Images\customMarker105.png" />
+    <Content Include="Images\customMarker250.png" />
+    <Content Include="Images\DataBinding105.png" />
+    <Content Include="Images\DataBinding250.png" />
+    <Content Include="Images\DCircle.png" />
+    <Content Include="Images\Desc.png" />
+    <Content Include="Images\DFreeLine.png" />
+    <Content Include="Images\DFreePolygon.png" />
+    <Content Include="Images\Distance.png" />
+    <Content Include="Images\DLine.png" />
+    <Content Include="Images\DPoint.png" />
+    <Content Include="Images\DPolygon.png" />
+    <Content Include="Images\DrawLine.png" />
+    <Content Include="Images\DrawPoint.png" />
+    <Content Include="Images\DrawPolygon.png" />
+    <Content Include="Images\DrawStar105.png" />
+    <Content Include="Images\DrawStar250.png" />
+    <Content Include="Images\Drectangle.png" />
+    <Content Include="Images\EditEntity.png" />
+    <Content Include="Images\Exam.png" />
+    <Content Include="Images\feature105.png" />
+    <Content Include="Images\feature250.png" />
+    <Content Include="Images\findFTP105.png" />
+    <Content Include="Images\findFTP250.png" />
+    <Content Include="Images\findPath105.png" />
+    <Content Include="Images\findPath250.png" />
+    <Content Include="Images\FindTSPPath105.png" />
+    <Content Include="Images\FindTSPPath250.png" />
+    <Content Include="Images\GeoCircle105.png" />
+    <Content Include="Images\GeoCircle250.png" />
+    <Content Include="Images\GeoRectangle105.png" />
+    <Content Include="Images\GeoRectangle250.png" />
+    <Content Include="Images\GeoRSS105.png" />
+    <Content Include="Images\GeoRSS250.png" />
+    <Content Include="Images\GetFeaturesByBuffer105.png" />
+    <Content Include="Images\GetFeaturesByBuffer250.png" />
+    <Content Include="Images\GetFeaturesByGeometry105.png" />
+    <Content Include="Images\GetFeaturesByGeometry250.png" />
+    <Content Include="Images\GetFeaturesByID105.png" />
+    <Content Include="Images\GetFeaturesByID250.png" />
+    <Content Include="Images\GetFeaturesBySQL105.png" />
+    <Content Include="Images\GetFeaturesBySQL250.png" />
+    <Content Include="Images\iClient.png" />
+    <Content Include="Images\iClient105.png" />
+    <Content Include="Images\iClient250.png" />
+    <Content Include="Images\iClientMeasure105.png" />
+    <Content Include="Images\iClientMeasure250.png" />
+    <Content Include="Images\inRegionCheck105.png" />
+    <Content Include="Images\inRegionCheck250.png" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\map105X105.png" />
+    <Content Include="Images\map250X250.png" />
+    <Content Include="Images\MapHistroyControl105.png" />
+    <Content Include="Images\MapHistroyControl250.png" />
+    <Content Include="Images\measure105.png" />
+    <Content Include="Images\measure250.png" />
+    <Content Include="Images\Navigation105.png" />
+    <Content Include="Images\Navigation250.png" />
+    <Content Include="Images\network105.png" />
+    <Content Include="Images\network250.png" />
+    <Content Include="Images\nextview.png" />
+    <Content Include="Images\OpenStreetMap105.png" />
+    <Content Include="Images\OpenStreetMap250.png" />
+    <Content Include="Images\overlay105.png" />
+    <Content Include="Images\overlay250.png" />
+    <Content Include="Images\OverViewMap105.png" />
+    <Content Include="Images\OverViewMap250.png" />
+    <Content Include="Images\Pan.png" />
+    <Content Include="Images\pan1.png" />
+    <Content Include="Images\police.png" />
+    <Content Include="Images\preview.png" />
+    <Content Include="Images\RESTDistance105.png" />
+    <Content Include="Images\RESTDistance250.png" />
+    <Content Include="Images\RESTGeometry105.png" />
+    <Content Include="Images\RESTGeometry250.png" />
+    <Content Include="Images\RESTSQL105.png" />
+    <Content Include="Images\RESTSQL250.png" />
+    <Content Include="Images\ScaleBar105.png" />
+    <Content Include="Images\ScaleBar250.png" />
+    <Content Include="Images\select.png" />
+    <Content Include="Images\selectNode.png" />
+    <Content Include="Images\ServerExtend105.png" />
+    <Content Include="Images\ServerExtend250.png" />
+    <Content Include="Images\ServiceArea105.png" />
+    <Content Include="Images\ServiceArea250.png" />
+    <Content Include="Images\SetLayerStatus105.png" />
+    <Content Include="Images\SetLayerStatus250.png" />
+    <Content Include="Images\Silverlight-di.png" />
+    <Content Include="Images\Silverlight1.png" />
+    <Content Include="Images\Silverlight2.png" />
+    <Content Include="Images\Silverlight3.png" />
+    <Content Include="Images\Star.png" />
+    <Content Include="Images\surface105.png" />
+    <Content Include="Images\surface250.png" />
+    <Content Include="Images\TDRESTLayerGroup.png" />
+    <Content Include="Images\TDTMap105.png" />
+    <Content Include="Images\TDTMap250.png" />
+    <Content Include="Images\ThemeComposite105.png" />
+    <Content Include="Images\ThemeComposite250.png" />
+    <Content Include="Images\themeDotDensity105.png" />
+    <Content Include="Images\themeDotDensity250.png" />
+    <Content Include="Images\themegraduate105.png" />
+    <Content Include="Images\themegraduate250.png" />
+    <Content Include="Images\themelable105.png" />
+    <Content Include="Images\themelable250.png" />
+    <Content Include="Images\themeRange105.png" />
+    <Content Include="Images\themeRange250.png" />
+    <Content Include="Images\themeUnique105.png" />
+    <Content Include="Images\themeUnique250.png" />
+    <Content Include="Images\tiananmen.jpg" />
+    <Content Include="Images\TiledDynamicRestLayer.png" />
+    <Content Include="Images\Union.png" />
+    <Content Include="Images\WMS105.png" />
+    <Content Include="Images\WMS250.png" />
+    <Content Include="Images\WMTS105.png" />
+    <Content Include="Images\WMTS250.png" />
+    <Content Include="Images\world.png" />
+    <Content Include="Images\Xaml.png" />
+    <Content Include="Images\ZoomIn.png" />
+    <Content Include="Images\ZoomOut.png" />
+    <Content Include="SDKConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AboutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\GeoRSS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MapHistroyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Navigation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\OverViewMap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ScaleBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataQuery\GetFeaturesByBufferTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataQuery\GetFeaturesByGeometryTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataQuery\GetFeaturesByIDsTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataQuery\GetFeaturesBySQLTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DynamicLayer\DynamicRESTLayerTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ElementsLayer\Code.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\BingMapTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomClientMeasure.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomDrawStar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomFillStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomGeoCircle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomGeoRectangle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomLineStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\CustomMarkerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\DataBinding.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\InRegionCheck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\OpenStreetMapTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\ServerExtend.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extension\TDTMapTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FeaturesLayer\AddByCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FeaturesLayer\RendererTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GroupedItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GroupDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\BufferAnalyst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTClosestFacility.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTDistanceQueryTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTFindMTSPPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTFindPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTFindTSPPath.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTGeometryQueryTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTMeasureTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTServiceArea.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTSQLQueryTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTThemeComposite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTThemeDotDensity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTThemeGraduatedSymbol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTThemeLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTThemeRange.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\RESTThemeUnique.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\OverlayAnalyst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\SetLayerStatusTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="REST\SurfaceAnalyst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MapAction\UIActionsInElementsLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PrivacyPolicyPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TiledDynamicLayer\TDWMSLayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TiledDynamicLayer\TiledDynamicRESTLayerTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TiledDynamicLayer\TiledWMTSLayerTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Lib\" />
+    <Folder Include="Source\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SuperMap.WinRT">
+      <HintPath>Lib\SuperMap.WinRT.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperMap.WinRT.Controls">
+      <HintPath>Lib\SuperMap.WinRT.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperMap.WinRT.REST">
+      <HintPath>Lib\SuperMap.WinRT.REST.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>iClient60ForWinRT.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="BeforeBuild">
+    <Exec Command="cd &quot;$(ProjectDir)&quot;" />
+    <Exec Command="for /R &quot;$(ProjectDir)Source&quot; %%I in (*.txt) do (del &quot;$(ProjectDir)Source\%%~nI%%~xI&quot;)" />
+    <Exec Command="for /R &quot;$(ProjectDir)Source&quot; %%I in (*.xaml) do (del &quot;$(ProjectDir)Source\%%~nI%%~xI&quot;)" />
+    <Exec Command="for /R &quot;$(ProjectDir)Source&quot; %%I in (*.cs) do (del &quot;$(ProjectDir)Source\%%~nI%%~xI&quot;)" />
+    <Exec Command="for /R &quot;$(ProjectDir)&quot; %%I in (*.xaml) do (xcopy &quot;%%I&quot;  &quot;$(ProjectDir)Source\&quot;  /C/I/R/Y)" />
+    <Exec Command="for /R &quot;$(ProjectDir)&quot; %%I in (*.xaml.cs) do (xcopy &quot;%%I&quot;  &quot;$(ProjectDir)Source\&quot;  /C/I/R/Y)" />
+    <Exec Command="for /R &quot;$(ProjectDir)Source\&quot; %%I in (*.xaml.cs) do (rename &quot;%%I&quot;  &quot;%%~nI%%~xI.txt&quot;)" />
+    <Exec Command="for /R &quot;$(ProjectDir)Source\&quot; %%I in (*.xaml) do (rename &quot;%%I&quot;  &quot;%%~nI%%~xI.txt&quot;)" />
+    <ItemGroup>
+      <Content Include="Source\*.txt" />
+    </ItemGroup>
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

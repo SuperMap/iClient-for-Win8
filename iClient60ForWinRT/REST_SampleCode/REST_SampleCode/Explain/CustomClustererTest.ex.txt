@@ -1,0 +1,6 @@
+﻿在 SuperMap.WinRT.Clustering 中提供两种 Clusterer 的样式，如果这两种样式不满足您的需求，
+那么您可以对 Clusterer 进行扩展，简单来说分两步，第一步就是先定义 Clusterer 的样式，
+第二步就是定义 Clusterer 类。
+Clusterer 是对点的一种聚散显示，所以样式的自定义要从 MarkerStyle 继承，来重写它的 ControlTemplate 
+
+定义一个类叫做 CustomClusterer，这个类要从 FeaturesClusterer 继承，用来实现父类中的 OnCreateFeature 方法

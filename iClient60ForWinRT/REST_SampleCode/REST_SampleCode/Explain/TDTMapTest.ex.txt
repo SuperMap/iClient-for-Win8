@@ -1,0 +1,3 @@
+﻿对接天地图的地图服务。
+设置时需要两个TileTDTMapsLayer，且第一个为图像图层（IsMarks为false）第二个为标记文字图层（IsMarks为true）。
+并且两个图层的Mode属性必须相同。

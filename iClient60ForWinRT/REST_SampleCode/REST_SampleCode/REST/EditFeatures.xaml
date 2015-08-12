@@ -1,0 +1,59 @@
+﻿<Page  x:Class="iServerJava6R_SampleCode.EditFeatures"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping" 
+
+    xmlns:slData="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"     Title="地物编辑"      
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--在地图中加载分块动态REST图层和矢量要素图层-->
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="MyLayer" EnableServerCaching="False" Url="http://localhost:8090/iserver/services/map-jingjin/rest/maps/京津地区土地利用现状图"/>
+            <ic:FeaturesLayer ID="DrawLayer"/>
+            <ic:FeaturesLayer ID="TempLayer"/>
+        </ic:Map>
+
+        <!--布局控件-->
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Vertical">
+            <Border Style="{StaticResource GlassBorderStyle}">
+                <StackPanel Orientation="Vertical" >
+                    <Button x:Name="Pan" ToolTipService.ToolTip="平移" ToolTipService.Placement="Mouse" Click="Pan_Click">
+                        <Image Source="../Images/Pan1.png" Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="SelectFeature" ToolTipService.ToolTip="选择地物" ToolTipService.Placement="Left" Click="SelectFeature_Click">
+                        <Image Source="../Images/select.png" Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="clear" ToolTipService.ToolTip="清除高亮" 
+                        ToolTipService.Placement="Left" Click="clear_Click" >
+                        <Image Source="../Images/Clear.png" Height="32" Width="32"/>
+                    </Button>
+                    <Button x:Name="AddFeature" ToolTipService.ToolTip="添加地物" ToolTipService.Placement="Left" Click="AddFeature_Click">
+                        <Image Source="../Images/DFreePolygon.png" Height="32" Width="32" />
+                    </Button>
+                    <Button x:Name="EditFeature" ToolTipService.ToolTip="编辑地物" ToolTipService.Placement="Left" IsEnabled="False" Click="EditFeature_Click">
+                        <Image Source="../Images/EditEntity.png" Height="32" Width="32" />
+                    </Button>
+                    <Button x:Name="DeleteFeature" ToolTipService.ToolTip="删除选中地物" ToolTipService.Placement="Left" IsEnabled="False" Click="DeleteFeature_Click">
+                        <Image Source="../Images/Clear1.png" Height="32" Width="32" />
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!--DataGrid 控件-->
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                <ic:FeatureDataGrid x:Name="MyDataGrid" Map="{Binding ElementName=MyMap}" 
+                FeaturesLayer="{Binding ElementName=MyMap,Path=Layers.[1]}" RowEditEnded="MyDataGrid_RowEditEnded" AutoGenerateColumns="False" MaxHeight="150">
+                    <ic:FeatureDataGrid.Columns>
+                        <slData:DataGridTextColumn Binding="{Binding Path=SMID}" Header="SmID"/>
+                        <slData:DataGridTextColumn Binding="{Binding Path=SMUSERID}" Header="SmUserID"/>
+                        <slData:DataGridTextColumn Binding="{Binding Path=SMAREA }" Header="SmArea"/>
+                        <slData:DataGridTextColumn Binding="{Binding Path=SMPERIMETER }" Header="SmPerimeter"/>
+                        <slData:DataGridTextColumn Binding="{Binding Path=LANDTYPE }" Header="LandType"/>
+                    </ic:FeatureDataGrid.Columns>
+                </ic:FeatureDataGrid>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Page>

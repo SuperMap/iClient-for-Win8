@@ -1,0 +1,45 @@
+﻿<Page x:Class="REST_SampleCode.GetFeaturesByGeometryTest" 
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           mc:Ignorable="d" xmlns:ic="using:SuperMap.WinRT.Mapping"
+           xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+           d:DesignWidth="640" d:DesignHeight="480"
+           >
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--地图控件-->
+        <ic:Map x:Name="MyMap">
+            <!--SuperMap iServer Java 6R 的分块动态图层.其中 url 为服务访问地址,默认地址为本机服务地址,用户需根据实际服务器地址进行设置-->
+            <ic:TiledDynamicRESTLayer ID="restLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+            <!--矢量要素图层-->
+            <ic:FeaturesLayer ID="FeaturesLayer"  />
+        </ic:Map>
+
+        <!--布局控件-->
+		 <Border HorizontalAlignment="Right" VerticalAlignment="Top" Height="284" Width="74" Margin="0,62,20,0" Style="{StaticResource PanelBorderStyle}">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button x:Name="Point" ToolTipService.ToolTip="点查询" Height="50" Width="50"   Margin="1,14,0,0" Style="{StaticResource ButtonBlueStyle}"
+                        Click="Point_Click"  >
+                    <Image Source="../Images/DPoint.png" />
+                </Button>
+                <Button x:Name="Line" ToolTipService.ToolTip="线查询" Height="50" Width="50"  Margin="1,1" Style="{StaticResource ButtonBlueStyle}"
+                        Click="Line_Click" >
+                    <Image Source="../Images/DLine.png" />
+                </Button>
+                <Button x:Name="Region"  ToolTipService.ToolTip="面查询" Height="50" Width="50" Margin="1" Style="{StaticResource ButtonBlueStyle}" 
+                        Click="Region_Click" >
+                    <Image Source="../Images/DPolygon.png"  />
+                </Button>
+                <Button x:Name="Pan" Height="50" Width="50" Background="#FF7677c3" ToolTipService.ToolTip="平移" Margin="1,3" Style="{StaticResource ButtonPurpleStyle}"
+                            Click="Pan_Click" >
+                    <Image Source="../Images/Pan1.png" />
+                </Button>
+                <Button x:Name="Clear" Height="50" Width="50" Background="#FF7677c3" ToolTipService.ToolTip="清除全部要素" Margin="1" Style="{StaticResource ButtonPurpleStyle}"
+                       Click="Clear_Click" >
+                    <Image Source="../Images/Clear1.png" />
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

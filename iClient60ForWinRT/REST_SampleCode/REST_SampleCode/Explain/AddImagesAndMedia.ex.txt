@@ -1,0 +1,6 @@
+﻿在 ElementsLayer 上可以添加音频、视频和图片。
+支持的视频格式为 Windows Media 视频 (WMV)、音频格式为 Windows Media 音频 (WMA) 和 MP3 文件；
+支持的图片格式为 JPEG 和 PNG。
+要成功加载视频、音频必须在 ClientBin 文件夹中引入加载的视频或音频文件；
+要加载图片必须在解决方案中引入图片文件。
+例如在本例中我们在解决方案下新建了一个 “Images” 文件夹用于保存所有图片。

@@ -1,0 +1,41 @@
+﻿<Page x:Class="REST_SampleCode.RESTFindMTSPPath"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ic="using:SuperMap.WinRT.Mapping"     
+>
+	
+    <Grid x:Name="LayoutRoot" Background="White">
+        <!--加载分块动态REST图层和元素图层-->
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="tiledDynamicRESTLayer"  Url="http://support.supermap.com.cn:8090/iserver/services/map-changchun/rest/maps/长春市区图"/>
+            <ic:ElementsLayer ID="MyElementsLayer"/>
+            <ic:FeaturesLayer ID="MyFeaturesLayer"/>
+            <ic:FeaturesLayer ID="MyFeaturesLayer1"/>
+        </ic:Map>
+
+        <!--布局控件-->
+        <Border Width="180" Height="120" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource PanelBorderStyle}" Margin="10,42,22,0">
+            <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Top" Height="120"  Canvas.Top="0">
+                <Border>
+                    <StackPanel  Orientation="Horizontal" Height="55" Margin="15,10">
+                        <Button x:Name="SelectPoint"  Height="50" Width="50"  ToolTipService.ToolTip="配送目标" Style="{StaticResource ButtonBlueStyle}" 
+                        ToolTipService.Placement="Left" Click="SelectPoint_Click" >
+                            <Image Source="../Images/selectNode.png"  />
+                        </Button>
+                        <Button x:Name="Pan" Height="50" Width="50"  Click="Pan_Click"  Margin="1" ToolTipService.ToolTip="平移" Style="{StaticResource ButtonPurpleStyle}"
+                            ToolTipService.Placement="Left" >
+                            <Image Source="../Images/Pan1.png" />
+                        </Button>
+                        <Button x:Name="Clear" Height="50" Width="50" Click="Clear_Click" Margin="1" ToolTipService.ToolTip="清除" Style="{StaticResource ButtonPurpleStyle}"
+                        ToolTipService.Placement="Left" >
+                            <Image Source="../Images/Clear1.png" />
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Border HorizontalAlignment="Center" Height="36" Width="150" BorderBrush="#FFb9b9b9" BorderThickness="1" >
+                       <Button x:Name="PathAnalyst" Content="多旅行商分析"  Margin="2,0,0,0" Foreground="#FFFFFFFF" FontSize="16" FontFamily="Microsoft YaHei" Width="145" Height="28" Click="PathAnalyst_Click" Style="{StaticResource ButtonBlueStyle}" FontWeight="Normal"/>
+                 </Border>             
+            </StackPanel>          
+        </Border>    
+    </Grid>
+</Page>

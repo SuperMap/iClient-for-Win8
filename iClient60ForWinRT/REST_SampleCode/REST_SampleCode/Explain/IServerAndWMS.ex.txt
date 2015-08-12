@@ -1,0 +1,1 @@
+﻿如果 DynamicWMSLayer 和别的图层叠加就不用设置 Bounds 属性，如果只加载一个 DynamicWMSLayer 就需要设置 Bounds 属性。

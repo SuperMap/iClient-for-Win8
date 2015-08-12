@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="bcf4b722-571b-485a-a7c2-ec12fc136926" Publisher="CN=Win8_li" Version="1.0.0.14" />
+  <Properties>
+    <DisplayName>MBTilesLayerSample</DisplayName>
+    <PublisherDisplayName>Win8_li</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="MBTilesLayerSample.App">
+      <VisualElements DisplayName="超图软件 SuperMap" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="REST_SampleCode" ForegroundText="light" BackgroundColor="#00acbf">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\WidthLogo.png" />
+        <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#00acbf" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

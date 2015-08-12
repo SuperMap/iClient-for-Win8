@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SuperMap.WinRT.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:SuperMap.WinRT.Controls.Compass">
+            <summary>
+            	<para>指北针控件</para>
+            	<para>指北针控件可以按照方向标的方位来移动地图。当点击指北针控件上方向标的某方向时，地图将向该方向移动固定图幅的范围；当按住方向标的某方向时，地图将向该方向匀速平移；按住指北针圆形方向盘上外层圆环转动可以改变地图的方位；双击方向盘圆环可恢复正北方向；双击指北针控件中心地球图标实现全幅显示。</para>
+            	<para><img src="compass.png"/></para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.Compass.MapProperty">
+            <summary>Map 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.Compass.#ctor">
+            <summary>初始化 Compass 新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.Compass.OnApplyTemplate">
+            <summary>当应用新模板时生成 Compass 控件的可视化树。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Compass.Map">
+            <summary>获取与指北针控件绑定的地图控件或绑定指北针控件与地图控件。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.InfoWindow">
+            <summary>
+            	<para>信息窗口类</para>
+            	<para>该类实现在地图上创建信息窗口。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.#ctor(SuperMap.WinRT.Mapping.Map)">
+            <summary>初始化 InfoWindow 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnPointerPressed(Windows.UI.Xaml.Input.PointerRoutedEventArgs)">
+            <summary>在鼠标指针悬停在地图上的情况下按下鼠标左键时触发的事件。 </summary>
+            <param name="e">事件参数对象，这里指鼠标左键按下事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnPointerReleased(Windows.UI.Xaml.Input.PointerRoutedEventArgs)">
+            <summary>在鼠标指针悬停在地图控件上的情况下抬起鼠标左键时触发的事件。 </summary>
+            <param name="e">事件参数对象，这里指鼠标左键抬起事件。 </param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnPointerWheelChanged(Windows.UI.Xaml.Input.PointerRoutedEventArgs)">
+            <summary>在鼠标指针悬停在地图控件上的情况下用户滚动鼠标滚轮时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指鼠标滚轮事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnKeyDown(Windows.UI.Xaml.Input.KeyRoutedEventArgs)">
+            <summary>在地图控件具有焦点的情况下用户按任意键时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指键盘任意键按下事件。 </param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnKeyUp(Windows.UI.Xaml.Input.KeyRoutedEventArgs)">
+            <summary>为在地图控件具有焦点的情况下用户释放任意键时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指键盘任意键抬起事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnDragEnter(Windows.UI.Xaml.DragEventArgs)">
+            <summary>在输入系统报告将此元素作为目标的基础拖动事件时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指目标基础拖动事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnDragLeave(Windows.UI.Xaml.DragEventArgs)">
+            <summary>在输入系统报告将此元素作为来源的基础拖动事件时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指来源基础拖动事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnDragOver(Windows.UI.Xaml.DragEventArgs)">
+            <summary>在输入系统报告将此元素作为潜在放置目标的基础拖动事件时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指潜在基础拖动事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnDrop(Windows.UI.Xaml.DragEventArgs)">
+            <summary>在输入系统报告将此元素作为放置目标的基础放置事件时触发的事件。</summary>
+            <param name="e">事件参数对象，这里指目标基础放置事件。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.OnApplyTemplate">
+            <summary>当应用新模板时生成 InfoWindow 控件的可视化树。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.ShowInfoWindow">
+            <overloads>显示信息窗口。</overloads>
+            <summary>显示信息窗口，窗口所指位置的坐标值为默认值。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.ShowInfoWindow(SuperMap.WinRT.Core.Point2D)">
+            <summary>显示信息窗口，窗口所指位置的坐标值为 Point2D 类型。</summary>
+            <param name="location">Point2D 类型的位置参数。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.ShowInfoWindow(SuperMap.WinRT.Core.Point2D,Windows.Foundation.Point)">
+            <summary>显示信息窗口，窗口所指位置的坐标值为 Point2D 类型，偏移量为 Point 类型。</summary>
+            <param name="loc">Point2D 类型的位置参数。</param>
+            <param name="off">Point 类型的信息窗口偏移量。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.InfoWindow.CloseInfoWindow">
+            <summary>关闭信息窗口。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.InfoWindow.TitleProperty">
+            <summary>Title 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.InfoWindow.Location">
+            <summary>获取或设置点几何对象的坐标。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.InfoWindow.Offset">
+            <summary>获取或设置信息窗口相对于要素内点的偏移量。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.InfoWindow.Title">
+            <summary>获取或设置信息窗口的标题。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.MapHistoryManager">
+            <summary>
+            	<para>前后视图控件</para>
+            	<para>前后视图控件用于记录地图可视边界的变化过程。当地图可视边界变化一次，控件中则记录一个可视边界变化后的地图浏览状态，这些状态按时间进行排序。该控件包括向后、向前浏览历史视图两个功能，向后浏览视图是指浏览记录时间较早的地图显示状态，向前浏览是指浏览记录时间较晚的地图显示状态。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.MapHistoryManager.#ctor">
+            <summary>初始化 MapHistoryManager 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.MapHistoryManager.OnApplyTemplate">
+            <summary>当应用新模板时生成 MapHistoryManager 控件的可视化树。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.MapHistoryManager.MapProperty">
+            <summary>Map 的依赖项属性。 </summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.MapHistoryManager.MapProperty_Changed(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>当 Map 属性值发生变化时，触发该事件。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.MapHistoryManager.PreViewImageProperty">
+            <summary>PreViewImage 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.MapHistoryManager.NextViewImageProperty">
+            <summary>NextViewImage 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.MapHistoryManager.Map">
+            <summary>获取或设置与 MapHistoryManager 控件绑定的地图控件。 </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.MapHistoryManager.PreViewImage">
+            <summary>向前浏览历史操作记录。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.MapHistoryManager.NextViewImage">
+            <summary>向后浏览历史操作记录。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.Navigation">
+            <summary>
+            	<para>导航控件</para>
+            	<para>导航控件实际由一个指北针控件和一个地图缩放条控件组成。指北针控件可以按照方向标的方位来移动地图；地图缩放控件可控制地图的缩放级别。</para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.Navigation.MapProperty">
+            <summary>Map 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.Navigation.#ctor">
+            <summary>初始化 Navigation 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.Navigation.OnApplyTemplate">
+            <summary>当应用新模板时生成 Navigation 控件的可视化树。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Navigation.Map">
+            <summary>获取或设置与导航控件绑定的地图控件。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.OverviewMap">
+            <summary>
+            	<para>鹰眼控件</para>
+            	<para>鹰眼控件地图控件联动，显示了当前地图浏览位置对应的鹰眼地图中的位置。<br/>用户可以通过修改 OverviewMap.XAML 文件自定义鹰眼控件样式。</para>
+            	<para><img src="OverviewMap.png"/></para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.OverviewMap.#ctor">
+            <summary>初始化 OverviewMap 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.OverviewMap.OnApplyTemplate">
+            <summary>当应用新模板时生成 OverviewMap 控件的可视化树。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.OverviewMap.MapProperty">
+            <summary>Map 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.OverviewMap.LayerProperty">
+            <summary>Layer 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.OverviewMap.LayersProperty">
+            <summary>Layers 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.OverviewMap.DisableOverviewMapZoomProperty">
+            <summary>DisableOverviewMapZoom 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.OverviewMap.ArrangeOverride(Windows.Foundation.Size)">
+            <summary>排列鹰眼控件及其内容，并设置其大小。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.OverviewMap.Map">
+            <summary>获取或设置与鹰眼控件绑定的地图控件。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.OverviewMap.Layer">
+            <summary>获取或设置与鹰眼控件关联的图层。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.OverviewMap.Layers">
+            <summary>获取或设置与鹰眼控件关联的图层集合。如果只设置 Layer 属性或Layers 中图层个数为零，则显示与鹰眼控件关联的 Layer 图层；如果同时设置 Layer 和 Layers 属性，且 Layers 中图层不为零，则只显示与鹰眼控件关联的 Layers 图层。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.OverviewMap.DisableOverviewMapZoom">
+            <summary>获取或设置鹰眼控件是否不可以缩放，默认值为 true，即不可以缩放。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.OverviewMap.CollapsedInTheInitialization">
+            <summary>获取或设置在初始化鹰眼控件时是否隐藏。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.Bookmark_Clear">
+            <summary>
+              查找类似 全部删除 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.Bookmark_Remove">
+            <summary>
+              查找类似 删除 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.Bookmark_Title">
+            <summary>
+              查找类似 书签 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataForm_Cannot_Update">
+            <summary>
+              查找类似 当FeatureDataForm属性IsReadOnly为True时，不能更新 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_Clear">
+            <summary>
+              查找类似 清除选择 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_FirstRcd">
+            <summary>
+              查找类似 第一条记录 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_Index_Range_Exception">
+            <summary>
+              查找类似 索引必须大于等于0 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_LastRcd">
+            <summary>
+              查找类似 最后一条记录 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_NextRcd">
+            <summary>
+              查找类似 下一条记录 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_No_Item_Exception">
+            <summary>
+              查找类似 集合中无元素 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_No_Update_Exception">
+            <summary>
+              查找类似 不能更新 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_Opt">
+            <summary>
+              查找类似  选项... 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_PreviousRcd">
+            <summary>
+              查找类似 上一条记录 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_Rcd">
+            <summary>
+              查找类似 记录： 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_RecordMsg">
+            <summary>
+              查找类似 共选中{1}条记录中的{0}条 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_RemoveSlt">
+            <summary>
+              查找类似 删除所选项 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_Row_Editing_Exception">
+            <summary>
+              查找类似 更新要素失败 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_SltAll">
+            <summary>
+              查找类似 选中全部 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_SwitchSlt">
+            <summary>
+              查找类似 反向选择 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_ZoomFree">
+            <summary>
+              查找类似 自动漫游到所选项 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataGrid_ZoomToSlt">
+            <summary>
+              查找类似 缩放到所选项 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.FeatureDataPager_Total">
+            <summary>
+              查找类似 共： 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.InfoWindow_MapParam">
+            <summary>
+              查找类似 map 参数不能为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.MapHistoryManager_NextView">
+            <summary>
+              查找类似 缩放到后一视图 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.MapHistoryManager_PreView">
+            <summary>
+              查找类似 缩放到前一视图 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.ScaleBar_Foot">
+            <summary>
+              查找类似 英尺 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.ScaleBar_Kilometer">
+            <summary>
+              查找类似 公里 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.ScaleBar_Meter">
+            <summary>
+              查找类似 米 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.Resources.Resource.ScaleBar_Mile">
+            <summary>
+              查找类似 英里 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.ScaleBar">
+            <summary>
+            	<para>地图比例尺控件</para>
+            	<para>该控件实时显示当前地图比例尺。当使用 IS 服务提供的地图时，需要对 Map.CRS 属性进行设置。具体方法为：构造 CoordinateReferenceSystem 对象，设置 Unit、WKID 的属性值，其值必须和 IS 地图服务数据对应的属性值相同。</para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.ScaleBar.#ctor">
+            <summary>初始化 ScaleBar 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.ScaleBar.OnApplyTemplate">
+            <summary>当应用新模板时生成 ScaleBar 控件的可视化树。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.ScaleBar.TargetWidthProperty">
+            <summary>TargetWidth 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.ScaleBar.TargetHeightProperty">
+            <summary>TargetHeight 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.ScaleBar.MapProperty">
+            <summary>Map 的依赖项属性。</summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.ScaleBar.ColorProperty">
+            <summary>Color 的依赖项属性。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.ScaleBar.TargetWidth">
+            <summary>获取或设置比例尺控件的长度，像素单位。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.ScaleBar.TargetHeight">
+            <summary>获取或设置比例尺控件的高度，像素单位。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.ScaleBar.Map">
+            <summary>获取或设置与比例尺控件绑定的地图。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.ScaleBar.Color">
+            <summary>获取或设置比例尺控件的颜色。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.ScaleBar.LatitudeSpan">
+            <summary>获取或设置地图数据纬度范围。该属性一般不使用，只有当地图数据未使用比例尺，而使用分辨率时，需要设置该值。控件会根据分辨率和纬度范围计算地图比例尺，然后用地图比例尺控件显示。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.SliderElement">
+            <summary>
+            	<para>地图缩放控件的滑块</para>
+            	<para>地图缩放控件由刻度条（TrackMark）和滑块（SliderElement）组成。通过该类可以更改滑块的样式。</para>
+            	<para><img src="zoomSlider.png"/></para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.SliderElement.TrackMarkStyleProperty">
+            <summary>TrackMarkStyle 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.#ctor">
+            <summary>初始化 SliderElement 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.OnApplyTemplate">
+            <summary>当应用新模板时生成 SliderElement 控件的可视化树。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.NotifyValueChange(System.Double)">
+            <summary>当属性值发生变化且需要更新其当前内容时，由特定的类型调用。</summary>
+            <param name="newValue">获取由属性更改事件报告的属性的新值。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.UpdateTrackMarks">
+            <summary>更新地图缩放刻度条。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.UpdateThumbPosition">
+            <summary>更新地图缩放滑块位置。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.OnValueChanged(System.Double,System.Double)">
+            <summary>当属性值更改时调用。</summary>
+            <param name="oldValue">发生更改之前的属性的值。</param>
+            <param name="newValue">发生更改之后的属性的值。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.OnMaximumChanged(System.Double,System.Double)">
+            <summary>当最大属性值更改时调用。</summary>
+            <param name="oldMaximum">发生更改之前的最大属性值。</param>
+            <param name="newMaximum">发生更改之后的最大属性值。</param>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.SliderElement.OnMinimumChanged(System.Double,System.Double)">
+            <summary>当最小属性值更改时调用。</summary>
+            <param name="oldMinimum">发生更改之前的最小属性值。</param>
+            <param name="newMinimum">发生更改之后的最小属性值。</param>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.SliderElement.TrackMarkStyle">
+            <summary>获取或设置滑块的样式。</summary>
+        </member>
+        <member name="E:SuperMap.WinRT.Controls.SliderElement.DragCompleted">
+            <summary>拖动滑块后触发事件。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.SliderElement.IsDraggingThumb">
+            <summary>获取滑块是否支持鼠标点击或拖动滑动。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.SliderElement.TrackPanel">
+            <summary>获取地图缩放控件的容器。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.TrackMark">
+            <summary>
+            	<para>地图缩放控件的刻度条</para>
+            	<para>地图缩放控件由刻度条（TrackMark）和滑块（SliderElement）组成。TrackMark继承了 System.Windows.Controls.Control，通过 Control 的属性可以改变 TrackMark 的样式。</para>
+            	<para><img src="zoomSlider.png"/></para>
+            </summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.TrackMark.#ctor">
+            <summary>初始化 TrackMark 类的新实例。</summary>
+        </member>
+        <member name="T:SuperMap.WinRT.Controls.ZoomSlider">
+            <summary>
+            	<para>地图缩放条控件</para>
+            	<para>地图缩放控件可控制地图的缩放级别。</para>
+            	<para><img src="zoomSlider.png"/></para>
+            </summary>
+        </member>
+        <member name="F:SuperMap.WinRT.Controls.ZoomSlider.MapProperty">
+            <summary>MapMap 的依赖项属性。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.ZoomSlider.#ctor">
+            <summary>初始化 ZoomSlider 类的新实例。</summary>
+        </member>
+        <member name="M:SuperMap.WinRT.Controls.ZoomSlider.OnApplyTemplate">
+            <summary>当应用新模板时生成 ZoomSlider 控件的可视化树。</summary>
+        </member>
+        <member name="P:SuperMap.WinRT.Controls.ZoomSlider.Map">
+            <summary>获取与缩放控件绑定的地图控件或绑定缩放控件与地图控件。</summary>
+        </member>
+    </members>
+</doc>

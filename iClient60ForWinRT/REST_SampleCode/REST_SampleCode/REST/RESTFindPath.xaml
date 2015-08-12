@@ -1,0 +1,70 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"  
+    x:Class="REST_SampleCode.RESTFindPath"
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <ic:Map x:Name="MyMap" Margin="10,30,-10,-30">
+            <ic:TiledDynamicRESTLayer ID="tiledDynamicRESTLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-changchun/rest/maps/长春市区图"/>
+            <ic:ElementsLayer ID="MyElementsLayer"  />
+            <ic:FeaturesLayer ID="MyFeaturesLayer" />
+        </ic:Map>
+
+        <!--布局控件-->
+		<Border  Style="{StaticResource PanelBorderStyle}"  HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Width="260" Height="150">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" Width="180" Height="150">
+                <StackPanel Orientation="Horizontal" Width="180" Height="110" VerticalAlignment="Top">
+                    <Border   HorizontalAlignment="Left" BorderBrush="White" Height="81" Width="93"   Margin="15,-17,0,0">
+                        <Grid Margin="0,0,-8,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25*"/>
+                                <ColumnDefinition Width="7*"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton x:Name="pathPonit" GroupName="PointType" IsChecked="true" Content="路径点" Margin="5,16,5,0" FontSize="16" FontFamily="Microsoft YaHei" Foreground="#FF666666"
+            				Style="{StaticResource RadioButtonStyle1}" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+                            <RadioButton x:Name="barrierPoint"  GroupName="PointType" Content="障碍点" Margin="5,0,5,13" FontSize="16"  FontFamily="Microsoft YaHei" Foreground="#FF666666"
+                            Style="{StaticResource RadioButtonStyle1}"  Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+                        </Grid>
+                    </Border>
+                    <Border>
+                        <Button x:Name="SelectPoint"  Height="50" Width="50"  ToolTipService.ToolTip="指定途经点" Style="{StaticResource ButtonBlueStyle}" 
+                        ToolTipService.Placement="Left" Margin="5,-15,0,0" Click="SelectPoint_Click" >
+                            <Image Source="../Images/selectNode.png" />
+                        </Button>
+                    </Border>
+                </StackPanel>              
+                <StackPanel>
+                    <Border Height="36" Width="150" BorderBrush="#FFb9b9b9" BorderThickness="1" Margin="0,-15,0,0">
+                          <Button x:Name="PathAnalyst" Content="最佳路径分析"  Margin="2,0,0,0" Foreground="#FFFFFFFF" FontSize="16" FontFamily="Microsoft YaHei" Width="145" Height="28" Click="PathAnalyst_Click" Style="{StaticResource ButtonBlueStyle}" FontWeight="Normal"/>
+                    </Border>                        
+                </StackPanel>
+            </StackPanel>
+            <Rectangle Height="110" Width="0.5" Stroke="#FFb9b9b9"/>
+            <StackPanel  Orientation="Vertical" Width="80">
+                    <Button x:Name="Pan" Height="50" Width="50" Click="Pan_Click" ToolTipService.ToolTip="平移" Style="{StaticResource ButtonPurpleStyle}"
+                           Margin="10,20,0,0" >
+                    <Image Source="../Images/Pan1.png"/>
+                    </Button>
+                    <Button x:Name="Clear" Height="50" Width="50" Click="Clear_Click" ToolTipService.ToolTip="清除" Style="{StaticResource ButtonPurpleStyle}"
+                        Margin="10,10,0,0">
+                        <Image Source="../Images/Clear1.png"/>
+                    </Button>              
+            </StackPanel>
+
+            <Border x:Name="resultPanel" 
+                    Visibility="Collapsed" 
+                    Style="{StaticResource GlassBorderStyle}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="length"/>
+                    <TextBlock x:Name="cost" />
+                </StackPanel>
+            </Border>
+        </StackPanel>  
+		</Border>     
+    </Grid>
+</Page>

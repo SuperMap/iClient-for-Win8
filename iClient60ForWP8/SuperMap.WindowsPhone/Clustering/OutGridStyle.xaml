@@ -1,0 +1,12 @@
+﻿<Grid RenderTransformOrigin="0,0.5" Margin="{Margin}">
+    <Grid.RenderTransform>
+        <RotateTransform Angle="{Angle}" />
+    </Grid.RenderTransform>
+    <Rectangle Fill="{Binding Style.ForeColor}" Height="1" Margin="10,0,15,0"  VerticalAlignment="Center" />
+    <Ellipse Fill="{Binding Style.FillColor}" 
+			 x:Name="{ID}"
+			 Stroke="{Binding Style.ForeColor}"
+			 StrokeThickness="2" Width="15" Height="15" 
+             HorizontalAlignment="Right">
+    </Ellipse>
+</Grid>

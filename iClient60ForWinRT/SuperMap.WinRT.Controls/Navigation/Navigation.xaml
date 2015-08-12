@@ -1,0 +1,277 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:icControls="using:SuperMap.WinRT.Controls"
+    >
+
+    <Style x:Key="ZoomButtonStyle" TargetType="ButtonBase">
+        <Setter Property="Margin" Value="0 4 0 4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Grid Background="Transparent" x:Name="Root">
+                        <Rectangle x:Name="BoundingBox" Stroke="LightBlue" StrokeThickness="1" 
+                                   Visibility="Collapsed" />
+                        <ContentPresenter
+                            x:Name="ContentElement"
+                            Margin="3"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="HoverButtonTemplate" TargetType="ButtonBase">
+        <Grid  x:Name="Root" Background="Transparent">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup.Transitions>
+                        <VisualTransition GeneratedDuration="00:00:00.10"/>
+                    </VisualStateGroup.Transitions>
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="contentPresenter" 
+                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="contentPresenter" 
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="contentPresenter" 
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="contentPresenter" 
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.9"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="contentPresenter" 
+                                                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.9"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled"/>
+                    <VisualState x:Name="Normal"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+
+            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                              Opacity="0.65" x:Name="contentPresenter" RenderTransformOrigin="0.5,0.5">
+                <ContentPresenter.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </ContentPresenter.RenderTransform>
+            </ContentPresenter>
+
+        </Grid>
+    </ControlTemplate>
+
+    <!--Navigation  -->
+    <Style TargetType="icControls:Navigation">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="icControls:Navigation">
+                    <!-- 随便设个大小，要不然放在上面，别的就被盖住了-->
+                    <Canvas x:Name="LayoutRoot"  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <!-- 罗盘上下左右 旋转 全幅 -->
+                        <Grid RenderTransformOrigin="0.5,0.5" Canvas.ZIndex="20">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform x:Name="TransformRotateElement" Angle="0"/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Grid Height="95" Width="95"  RenderTransformOrigin="0.5,0.5">
+                                <Grid x:Name="RotateRingElement" RenderTransformOrigin="0.5,0.5">
+                                    <Ellipse  Opacity="1" Stroke="#FF000000" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5">
+                                        <Ellipse.Fill>
+                                            <SolidColorBrush Color="MintCream"></SolidColorBrush>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse Height="6" Margin="44.635,2,44.365,0" VerticalAlignment="Top" Stroke="#FF000000" StrokeThickness="1" Fill="#FFFFFFFF"/>
+                                </Grid>
+                                <Path HorizontalAlignment="Center" Margin="10,10,10,10" VerticalAlignment="Center" Opacity="1" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Stroke="#FF000000" StrokeThickness="2" 
+                                      Data="M70,35.5 C70,54.553825 54.553825,70 35.5,70 C16.446177,70 1,54.553825 1,35.5 C1,16.446177 16.446177,1 35.5,1 C54.553825,1 70,16.446177 70,35.5 z">
+                                    <Path.Fill>
+                                        <SolidColorBrush Color="MintCream"></SolidColorBrush>
+                                    </Path.Fill>
+                                </Path>
+                                <Path  Opacity="0.6" RenderTransformOrigin="0.5,0.5" Stretch="Fill" StrokeThickness="2" Margin="20,15,20,30"
+                                        Data="M49.713001,24.856501 C49.713001,38.584366 38.584366,49.713001 24.856501,49.713001 C11.128634,49.713001 0,38.584366 0,24.856501 C0,11.128634 11.128634,0 24.856501,0 C38.584366,0 49.713001,11.128634 49.713001,24.856501 z" >
+                                    <Path.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#7FFFFFFF" Offset="0.99099999666213989"/>
+                                            <GradientStop Color="#33FFFFFF" Offset="0.54900002479553223"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+                                <Grid  RenderTransformOrigin="0.5,0.5"  Margin="10,10,10,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="Auto" MinWidth="40"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.5*" />
+                                        <RowDefinition Height="Auto" MinHeight="40"/>
+                                        <RowDefinition Height="0.5*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <RepeatButton Margin="0,0,2,0" x:Name="PanRightElement" Template="{StaticResource HoverButtonTemplate}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Path Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 182.515,153L 132.992,124.408L 132.992,181.592L 182.515,153 Z " 
+                                                  Fill="#FFFFFFFF" RenderTransformOrigin="0.5,0.5" Width="12" Height="14">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1"/>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </RepeatButton>
+
+                                    <RepeatButton Margin="0,0,0,0" x:Name="PanDownElement"  Template="{StaticResource HoverButtonTemplate}"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                        <Path Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 182.515,153L 132.992,124.408L 132.992,181.592L 182.515,153 Z " 
+                                                  Fill="#FFFFFFFF" RenderTransformOrigin="0.5,0.5" Width="12" Height="14">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1"/>
+                                                    <RotateTransform Angle="90"/>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </RepeatButton>
+
+                                    <RepeatButton Margin="2,0,0,0"   x:Name="PanLeftElement"  Template="{StaticResource HoverButtonTemplate}"  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <Path Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 182.515,153L 132.992,124.408L 132.992,181.592L 182.515,153 Z " 
+                                                  Fill="#FFFFFFFF" RenderTransformOrigin="0.5,0.5" Width="12" Height="14">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1"/>
+                                                    <RotateTransform Angle="180"/>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </RepeatButton>
+
+                                    <RepeatButton Margin="0,0,0,0"  x:Name="PanUpElement" Template="{StaticResource HoverButtonTemplate}" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                        <Path Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 182.515,153L 132.992,124.408L 132.992,181.592L 182.515,153 Z " 
+                                              Fill="#FFFFFFFF" RenderTransformOrigin="0.5,0.5" Width="12" Height="14">
+                                            <Path.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1"/>
+                                                    <RotateTransform Angle="-90"/>
+                                                </TransformGroup>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </RepeatButton>
+
+                                    <Button x:Name="ViewEntireElement"  Template="{StaticResource HoverButtonTemplate}" Margin="2" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.Row="1"  >
+                                        <Grid Width="16" Height="16">
+                                            <Ellipse Height="Auto" Width="Auto" Stroke="#FFFFFFFF" />
+                                            <Ellipse Width="Auto" Stroke="#FFFFFFFF" Height="6"/>
+                                            <Ellipse Height="Auto" Width="6" Stroke="#FFFFFFFF" />
+                                        </Grid>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <!--ToolTipService.ToolTip="View Entire" Style="{StaticResource EmptyButtonStyle}"-->
+
+                        <!-- 放大 ZoomSlider 缩小-->
+                        <Border  Width="47" Canvas.Left="24" Canvas.Top="80" Canvas.ZIndex="10" Background="#FF2B2B2B" 
+                                 BorderBrush="#FF000000" BorderThickness="1,0,1,0" Opacity="0.85" RenderTransformOrigin="0.5,0.5"  Visibility="Visible">
+                            <StackPanel Margin="0,11,0,6" VerticalAlignment="Center" Orientation="Vertical"  >
+                                <RepeatButton x:Name="ZoomInElement" Style="{StaticResource ZoomButtonStyle}" Delay="200" Interval="600">
+                                    <Canvas Width="15.838" Height="16.478">
+                                        <Path Width="13.6875" Height="13.6875" Canvas.Left="2.15047" Canvas.Top="3.8147e-005" Stretch="Fill" StrokeThickness="0.5" StrokeLineJoin="Round" Stroke="#FFFFFFFF" 
+                                              Data="F1 M 8.99422,0.250038C 12.6358,0.250038 15.588,3.20219 15.588,6.84379C 15.588,10.4854 12.6358,13.4375 8.99422,13.4375C 5.35259,13.4375 2.40047,10.4854 2.40047,6.84379C 2.40047,3.20219 5.35259,0.250038 8.99422,0.250038 Z ">
+                                            <Path.Fill>
+                                                <LinearGradientBrush StartPoint="0.5,-0.0189527" EndPoint="0.5,1.01896">
+                                                    <LinearGradientBrush.GradientStops>
+                                                        <GradientStop Color="#FFFEFEFE" Offset="0"/>
+                                                        <GradientStop Color="#80FEFEFE" Offset="0.677966"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                    </LinearGradientBrush.GradientStops>
+                                                </LinearGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                        <Path x:Name="Path" Width="8.25" Height="4.875" Canvas.Left="4.83797" Canvas.Top="1.12479" Stretch="Fill" 
+                                              Data="F1 M 8.96297,1.12479C 11.2412,1.12479 13.088,2.2161 13.088,3.56229C 13.088,4.90849 11.2411,5.99979 8.96297,5.99979C 6.6848,5.99979 4.83797,4.90849 4.83797,3.56229C 4.83797,2.2161 6.68476,1.12479 8.96297,1.12479 Z ">
+                                            <Path.Fill>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                    <LinearGradientBrush.GradientStops>
+                                                        <GradientStop Color="#AAFEFEFE" Offset="0.792373"/>
+                                                        <GradientStop Color="#56FEFEFE" Offset="0.904984"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                    </LinearGradientBrush.GradientStops>
+                                                </LinearGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                        <Path x:Name="handle" Width="5.8883" Height="5.88831" Canvas.Left="-4.52995e-006" Canvas.Top="10.5895" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 5.88829,12.5929L 3.88482,10.5895L -4.52995e-006,14.4743L 2.00346,16.4778L 5.88829,12.5929 Z "/>
+                                        <Path x:Name="Path_0" Width="7.3125" Height="7.3125" Canvas.Left="5.28068" Canvas.Top="3.17704" Stretch="Fill" Fill="#FF000000" Data="F1 M 5.28068,6.02073L 8.09322,6.02073L 8.09322,3.17704L 9.74947,3.17704L 9.74947,6.02073L 12.5932,6.02073L 12.5932,7.67698L 9.74947,7.67698L 9.74947,10.4895L 8.09322,10.4895L 8.09322,7.67698L 5.28068,7.67698L 5.28068,6.02073 Z "/>
+                                    </Canvas>
+                                </RepeatButton>
+
+                                <!--ZoomSlider-->
+                                <Slider x:Name="ZoomSlider" 
+                                    VerticalAlignment="Top"
+                                    Grid.Row="1" 
+                                    Orientation="Vertical" 
+                                    LargeChange="1" 
+                                    Maximum="15" 
+                                    Minimum="0"
+                                    SmallChange="1.0" 
+                                    Value="0" 
+                                    Height="{TemplateBinding Height}"/>
+
+                                <RepeatButton x:Name="ZoomOutElement" Style="{StaticResource ZoomButtonStyle}" Delay="200" Interval="600">
+                                    <Canvas Width="15.838" Height="16.478">
+                                        <Path Width="13.6875" Height="13.6875" Canvas.Left="2.15047" Canvas.Top="2.28882e-005" Stretch="Fill" StrokeThickness="0.5" StrokeLineJoin="Round" Stroke="#FFFFFFFF" 
+                                              Data="F1 M 8.99422,0.250023C 12.6358,0.250023 15.588,3.20217 15.588,6.8438C 15.588,10.4854 12.6359,13.4376 8.99422,13.4376C 5.3526,13.4376 2.40047,10.4854 2.40047,6.8438C 2.40047,3.20217 5.3526,0.250023 8.99422,0.250023 Z ">
+                                            <Path.Fill>
+                                                <LinearGradientBrush StartPoint="0.5,-0.018955" EndPoint="0.5,1.01896">
+                                                    <LinearGradientBrush.GradientStops>
+                                                        <GradientStop Color="#FFFEFEFE" Offset="0"/>
+                                                        <GradientStop Color="#80FEFEFE" Offset="0.542373"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                    </LinearGradientBrush.GradientStops>
+                                                </LinearGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                        <Path Width="8.25" Height="4.875" Canvas.Left="4.83797" Canvas.Top="1.12481" Stretch="Fill" 
+                                              Data="F1 M 8.96297,1.12481C 11.2412,1.12481 13.088,2.21609 13.088,3.56231C 13.088,4.9085 11.2411,5.99981 8.96297,5.99981C 6.6848,5.99981 4.83797,4.9085 4.83797,3.56231C 4.83797,2.21609 6.68476,1.12481 8.96297,1.12481 Z ">
+                                            <Path.Fill>
+                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                    <LinearGradientBrush.GradientStops>
+                                                        <GradientStop Color="#AAFEFEFE" Offset="0"/>
+                                                        <GradientStop Color="#56FEFEFE" Offset="0.542373"/>
+                                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                    </LinearGradientBrush.GradientStops>
+                                                </LinearGradientBrush>
+                                            </Path.Fill>
+                                        </Path>
+                                        <Path Width="5.8883" Height="5.88831" Canvas.Left="-4.29153e-006" Canvas.Top="10.5895" Stretch="Fill" Fill="#FFFFFFFF" 
+                                              Data="F1 M 5.88829,12.5929L 3.88482,10.5895L -4.29153e-006,14.4744L 2.00346,16.4778L 5.88829,12.5929 Z "/>
+                                        <Rectangle Width="7.3125" Height="1.65625" Canvas.Left="5.28068" Canvas.Top="6.02074" Stretch="Fill" Fill="#FF000000"/>
+                                    </Canvas>
+                                </RepeatButton>
+
+                            </StackPanel>
+                        </Border>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

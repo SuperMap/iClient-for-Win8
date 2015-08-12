@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+  <DefaultLanguage xmlns="" code="zh-CN" />
+  <Languages xmlns="">
+    <Language code="zh-CN" />
+    <Language code="en-US" />
+  </Languages>
+  <App xmlns="" ProductID="{521d4fd4-ba3d-407a-886b-75bc3d6ba3e0}" Title="SuperMap" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="SuperMap" Description="SuperMap iClient for Windows 8 包含 WinRT 和 Windows Phone 8 两套开发包，可调用 SuperMap GIS 服务器或第三方服务器提供的地图与服务，构建全新体验的Windows 8和WP 8应用商店地图应用。本应用采用Windows Phone 8 SDK开发，实现基础的定位、指北针、客户端标绘和距离量算功能。其中的地图为SuperMap云服务地图。&#xD;&#xA;" Publisher="SuperMap" PublisherID="{30bed87f-bd4e-428b-951b-efec7d224dd6}">
+    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_SENSORS" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="CommandDemoToken" TaskName="_default">
+        <TemplateFlip>
+          <SmallImageURI IsResource="false" IsRelative="true">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <Count>0</Count>
+          <BackgroundImageURI IsResource="false" IsRelative="true">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <Title>SuperMap</Title>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
+          <HasLarge>false</HasLarge>
+        </TemplateFlip>
+      </PrimaryToken>
+    </Tokens>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>

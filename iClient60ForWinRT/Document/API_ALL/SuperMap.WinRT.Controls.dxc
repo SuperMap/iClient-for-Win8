@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentFile Version="2010" Moniker="..\Libraries\SuperMap.WinRT.Controls.dll" DocType="DX.NET" IsLocalizationDisabled="false">
+  <RelatedProject>Reference.dxp</RelatedProject>
+  <ExcludedProjectLocale>zh-CHS</ExcludedProjectLocale>
+  <State>
+    <Attributes>
+      <Attribute key="dtscrollpos" valuetype="integer">76</Attribute>
+      <Attribute key="inheritedMembers" valuetype="string">on</Attribute>
+      <Attribute key="protectedMembers" valuetype="string">on</Attribute>
+      <Attribute key="lang_VB" valuetype="string">on</Attribute>
+      <Attribute key="lang_VBUsage" valuetype="string">on</Attribute>
+      <Attribute key="lang_CS" valuetype="string">on</Attribute>
+    </Attributes>
+  </State>
+  <LastSelectedItem>SuperMap.WinRT.Controls~SuperMap.WinRT.Controls.InfoWindow</LastSelectedItem>
+  <item qn="SuperMap.WinRT.Controls">
+    <summary ChangeDateTime="2013-03-13T05:56:48.7239609Z">${namescpace_controls_title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.Controls~SuperMap.WinRT.Controls_namespace">
+    <summary ChangeDateTime="2013-03-13T05:56:51.6331406Z">${namescpace_controls_title}</summary>
+  </item>
+  <item qn="SuperMap.WinRT.Controls~SuperMap.WinRT.Controls.InfoWindow">
+    <requirements ChangeDateTime="2013-03-28T02:39:48.9689609Z">&lt;STRONG&gt;Target Platforms:&lt;/STRONG&gt; Windows 8</requirements>
+  </item>
+  <Filters>
+    <CONTENTSTORECOMMON>
+      <IsIncludedItemsOnly>true</IsIncludedItemsOnly>
+    </CONTENTSTORECOMMON>
+    <CONTENTSTORELOCALIZATION>
+      <IsPrimaryLocaleContentPreviewEnabled>true</IsPrimaryLocaleContentPreviewEnabled>
+    </CONTENTSTORELOCALIZATION>
+    <DX.NETCONTENTSTOREFILTER>
+      <ShowProtectedMembers>true</ShowProtectedMembers>
+      <ShowProtectedFriendMembers>true</ShowProtectedFriendMembers>
+      <ShowFriendMembers>false</ShowFriendMembers>
+      <ShowPrivateMembers>false</ShowPrivateMembers>
+      <ShowInheritedMembers>false</ShowInheritedMembers>
+      <IsSourceCodeContentVisible>true</IsSourceCodeContentVisible>
+    </DX.NETCONTENTSTOREFILTER>
+  </Filters>
+</ContentFile>

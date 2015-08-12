@@ -1,0 +1,30 @@
+﻿<Page x:Class="REST_SampleCode.Code"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:ic="using:SuperMap.WinRT.Mapping"    
+>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.Resources>
+            <!--自定义的渐进填充方式-->
+            <LinearGradientBrush x:Name="British" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="Yellow" Offset="0.0" />
+                <GradientStop Color="Red" Offset="0.25" />
+                <GradientStop Color="Blue" Offset="0.75" />
+                <GradientStop Color="LimeGreen" Offset="1.0" />
+            </LinearGradientBrush>
+            <!--自义动画，实现渐进透明-->
+            <Storyboard x:Name="MyEllipseStory">
+                <DoubleAnimation x:Name="myDoubleAnimation" From="1" To="0.1" 
+                                 Duration="0:0:5" 
+                                 AutoReverse="True" 
+                                 RepeatBehavior="Forever"
+                                 SpeedRatio="8"
+                                 Storyboard.TargetProperty="Opacity"/>
+            </Storyboard>
+        </Grid.Resources>
+        <ic:Map x:Name="MyMap">
+            <ic:TiledDynamicRESTLayer ID="DynamicRESTLayer" Url="http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World" />
+            <ic:ElementsLayer ID="MyElementsLayer"/>
+        </ic:Map>
+    </Grid>
+</Page>
